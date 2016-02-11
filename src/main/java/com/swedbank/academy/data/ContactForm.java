@@ -5,6 +5,8 @@ package com.swedbank.academy.data;
  */
 public class ContactForm {
 
+    // TODO add whats missing
+
     long id;
     String message;
     String name;
