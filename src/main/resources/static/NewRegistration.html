@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <title>New Registration</title>
+	<h3><u>Registruokitės konsultacijai internetu</u></h3>
+</head>
+<body>
+<form name="htmlform" method="post" action="html_form_send.php">
+    <table width="450px">
+        </tr>
+        <tr>
+            <td valign="top">
+                <label for="first_name">Vardas *</label>
+            </td>
+            <td valign="top">
+                <input  type="text" name="first_name" maxlength="50" size="34">
+            </td>
+        </tr>
+        <tr>
+            <td valign="top"">
+            <label for="last_name">Pavardė *</label>
+            </td>
+            <td valign="top">
+                <input  type="text" name="last_name" maxlength="50" size="34">
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <label for="telephone">Telefonas susisiekti *</label>
+            </td>
+            <td valign="top">
+                <input  type="text" name="telephone" maxlength="30" size="34">
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <label for="email">El. paštas *</label>
+            </td>
+            <td valign="top">
+                <input  type="text" name="email" maxlength="80" size="34">
+            </td>
+
+        </tr>
+		<tr>
+            <td valign="top"">
+            <label for="last_name">Banko skyrius *</label>
+            </td>
+            <td valign="top" >
+			<select>
+				<option value=" ">Pasirinkite</option>
+				<option value=" ">Antakalnio g. 45</option>
+				<option value=" ">Ateisties g. 91 (PC „Mandarinas“)</option>
+				<option value=" ">Gedimino pr. 56</option>
+				<option value=" ">Konstitucijos pr. 20A, dirba Būsto centras</option>
+				<option value=" ">Ozo g. 25 (PPC „Akropolis“)</option>
+			</select>
+            </td>
+        </tr>
+		<tr>
+            <td valign="top"">
+            <label for="data">Data *</label>
+            </td>
+            <td valign="top">
+                <input  type="text" name="date" maxlength="50" size="34">
+            </td>
+        </tr>
+		<tr>
+            <td valign="top"">
+            <label for="theme">Tema *</label>
+            </td>
+            <td valign="top">
+            <select>
+				<option value=" ">Pasirinkite</option>
+				<option value=" ">Taupymas ir investavimas</option>
+				<option value=" ">Pensijos ir kaupimas</option>
+				<option value=" ">Gyvybės draudimas</option>
+				<option value=" ">Ne gyvybės draudimas</option>
+				<option value=" ">Paskolos, lizingas</option>
+				<option value=" ">Kasdieninių finansų valdymas</option>
+			</select>
+            </td>
+        </tr>
+		<tr>
+            <td valign="top">
+                <label for="comments">Pastabos, komentrai *</label>
+            </td>
+            <td valign="top">
+                <textarea  name="comments" maxlength="160" cols="34" rows="6"></textarea>
+            </td>
+
+        </tr>
+    </table>
+</form>
+<form method="get" action="">
+    <button type="submit">Siųsti</button>
+</form>
+</body>
+</html>
