@@ -3,7 +3,7 @@ package com.swedbank.academy.data;
 /**
  * Created by vytautassugintas on 11/02/16.
  */
-public class ContactForm {
+public class ContactFormDataHolder {
 
     // TODO add whats missing
 
@@ -14,7 +14,7 @@ public class ContactForm {
     String number;
     String email;
 
-    public ContactForm(long id, String message, String name, String surname, String number, String email) {
+    public ContactFormDataHolder(long id, String message, String name, String surname, String number, String email) {
         this.id = id;
 
         this.message = message;

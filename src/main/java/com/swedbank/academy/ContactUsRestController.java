@@ -1,6 +1,6 @@
 package com.swedbank.academy;
 
-import com.swedbank.academy.data.ContactForm;
+import com.swedbank.academy.data.ContactFormDataHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,16 +19,16 @@ public class ContactUsRestController {
     // AtomicLong will automatically increase id with incrementAndGet()
     private final AtomicLong counter = new AtomicLong();
 
-    ContactForm testContactForm;
+    ContactFormDataHolder testContactFormDataHolder;
 
     @PostConstruct
     public void init(){
-        testContactForm = new ContactForm(counter.incrementAndGet(), "Kokia busto paskolos palukanu norma?", "Vytautas", "Sugintas", "861234567", "test@test.lt");
+        testContactFormDataHolder = new ContactFormDataHolder(counter.incrementAndGet(), "Kokia busto paskolos palukanu norma?", "Vytautas", "Sugintas", "861234567", "test@test.lt");
     }
 
     @RequestMapping(value = "api/contact")
-    public ContactForm getContanctFormJSON(){
-        return testContactForm;
+    public ContactFormDataHolder getContanctFormJSON(){
+        return testContactFormDataHolder;
     }
 
 }
