@@ -10,7 +10,6 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * Created by vytautassugintas on 11/02/16.
  */
-
 @RestController
 public class ContactUsRestController {
 
