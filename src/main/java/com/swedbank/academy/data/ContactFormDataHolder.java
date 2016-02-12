@@ -9,15 +9,14 @@ public class ContactFormDataHolder {
     //Check
 
     long id;
-    String message;
-    String name;
-    String surname;
-    String number;
-    String email;
+    String message;     // Žinutė
+    String name;        // Vardas
+    String surname;     // Pavardė
+    String number;      // Telefonas
+    String email;       // El.paštas
 
     public ContactFormDataHolder(long id, String message, String name, String surname, String number, String email) {
         this.id = id;
-
         this.message = message;
         this.name = name;
         this.surname = surname;

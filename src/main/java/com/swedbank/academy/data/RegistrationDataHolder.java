@@ -35,7 +35,6 @@ public class RegistrationDataHolder {
         this.id = id;
     }
 
-
     public String getName() {
         return name;
     }
