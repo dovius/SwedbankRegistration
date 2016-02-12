@@ -5,6 +5,7 @@ package com.swedbank.academy.data;
  */
 public class RegistrationDataHolder {
 
+    long id;
     String name;            // Vardas
     String surname;         // Pavarde
     String number;          // Telefonas susisiekti
@@ -12,8 +13,10 @@ public class RegistrationDataHolder {
     String bank;            // Banko skyrius
     String date;            // Data
     String subject;         // Tema
+    String comment;
 
-    public RegistrationDataHolder(String name, String surname, String number, String email, String bank, String date, String subject) {
+    public RegistrationDataHolder(long id, String name, String surname, String number, String email, String bank, String date, String subject, String comment) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.number = number;
@@ -21,7 +24,17 @@ public class RegistrationDataHolder {
         this.bank = bank;
         this.date = date;
         this.subject = subject;
+        this.comment = comment;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
 
     public String getName() {
         return name;
@@ -77,5 +90,13 @@ public class RegistrationDataHolder {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }
