@@ -1,0 +1,11 @@
+.title-header{
+    text-decoration: underline;
+}
+
+.form-horizontal .control-label{
+    text-align:left !important;
+}
+
+.form-horizontal .form-control{
+    width: 50%;
+}
