@@ -40,6 +40,7 @@ public class RegistrationController {
 
     }
 
+
     // call api/register?name=Vytautas&surname=Sugintas&number=123&email=vyc@vyc.lt&bank=qq&date=2015&subject=paskola&comment=cool
     @RequestMapping(value = "api/register")
     public void Register(@RequestParam Map<String, String> requestParams) {

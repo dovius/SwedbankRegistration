@@ -2,10 +2,12 @@ package com.swedbank.academy;
 
 import com.swedbank.academy.data.ContactFormDataHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -38,5 +40,17 @@ public class ContactUsRestController {
 
     }
 
+    //call api/ContactUsRegistration?message=VeikiaJeee&name=Vytautas&surname=Sugintas&number=123&email=pasukutinis@geras.lt
+
+    @RequestMapping(value = "api/ContactUsRegistration")
+    public void Register(@RequestParam Map<String, String> requestParams) {
+        ContactFormDataHolder registrationDataHolder = new ContactFormDataHolder(counter.getAndIncrement(),
+                requestParams.get("message"),
+                requestParams.get("name"),
+                requestParams.get("surname"),
+                requestParams.get("number"),
+                requestParams.get("email"));
+        contactFormDataHolderList.add(registrationDataHolder);
+    }
 
     }
