@@ -12,8 +12,9 @@ public class ContactFormDataHolder {
     String number;      // Telefonas
     String email;       // El.paštas
     String subject;     // Tema
+    String answer;      // Pageidautas atsakymas
 
-    public ContactFormDataHolder(long id, String subject, String message, String name, String surname, String number, String email) {
+    public ContactFormDataHolder(long id, String subject, String message, String name, String surname, String number, String email, String answer) {
         this.id = id;
         this.subject = subject;
         this.message = message;
@@ -21,6 +22,15 @@ public class ContactFormDataHolder {
         this.surname = surname;
         this.number = number;
         this.email = email;
+        this.answer = answer;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
     public String getSubject() {

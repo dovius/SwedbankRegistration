@@ -53,8 +53,8 @@ app.controller("ContactUsController", function ($scope, $http) {
             name: $scope.name,
             surname: $scope.surname,
             number: $scope.phone,
-            email: $scope.email
-
+            email: $scope.email,
+            radioValue: $scope.radioValue
 
         });
 

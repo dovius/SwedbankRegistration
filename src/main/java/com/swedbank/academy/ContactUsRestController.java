@@ -24,7 +24,7 @@ public class ContactUsRestController {
     @PostConstruct
     public void init(){
         contactFormDataHolder = new ContactFormDataHolder(counter.getAndIncrement(), "Kokia busto paskolos palukanu norma?","Labukas",
-                "Vytautas", "Sugintas", "861234567", "test@test.lt");
+                "Vytautas", "Sugintas", "861234567", "test@test.lt", "telefonu");
         contactFormDataHolderList = new ArrayList<>();
         contactFormDataHolderList.add(contactFormDataHolder);
     }
@@ -50,7 +50,8 @@ public class ContactUsRestController {
                 requestParams.get("name"),
                 requestParams.get("surname"),
                 requestParams.get("number"),
-                requestParams.get("email"));
+                requestParams.get("email"),
+                requestParams.get("radioValue"));
 
         contactFormDataHolderList.add(registrationDataHolder);
     }
