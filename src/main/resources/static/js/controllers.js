@@ -22,7 +22,7 @@ app.controller("RegistrationController", function ($scope, $http) {
         $http.put('http://localhost:8080/api/register?' + data)
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
-                location.reload();
+            //    location.reload();
             })
             .error(function (data, status, header, config) {
                 $scope.ServerResponse = htmlDecode("Data: " + data +
