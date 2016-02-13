@@ -13,7 +13,7 @@ public class RegistrationDataHolder {
     String bank;            // Banko skyrius
     String date;            // Data
     String subject;         // Tema
-    String comment;
+    String comment;         // Žinutė bankui
 
     public RegistrationDataHolder(long id, String name, String surname, String number, String email, String bank, String date, String subject, String comment) {
         this.id = id;
