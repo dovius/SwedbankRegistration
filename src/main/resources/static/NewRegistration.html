@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <head>
         <meta charset="UTF-8">
@@ -9,49 +9,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="Registration form">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="js/angular.min.js"></script>
-
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-theme.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/controllers.js"></script>
     </head>
 <body>
 
 <div class="container">
 
     <h2 class="title-header">Registruokitės konsultacijai internetu</h2>
-<!-- BOOTSTRAP FORM -->
 
-    <form class="form-horizontal">
+<!-- BOOTSTRAP FORM -->
+    <div ng-controller="RegistrationController">
+    <form class="form-horizontal" ng-submit="Registration()">
         <div class="form-group">
             <label for="inputName" class="col-sm-2 control-label text-right">Vardas</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputName">
+                <input type="text" class="form-control" id="inputName" ng-model="name">
             </div>
         </div>
         <div class="form-group">
             <label for="inputPassword" class="col-sm-2 control-label">Pavardė</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword">
+                <input type="text" class="form-control" id="inputPassword" ng-model="surname">
             </div>
         </div>
         <div class="form-group">
             <label for="inputPhone" class="col-sm-2 control-label">Telefonas susisiekti</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPhone">
+                <input type="number" class="form-control" id="inputPhone" ng-model="phone">
             </div>
         </div>
         <div class="form-group">
             <label for="inputEmail" class="col-sm-2 control-label">El paštas</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputEmail">
+                <input type="email" class="form-control" id="inputEmail" ng-model="email">
             </div>
         </div>
         <div class="form-group">
             <label for="inputBank" class="col-sm-2 control-label">Banko skyrius</label>
             <div class="col-sm-10">
-                <select class="form-control" id="inputBank">
+                <select class="form-control" id="inputBank"  ng-model="bank">
                     <option value=" ">Pasirinkite</option>
                     <option value=" ">Antakalnio g. 45</option>
                     <option value=" ">Ateisties g. 91 (PC „Mandarinas“)</option>
@@ -64,13 +66,13 @@
         <div class="form-group">
             <label for="inputDate" class="col-sm-2 control-label">Data</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputDate">
+                <input type="date" class="form-control" id="inputDate" ng-model="date">
             </div>
         </div>
         <div class="form-group">
             <label for="inputSubject" class="col-sm-2 control-label">Tema</label>
             <div class="col-sm-10">
-                <select class="form-control" id="inputSubject">
+                <select class="form-control" id="inputSubject" ng-model="subject">
                     <option value=" ">Pasirinkite</option>
                     <option value=" ">Taupymas ir investavimas</option>
                     <option value=" ">Pensijos ir kaupimas</option>
@@ -84,7 +86,7 @@
         <div class="form-group">
             <label for="inputComment" class="col-sm-2 control-label">Pastabos, Komentarai</label>
             <div class="col-sm-10">
-                <textarea class="form-control" name="comments" maxlength="160" cols="34" rows="6" id="inputComment"></textarea>
+                <textarea class="form-control" name="comments" maxlength="160" cols="34" rows="6" id="inputComment" ng-model="comment"></textarea>
             </div>
         </div>
         <div class="form-group">
@@ -93,7 +95,8 @@
             </div>
         </div>
     </form>
-</div>
+    </div>
 <!-- BOOTSTRAP FORM -->
+</div>
 </body>
 </html>
