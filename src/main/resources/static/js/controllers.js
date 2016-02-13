@@ -19,15 +19,29 @@ app.controller("RegistrationController", function ($scope, $http) {
 
         console.log(data);
 
-        $http.put('http://localhost:8080/api/register?'+ data)
+        $http.put('http://localhost:8080/api/register?' + data)
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
+                location.reload();
             })
             .error(function (data, status, header, config) {
-                $scope.ServerResponse =  htmlDecode("Data: " + data +
+                $scope.ServerResponse = htmlDecode("Data: " + data +
                     "\n\n\n\nstatus: " + status +
                     "\n\n\n\nheaders: " + header +
                     "\n\n\n\nconfig: " + config);
             });
     };
 });
+
+app.controller('RegistrationListController', function ($scope, $http) {
+    $http({
+        method: 'GET',
+        url: 'http://localhost:8080/api/getRegistrationInformation'
+    }).then(function successCallback(response) {
+        $scope.registrations = response.data;
+        console.log(response);
+    }, function errorCallback(response) {
+
+    });
+});
+

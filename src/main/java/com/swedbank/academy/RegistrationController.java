@@ -2,6 +2,7 @@ package com.swedbank.academy;
 
 import com.swedbank.academy.data.RegistrationDataHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,7 +35,7 @@ public class RegistrationController {
         return registrationDataHolder;
     }
 
-    @RequestMapping(value = "api/getRegistrationInformation")
+    @RequestMapping(value = "api/getRegistrationInformation", method = RequestMethod.GET)
     public List<RegistrationDataHolder> getAllRegistrations() {
         return registrationDataHolderList;
 
