@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eca23a6f-b1be-4330-884c-ab3349b2a3ba" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/swedbank/academy/ContactUsRestController.class" afterPath="$PROJECT_DIR$/build/classes/main/com/swedbank/academy/ContactUsRestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/test/com/swedbank/academy/ConsultationFormApplicationTests.class" afterPath="$PROJECT_DIR$/build/classes/test/com/swedbank/academy/ConsultationFormApplicationTests.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/static/index.html" afterPath="$PROJECT_DIR$/build/resources/main/static/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/swedbank/academy/ContactUsRestController.java" afterPath="$PROJECT_DIR$/src/main/java/com/swedbank/academy/ContactUsRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/swedbank/academy/RegistrationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/swedbank/academy/RegistrationController.java" />
     </list>
     <ignored path="ConsultationForm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,8 +85,8 @@
       <file leaf-file-name="ContactUsRestController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swedbank/academy/ContactUsRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39817628">
-              <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.7993921">
+              <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1169#1170#0" expanded="true" />
@@ -114,7 +110,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/swedbank/academy/RegistrationController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="59" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="59" />
+              <caret line="46" column="109" selection-start-line="46" selection-start-column="94" selection-end-line="46" selection-end-column="109" />
               <folding />
             </state>
           </provider>
@@ -1190,7 +1186,13 @@
       <option name="project" value="LOCAL" />
       <updated>1455364055048</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="now Contact Us Registration is working">
+      <created>1455365518085</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1455365518085</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1242,7 +1244,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated ContactUsRestController class" />
     <MESSAGE value="Contacs Us Controller now can show Information" />
-    <option name="LAST_COMMIT_MESSAGE" value="Contacs Us Controller now can show Information" />
+    <MESSAGE value="now Contact Us Registration is working" />
+    <option name="LAST_COMMIT_MESSAGE" value="now Contact Us Registration is working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1400,14 +1403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/swedbank/academy/RegistrationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="59" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swedbank/academy/data/ContactFormDataHolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1416,10 +1411,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/swedbank/academy/RegistrationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="109" selection-start-line="46" selection-start-column="94" selection-end-line="46" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/swedbank/academy/ContactUsRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39817628">
-          <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.7993921">
+          <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1169#1170#0" expanded="true" />

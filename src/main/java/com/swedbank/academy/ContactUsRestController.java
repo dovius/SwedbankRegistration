@@ -23,7 +23,7 @@ public class ContactUsRestController {
 
     @PostConstruct
     public void init(){
-        contactFormDataHolder = new ContactFormDataHolder(counter.incrementAndGet(), "Kokia busto paskolos palukanu norma?",
+        contactFormDataHolder = new ContactFormDataHolder(counter.getAndIncrement(), "Kokia busto paskolos palukanu norma?",
                 "Vytautas", "Sugintas", "861234567", "test@test.lt");
         contactFormDataHolderList = new ArrayList<>();
         contactFormDataHolderList.add(contactFormDataHolder);
