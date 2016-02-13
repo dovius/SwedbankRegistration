@@ -48,6 +48,7 @@ app.controller('RegistrationListController', function ($scope, $http) {
 app.controller("ContactUsController", function ($scope, $http) {
     $scope.ContactUs = function () {
         var data = $.param({
+
             subject: $scope.subject,
             message: $scope.message,
             name: $scope.name,

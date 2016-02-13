@@ -13,6 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * Created by vytautassugintas on 11/02/16.  
  */
+
 @RestController
 public class ContactUsRestController {
 
@@ -23,9 +24,12 @@ public class ContactUsRestController {
 
     @PostConstruct
     public void init(){
+        contactFormDataHolderList = new ArrayList<>();
         contactFormDataHolder = new ContactFormDataHolder(counter.getAndIncrement(), "Kokia busto paskolos palukanu norma?","Labukas",
                 "Vytautas", "Sugintas", "861234567", "test@test.lt", "telefonu");
-        contactFormDataHolderList = new ArrayList<>();
+        contactFormDataHolderList.add(contactFormDataHolder);
+        contactFormDataHolder = new ContactFormDataHolder(counter.getAndIncrement(), "Kokia palukanu norma?","haha",
+                "Rytis", "Dereškevičius", "866699959", "test@test.lt", "el. paštu");
         contactFormDataHolderList.add(contactFormDataHolder);
     }
 

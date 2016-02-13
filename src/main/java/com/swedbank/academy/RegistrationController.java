@@ -25,7 +25,10 @@ public class RegistrationController {
 
     @PostConstruct
     public void init() {
-        registrationDataHolder = new RegistrationDataHolder(atomicLong.getAndIncrement(), "Vytautas", "Sugintas", "860296103", "vytautas@sugintas.com", "Antakalnio g. 45", "2015-02-15", "Pensijos kaupimas", "");
+        registrationDataHolder = new RegistrationDataHolder(atomicLong.getAndIncrement(), "Vytautas",
+                "Sugintas", "860296103", "vytautas@sugintas.com", "Antakalnio g. 45", "2015-02-15", "Pensijos kaupimas", "");
+        registrationDataHolder = new RegistrationDataHolder(atomicLong.getAndIncrement(), "Rytis",
+                "Dereškevičius", "866699959", "rdereskevicius@gmail.com", "Mokyklos g. 18", "2015-02-28", "Draudimas", "");
         registrationDataHolderList = new ArrayList<>();
         registrationDataHolderList.add(registrationDataHolder);
     }
