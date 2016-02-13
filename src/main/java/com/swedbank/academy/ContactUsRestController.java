@@ -23,7 +23,7 @@ public class ContactUsRestController {
 
     @PostConstruct
     public void init(){
-        contactFormDataHolder = new ContactFormDataHolder(counter.getAndIncrement(), "Kokia busto paskolos palukanu norma?",
+        contactFormDataHolder = new ContactFormDataHolder(counter.getAndIncrement(), "Kokia busto paskolos palukanu norma?","Labukas",
                 "Vytautas", "Sugintas", "861234567", "test@test.lt");
         contactFormDataHolderList = new ArrayList<>();
         contactFormDataHolderList.add(contactFormDataHolder);
@@ -45,11 +45,13 @@ public class ContactUsRestController {
     @RequestMapping(value = "api/ContactUsRegistration")
     public void Register(@RequestParam Map<String, String> requestParams) {
         ContactFormDataHolder registrationDataHolder = new ContactFormDataHolder(counter.getAndIncrement(),
+                requestParams.get("subject"),
                 requestParams.get("message"),
                 requestParams.get("name"),
                 requestParams.get("surname"),
                 requestParams.get("number"),
                 requestParams.get("email"));
+
         contactFormDataHolderList.add(registrationDataHolder);
     }
 

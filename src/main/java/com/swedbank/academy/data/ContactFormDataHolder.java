@@ -11,14 +11,24 @@ public class ContactFormDataHolder {
     String surname;     // Pavardė
     String number;      // Telefonas
     String email;       // El.paštas
+    String subject;     // Tema
 
-    public ContactFormDataHolder(long id, String message, String name, String surname, String number, String email) {
+    public ContactFormDataHolder(long id, String subject, String message, String name, String surname, String number, String email) {
         this.id = id;
+        this.subject = subject;
         this.message = message;
         this.name = name;
         this.surname = surname;
         this.number = number;
         this.email = email;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public long getId() {

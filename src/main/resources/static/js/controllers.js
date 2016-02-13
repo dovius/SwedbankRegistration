@@ -45,3 +45,31 @@ app.controller('RegistrationListController', function ($scope, $http) {
     });
 });
 
+app.controller("ContactUsController", function ($scope, $http) {
+    $scope.ContactUs = function () {
+        var data = $.param({
+            subject: $scope.subject,
+            message: $scope.message,
+            name: $scope.name,
+            surname: $scope.surname,
+            number: $scope.phone,
+            email: $scope.email
+
+
+        });
+
+        console.log(data);
+
+        $http.put('http://localhost:8080/api/ContactUsRegistration?' + data)
+            .success(function (data, status, headers) {
+                $scope.ServerResponse = data;
+            //    location.reload();
+            })
+            .error(function (data, status, header, config) {
+                $scope.ServerResponse = htmlDecode("Data: " + data +
+                    "\n\n\n\nstatus: " + status +
+                    "\n\n\n\nheaders: " + header +
+                    "\n\n\n\nconfig: " + config);
+            });
+    };
+});
