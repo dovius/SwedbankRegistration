@@ -5,9 +5,6 @@ package com.swedbank.academy.data;
  */
 public class ContactFormDataHolder {
 
-    // TODO add whats missing
-    //Check
-
     long id;
     String message;     // Žinutė
     String name;        // Vardas

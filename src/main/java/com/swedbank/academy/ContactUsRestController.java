@@ -32,7 +32,7 @@ public class ContactUsRestController {
         return contactFormDataHolder;
     }
 
-    @RequestMapping(value = "api/getRegistrationInformation")
+    @RequestMapping(value = "api/getContacsUsInformation")
     public List<ContactFormDataHolder> getAllContactUsInformation() {
         return contactFormDataHolderList;
 
