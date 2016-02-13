@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eca23a6f-b1be-4330-884c-ab3349b2a3ba" name="Default" comment="Added Angular, NewRegistration.html styled with bootstrap">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+    <list default="true" id="eca23a6f-b1be-4330-884c-ab3349b2a3ba" name="Default" comment="Fixed bug in registration, where option was selected, but no actual value given">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/swedbank/academy/RegistrationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/swedbank/academy/RegistrationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/NewRegistration.html" afterPath="$PROJECT_DIR$/src/main/resources/static/NewRegistration.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/controllers.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" />
     </list>
     <ignored path="ConsultationForm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,21 +42,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.25">
-              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.3409091">
+              <caret line="9" column="80" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="80" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewRegistration.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NewRegistration.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/NewRegistration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18939394">
-              <caret line="74" column="82" selection-start-line="74" selection-start-column="82" selection-end-line="74" selection-end-column="82" />
+            <state vertical-scroll-proportion="-7.75">
+              <caret line="93" column="77" selection-start-line="93" selection-start-column="77" selection-end-line="93" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -488,7 +482,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/swedbank/academy/FormController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/swedbank/academy/ConsultationFormApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/swedbank/academy/data/ContactForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/swedbank/academy/data/Registration.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/swedbank/academy/data/RegistrationDataHolder.java" />
@@ -499,6 +492,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/js/controllers.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/swedbank/academy/RegistrationController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/NewRegistration.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/index.html" />
       </list>
     </option>
   </component>
@@ -1235,7 +1229,7 @@
       <workItem from="1455214971921" duration="1247000" />
       <workItem from="1455217554932" duration="400000" />
       <workItem from="1455366940136" duration="57000" />
-      <workItem from="1455367094676" duration="8732000" />
+      <workItem from="1455367094676" duration="8877000" />
     </task>
     <task id="LOCAL-00001" summary="Updated ContactUsRestController class">
       <created>1455296082147</created>
@@ -1279,11 +1273,17 @@
       <option name="project" value="LOCAL" />
       <updated>1455376250894</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixed bug in registration, where option was selected, but no actual value given">
+      <created>1455377566238</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1455377566238</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10436000" />
+    <option name="totallyTimeSpent" value="10581000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="821" extended-state="6" />
@@ -1336,7 +1336,8 @@
     <MESSAGE value="Added Angular, NewRegistration.html styled with bootstrap" />
     <MESSAGE value="New Registration form now sends data to backend" />
     <MESSAGE value="Added list of registrations, which parses data with angular" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added list of registrations, which parses data with angular" />
+    <MESSAGE value="Fixed bug in registration, where option was selected, but no actual value given" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug in registration, where option was selected, but no actual value given" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1759,14 +1760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.25">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1779,8 +1772,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/NewRegistration.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18939394">
-          <caret line="74" column="82" selection-start-line="74" selection-start-column="82" selection-end-line="74" selection-end-column="82" />
+        <state vertical-scroll-proportion="-7.75">
+          <caret line="93" column="77" selection-start-line="93" selection-start-column="77" selection-end-line="93" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3409091">
+          <caret line="9" column="80" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="80" />
           <folding />
         </state>
       </provider>
