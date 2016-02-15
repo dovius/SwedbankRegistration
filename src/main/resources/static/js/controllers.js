@@ -19,7 +19,7 @@ app.controller("RegistrationController", function ($scope, $http) {
 
         console.log(data);
 
-        $http.put('http://localhost:8080/api/register?' + data)
+        $http.put('http://registration-kirviai.rhcloud.com/api/register?' + data)
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
             //    location.reload();
@@ -36,7 +36,7 @@ app.controller("RegistrationController", function ($scope, $http) {
 app.controller('RegistrationListController', function ($scope, $http) {
     $http({
         method: 'GET',
-        url: 'http://localhost:8080/api/getRegistrationInformation'
+        url: 'http://registration-kirviai.rhcloud.com/api/getRegistrationInformation'
     }).then(function successCallback(response) {
         $scope.registrations = response.data;
         console.log(response);
@@ -61,7 +61,7 @@ app.controller("ContactUsController", function ($scope, $http) {
 
         console.log(data);
 
-        $http.put('http://localhost:8080/api/ContactUsRegistration?' + data)
+        $http.put('http://registration-kirviai.rhcloud.com/api/ContactUsRegistration?' + data)
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
             //    location.reload();
