@@ -1,15 +1,32 @@
 # SwedbankRegistration
-IT SwedBank akademija. Java grupinis projektas. Konsultaciju forma
+IT SwedBank academy. Java group project. Contact Us form.
 
-| Šiuo metu veikia        |  
+| Working right now       |
 | ----------------------- |
-| Registracija            |
-| Registracijų sąrąšas    |
-| Parašykite mums         |
+| Registration            |
+| Registrion list         |
+| Contact Us              |
 
-Kaip paleisti?
+How to execute?
 ----------
-1)Paleiskite programą per IntelliJ
-2)Atsidarykite naršyklę
-3)Įveskite `http://localhost:8080/`
-4)DONE
+### - It's allready on cloud!
+Just press http://registration-kirviai.rhcloud.com/ - and you're using our BetaRegistration
+
+- By the way, if something goes wrong- clean Cache :)
+
+### List of commands that helped us to deploy our server
+
+Antanas Sinica Genius:
+
+```sh
+$   git push rhc master
+$   git update-index --chmod=+x .openshift/action_hooks/start
+$   git update-index --chmod=+x .openshift/action_hooks/stop
+$   git update-index --chmod=+x .openshift/action_hooks/start
+$   vim start
+$   vim deploy
+$   cd .openshift/action_hooks/
+$   git update-index --chmod=+x .openshift/action_hooks/deploy
+$   git push -f rhc master
+$   git remote add rhc ssh://56c206d37628e1d32d000003@registration-kirviai.rhcloud.com/~/git/registration.git/
+```
