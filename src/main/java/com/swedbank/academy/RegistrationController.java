@@ -43,7 +43,6 @@ public class RegistrationController {
     @RequestMapping(value = "api/getRegistrationInformation", method = RequestMethod.GET)
     public List<RegistrationDataHolder> getAllRegistrations() {
         return registrationDataHolderList;
-
     }
 
     // call api/register?name=Vytautas&surname=Sugintas&number=123&email=vyc@vyc.lt&bank=qq&date=2015&subject=paskola&comment=cool

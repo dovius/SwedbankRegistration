@@ -8,7 +8,11 @@ buildscript {
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
 	}
+	configurations {
+		compile.exclude module: "spring-boot-starter-tomcat"
+	}
 }
+
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -27,7 +31,9 @@ repositories {
 
 
 dependencies {
+	compile("org.springframework.boot:spring-boot-starter-undertow")
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile 'org.springframework.data:spring-data-mongodb:1.8.2.RELEASE'
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 }
 
