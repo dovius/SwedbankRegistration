@@ -5,6 +5,7 @@ var language = localStorage.getItem("LANG");
 
 if(language === "ENG"){
     changeToEng();
+    changeToEngRegistrationForm();
 } else{
     changeToLt();
 }
@@ -18,8 +19,7 @@ function changeToEng(){
     header.innerHTML = "Contact Us";
     contactUs.innerHTML = "Register for consultation";
     writeUs.innerHTML = "Write us";
-    registrationInformation.innerHTML = "Registration information";
-
+    registrationInformation.innerHTML = "Registration overview";
     localStorage.setItem("LANG", "ENG");
 }
 
@@ -32,7 +32,7 @@ function changeToLt(){
     header.innerHTML = "Susisiekite su mumis";
     contactUs.innerHTML = "Registruokitės konsultacijai internetu";
     writeUs.innerHTML = "Parašykite mums";
-    registrationInformation.innerHTML = "Registracijų informacija";
+    registrationInformation.innerHTML = "Registracijų peržiūra";
 
     localStorage.setItem("LANG", "LT");
 }
