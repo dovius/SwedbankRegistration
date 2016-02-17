@@ -8,6 +8,7 @@ var selectLife = document.getElementById("selectLife");
 var selectInsurance = document.getElementById("selectInsurance");
 var selectLizing = document.getElementById("selectLizing");
 var selectFinance = document.getElementById("selectFinance");
+var inputSubject = document.getElementById("inputSubject");
 
 var messageText = document.getElementById("messageText");
 var textName = document.getElementById("textName");
@@ -33,6 +34,7 @@ if(language === "ENG"){
 }
 
 function changeLanguageToEng() {
+    inputSubject.innerHTML = "Subject";
     header.innerHTML = "Contact Us";
     selectChose.innerHTML = "Choose";
     selectSaveAndInvestment.innerHTML = "Savings and Investments";
@@ -41,7 +43,8 @@ function changeLanguageToEng() {
     selectInsurance.innerHTML = "Non-life insurance";
     selectLizing.innerHTML = "Loans and leasing";
     selectFinance.innerHTML = "Daily financial management";
-
+    
+    
     messageText.innerHTML = "Message text";
     textName.innerHTML = "Name";
     textSurname.innerHTML = "Surname";
@@ -57,6 +60,7 @@ function changeLanguageToEng() {
 }
 
 function changeLanguageToLt(){
+    inputSubject.innerHTML = "Tema";
     header.innerHTML = "Parašykite mums";
     selectChose.innerHTML = "Pasirinkite";
     selectSaveAndInvestment.innerHTML = "Taupymas ir investavimas";
