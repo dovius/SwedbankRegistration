@@ -6,7 +6,7 @@ var language = localStorage.getItem("LANG");
 if(language === "ENG"){
     changeToEngRegistrationForm();
 } else{
-    changeToLt();
+ //   changeToLt();
 }
 
 function changeToEngRegistrationForm()
@@ -33,6 +33,18 @@ function changeToEngRegistrationForm()
     comments.innerHTML = "Comments";
     submit.innerHTML = "Submit";
 
+    document.getElementById("modalName").innerHTML = "Name";
+    document.getElementById("modalSurname").innerHTML = "Surname";
+    document.getElementById("modalPhone").innerHTML = "Phone number";
+    document.getElementById("modalEmail").innerHTML = "Email";
+    document.getElementById("modalBank").innerHTML = "Bank Department";
+    document.getElementById("modalDate").innerHTML = "Date";
+    document.getElementById("modalTheme").innerHTML = "Subjects";
+    document.getElementById("modalComments").innerHTML = "Comments";
+    document.getElementById("modalButtonBack").innerHTML = "Back";
+    document.getElementById("modalFooterThanks").innerHTML = "Thank you for your interest in our services";
+    document.getElementById("modalFooterInfo").innerHTML = "For more information call 1884, workdays 8-20h, saturdays 9-15";
+
     setActiveLang("ENG");
 }
 
@@ -58,11 +70,22 @@ function changeToLtRegistrationForm()
     date.innerHTML = "Data";
     subject.innerHTML = "Tema";
     comments.innerHTML = "Komentarai, pastebėjimai";
-    submit.innerHTML = "Submit";
+    submit.innerHTML = "Siųsti";
+
+    document.getElementById("modalName").innerHTML = "Vardas";
+    document.getElementById("modalSurname").innerHTML = "Pavardė";
+    document.getElementById("modalPhone").innerHTML = "Telefono numeris";
+    document.getElementById("modalEmail").innerHTML = "El. paštas";
+    document.getElementById("modalBank").innerHTML = "Banko skyrius";
+    document.getElementById("modalDate").innerHTML = "Data";
+    document.getElementById("modalTheme").innerHTML = "Tema";
+    document.getElementById("modalComments").innerHTML = "Komentarai, pastebėjimai";
+    document.getElementById("modalButtonBack").innerHTML = "Atgal";
+    document.getElementById("modalFooterThanks").innerHTML = "Ačiū, kad domites banko paslaugomis.";
+    document.getElementById("modalFooterInfo").innerHTML = "Jeigu Jums reikalinga skubi informacija, laukiame Jūsų skambučių telefonu 1884, darbo dienomis 8-20val., šeštadieniais 9-16 val.";
 
     setActiveLang("LT")
 }
-
 
 function setActiveLang(lang){
     if (lang === "ENG"){

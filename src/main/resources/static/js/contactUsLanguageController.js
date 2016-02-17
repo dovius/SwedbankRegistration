@@ -83,5 +83,4 @@ function addOptionsToSelect(optionsLang) {
         opt.text = optionsLang[i];
         select.options.add(opt, 1);
     }
-
 }

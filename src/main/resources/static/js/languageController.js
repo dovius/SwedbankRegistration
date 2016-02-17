@@ -12,8 +12,8 @@ var liEN = document.getElementById("navEN");
 
 if(language === "ENG"){
     changeToEng();
-} else{
-    changeToLt();
+} else {
+   // changeToLt();
 }
 
 function changeToEng(){
