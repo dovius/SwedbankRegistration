@@ -20,7 +20,12 @@
 
 <div class="container">
 
-    <h2 class="title-header">Contact us</h2>
+    <div id="languages">
+        <button id="buttonLt" class="btn" onclick="changeLanguageToLt()">LT</button>
+        <button id="buttonEng" class="btn" onclick="changeLanguageToEng()">ENG</button>
+    </div>
+
+    <h2 id="header" class="title-header">Contact us</h2>
 
     <!-- BOOTSTRAP FORM -->
     <div ng-controller="ContactUsController">
@@ -29,65 +34,65 @@
                 <label for="inputSubject" class="col-sm-2 control-label">Tema</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="inputSubject" ng-model="subject">
-                        <option value=" ">Pasirinkite</option>
-                        <option value="Taupymas ir investavimas">Taupymas ir investavimas</option>
-                        <option value="Pensijos ir kaupimas">Pensijos ir kaupimas</option>
-                        <option value="Gyvybės draudimas">Gyvybės draudimas</option>
-                        <option value="Ne gyvybės draudimas">Ne gyvybės draudimas</option>
-                        <option value="Paskolos, lizingas">Paskolos, lizingas</option>
-                        <option value="Kasdieninių finansų valdymas">Kasdieninių finansų valdymas</option>
+                        <option id="selectChose" value=" ">Pasirinkite</option>
+                        <option id="selectSaveAndInvestment" value="Taupymas ir investavimas">Taupymas ir investavimas</option>
+                        <option id="selectPension" value="Pensijos ir kaupimas">Pensijos ir kaupimas</option>
+                        <option id="selectLife" value="Gyvybės draudimas">Gyvybės draudimas</option>
+                        <option id="selectInsurance" value="Ne gyvybės draudimas">Ne gyvybės draudimas</option>
+                        <option id="selectLizing" value="Paskolos, lizingas">Paskolos, lizingas</option>
+                        <option id="selectFinance" value="Kasdieninių finansų valdymas">Kasdieninių finansų valdymas</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputComment" class="col-sm-2 control-label">Žinutės tekstas</label>
+                <label id="messageText" for="inputComment" class="col-sm-2 control-label">Žinutės tekstas</label>
                 <div class="col-sm-10">
                     <textarea class="form-control" name="comments" maxlength="160" cols="34" rows="6" id="inputComment" ng-model="message"></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputName" class="col-sm-2 control-label text-right">Vardas</label>
+                <label id="textName" for="inputName" class="col-sm-2 control-label text-right">Vardas</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputName" ng-model="name">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword" class="col-sm-2 control-label">Pavardė</label>
+                <label id="textSurname" for="inputPassword" class="col-sm-2 control-label">Pavardė</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputPassword" ng-model="surname">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPhone" class="col-sm-2 control-label">Telefonas susisiekti</label>
+                <label id="textPhone" for="inputPhone" class="col-sm-2 control-label">Telefonas susisiekti</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputPhone" ng-model="phone">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">El paštas</label>
+                <label id="textEmail" for="inputEmail" class="col-sm-2 control-label">El paštas</label>
                 <div class="col-sm-10">
                     <input type="email" class="form-control" id="inputEmail" ng-model="email">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">Kaip pageidaujate gauti atsakymą</label>
+                <label id="textAnswer" class="col-sm-2 control-label">Kaip pageidaujate gauti atsakymą</label>
                 <div class="col-sm-10">
-                    <label><input type="radio" name="test" ng-model="radioValue" value="telefonu"/> telefonu</label><div/>
-                    <label><input type="radio" name="test" ng-model="radioValue" value="el. paštu"/> el. paštu</label><div/>
-                    <label><input type="radio" name="test" ng-model="radioValue" value="telefonu ir el.paštu"/> telefonu ir el.paštu</label>
+                    <label id="radioPhone"><input type="radio" name="test" ng-model="radioValue" value="telefonu"/> telefonu</label><div/>
+                    <label id="radioEmail"><input type="radio" name="test" ng-model="radioValue" value="el. paštu"/> el. paštu</label><div/>
+                    <label id="radioBoth"><input type="radio" name="test" ng-model="radioValue" value="telefonu ir el.paštu"/> telefonu ir el.paštu</label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <span id="thebox"></span>
-                    <button type="submit" onclick="document.getElementById('thebox').value='head of gwyneth paltrow';" class="btn btn-default">Siųsti</button>
+                    <button type="submit" id="submitButton" onclick="document.getElementById('thebox').value='head of gwyneth paltrow';" class="btn btn-default">Siųsti</button>
                 </div>
             </div>
-
         </form>
     </div>
     <!-- BOOTSTRAP FORM -->
 </div>
 
+<script src="js/contactUsLanguageController.js"></script>
 </body>
 </html>

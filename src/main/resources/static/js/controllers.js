@@ -48,7 +48,6 @@ app.controller('RegistrationListController', function ($scope, $http) {
 app.controller("ContactUsController", function ($scope, $http) {
     $scope.ContactUs = function () {
         var data = $.param({
-
             subject: $scope.subject,
             message: $scope.message,
             name: $scope.name,
@@ -56,7 +55,6 @@ app.controller("ContactUsController", function ($scope, $http) {
             number: $scope.phone,
             email: $scope.email,
             radioValue: $scope.radioValue
-
         });
 
         console.log(data);
