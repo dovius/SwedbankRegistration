@@ -4,11 +4,33 @@
     <head>
         <meta charset="UTF-8">
         <title>Pagrindinis puslapis</title>
-        <h3 style="Text-align:center;" >Susisiekite su mumis</h3>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="Contact us form">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/angular.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/controllers.js"></script>
     </head>
-<body style="Text-align:center;">
-<p><a href="NewRegistration.html">Registruokitės konsultacijai internetu</a></p>
-<p><a href="ContactUs.html">Parašykite mums</a></p>
-<p><a href="registrationInfo.html">Registracijų informacija</a></p>
+<body>
+<div class="container">
+
+    <div id="languages">
+        <button id="buttonLt" class="btn" onclick="changeToLt()">LT</button>
+        <button id="buttonEng" class="btn" onclick="changeToEng()">ENG</button>
+    </div>
+
+    <div class="text-center">
+        <h3 id="headerContactUs">Susisiekite su mumis</h3>
+        <p><a id="txtRegistration" href="NewRegistration.html">Registruokitės konsultacijai internetu</a></p>
+        <p><a id="txtWriteUs" href="ContactUs.html">Parašykite mums</a></p>
+        <p><a id="txtRegistrationInformation" href="registrationInfo.html">Registracijų informacija</a></p>
+    </div>
+</div>
+<script src="js/languageController.js"></script>
 </body>
 </html>
