@@ -6710,6 +6710,7 @@ button.close {
     display: none !important;
   }
 }
+
 .visible-print {
   display: none !important;
 }
@@ -6728,6 +6729,7 @@ button.close {
     display: table-cell !important;
   }
 }
+
 .visible-print-block {
   display: none !important;
 }
@@ -6757,4 +6759,5 @@ button.close {
     display: none !important;
   }
 }
+
 /*# sourceMappingURL=bootstrap.css.map */
