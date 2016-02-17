@@ -9,3 +9,8 @@
 .form-horizontal .form-control{
     width: 50%;
 }
+
+.activeNav{
+    text-decoration: underline;
+    background-color: #ecf0f1;
+}

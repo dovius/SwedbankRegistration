@@ -1,50 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="js/angular.min.js"></script>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/controllers.js"></script>
-        <title>Pagrindinis puslapis</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="Contact us form">
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="js/angular.min.js"></script>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/controllers.js"></script>
-    </head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Contact us form">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/controllers.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Pagrindinis puslapis</title>
+</head>
 <body>
 <div class="container">
+    <!-- NAVBAR LANGUAGE SWITCH -->
+    <nav class="nav">
+        <ul class="nav navbar-nav">
+            <li id="navLT" class="activeNav"><a href="#" onclick="changeToLt()">LT</a></li>
+            <li id="navEN"><a href="#" onclick="changeToEng()">EN</a></li>
+        </ul>
+    </nav>
 
-    <div id="languages">
-        <button id="buttonLt" class="btn" onclick="changeToLt()">LT</button>
-        <button id="buttonEng" class="btn" onclick="changeToEng()">ENG</button>
+    <!-- TITLE LABEL AND LINKS -->
+    <div class="col-md-6">
+        <div class="text-left">
+            <h2 id="headerContactUs">Susisiekite su mumis</h2>
+            <h4><a id="txtRegistration" href="NewRegistration.html">Registruokitės konsultacijai internetu</a></h4>
+            <h4><a id="txtWriteUs" href="ContactUs.html">Parašykite mums</a></h4>
+            <h4><a id="txtRegistrationInformation" href="registrationInfo.html">Registracijų peržiūra</a></h4>
+        </div>
     </div>
 
-    <div class="text-center">
-        <h3 id="headerContactUs">Susisiekite su mumis</h3>
-        <p><a id="txtRegistration" href="NewRegistration.html">Registruokitės konsultacijai internetu</a></p>
-        <p><a id="txtWriteUs" href="ContactUs.html">Parašykite mums</a></p>
-        <p><a id="txtRegistrationInformation" href="registrationInfo.html">Registracijų peržiūra</a></p>
-    </div>
 </div>
-<script src="js/languageController.js"></script>
-</body>
-</html>
 
+<!-- SCRIPTS -->
+<script src="js/languageController.js"></script>
 
 </body>
 </html>
