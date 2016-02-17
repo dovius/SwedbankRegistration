@@ -1,3 +1,6 @@
+var liLT = document.getElementById("navLT");
+var liEN = document.getElementById("navEN");
+
 var language = localStorage.getItem("LANG");
 
 if(language === "ENG"){
@@ -29,6 +32,8 @@ function changeToEngRegistrationForm()
     subject.innerHTML = "Subject";
     comments.innerHTML = "Comments";
     submit.innerHTML = "Submit";
+
+    setActiveLang("ENG");
 }
 
 function changeToLtRegistrationForm()
@@ -54,4 +59,19 @@ function changeToLtRegistrationForm()
     subject.innerHTML = "Tema";
     comments.innerHTML = "Komentarai, pastebėjimai";
     submit.innerHTML = "Submit";
+
+    setActiveLang("LT")
+}
+
+
+function setActiveLang(lang){
+    if (lang === "ENG"){
+        localStorage.setItem("LANG", "ENG");
+        liEN.className = "activeNav";
+        liLT.className = "";
+    }else if (lang === "LT"){
+        localStorage.setItem("LANG", "LT");
+        liEN.className = "";
+        liLT.className = "activeNav";
+    }
 }

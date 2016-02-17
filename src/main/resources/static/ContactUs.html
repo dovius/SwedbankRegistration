@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Contact us form">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
     <script src="js/angular.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
@@ -19,11 +19,13 @@
 <body>
 
 <div class="container">
-
-    <div id="languages">
-        <button id="buttonLt" class="btn" onclick="changeLanguageToLt()">LT</button>
-        <button id="buttonEng" class="btn" onclick="changeLanguageToEng()">ENG</button>
-    </div>
+    <!-- NAVBAR LANGUAGE SWITCH -->
+    <nav class="nav">
+        <ul class="nav navbar-nav">
+            <li id="navLT" class="activeNav"><a href="#" onclick="changeLanguageToLt()">LT</a></li>
+            <li id="navEN"><a href="#" onclick="changeLanguageToEng()">EN</a></li>
+        </ul>
+    </nav>
 
     <h2 id="header" class="title-header">Contact us</h2>
 
@@ -31,7 +33,7 @@
     <div ng-controller="ContactUsController">
         <form class="form-horizontal" ng-submit="ContactUs()">
             <div class="form-group">
-                <label for="inputSubject" class="col-sm-2 control-label">Tema</label>
+                <label for="inputSubject" id="subject" class="col-sm-2 control-label">Tema</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="inputSubject" ng-model="subject">
                         <option id="selectChose" value=" ">Pasirinkite</option>

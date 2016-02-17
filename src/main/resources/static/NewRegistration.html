@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Registration form">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
     <script src="js/angular.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
@@ -19,6 +19,14 @@
 <body>
 
 <div class="container">
+
+    <!-- NAVBAR LANGUAGE SWITCH -->
+    <nav class="nav">
+        <ul class="nav navbar-nav">
+            <li id="navLT" class="activeNav"><a href="#" onclick="changeToLtRegistrationForm()">LT</a></li>
+            <li id="navEN"><a href="#" onclick="changeToEngRegistrationForm()">EN</a></li>
+        </ul>
+    </nav>
 
     <h2 class="title-header" id="registrationHeader">Registruokitės konsultacijai internetu</h2>
 
