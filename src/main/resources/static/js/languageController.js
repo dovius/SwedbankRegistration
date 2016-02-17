@@ -1,13 +1,6 @@
 /**
  * Created by vytautassugintas on 17/02/16.
  */
-
-    /*
-     <p><a id="txtRegistration" href="NewRegistration.html">Registruokitės konsultacijai internetu</a></p>
-     <p><a id="txtWriteUs" href="ContactUs.html">Parašykite mums</a></p>
-     <p><a id="txtRegistrationInformation" href="registrationInfo.html">Registracijų informacija</a></p>
-     */
-
 var language = localStorage.getItem("LANG");
 
 if(language === "ENG"){
