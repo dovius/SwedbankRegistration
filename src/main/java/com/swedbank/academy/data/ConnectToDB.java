@@ -21,7 +21,7 @@ public class ConnectToDB {
 
     public void connect() {
         System.out.println("CONNECTING");
-        try (Connection connection = DriverManager.getConnection(dbUrl, username, password)) {
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
                 System.out.println("Database connected!");
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Registration");

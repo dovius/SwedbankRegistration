@@ -6,7 +6,8 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'mysql:mysql-connector-java:5.1.38'
 	}
 	configurations {
 		compile.exclude module: "spring-boot-starter-tomcat"
