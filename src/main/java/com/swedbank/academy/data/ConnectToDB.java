@@ -64,6 +64,16 @@ public class ConnectToDB {
         return names;
     }
 
+    public void addOnlyName(RegistrationDataHolder registrationDataHolder){
+        Statement statement = null;
+        try {
+            statement = dbConnection.createStatement();
+            statement.executeQuery("INSERT INTO Registration('Name') VALUES ('Kalnakasys')");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * This method adds new registration to DB
      * @param registrationDataHolder

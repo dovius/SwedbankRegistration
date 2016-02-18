@@ -61,6 +61,7 @@ public class RegistrationController {
                 requestParams.get("subject"),
                 requestParams.get("comment"));
         registrationDataHolderList.add(registrationDataHolder);
+        MySQLconnection.addOnlyName(registrationDataHolder);
         MySQLconnection.addNewRegistration(registrationDataHolder);
     }
 
