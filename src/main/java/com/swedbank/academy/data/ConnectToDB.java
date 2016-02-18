@@ -35,8 +35,10 @@ public class ConnectToDB {
     }
 
     public void connectWithContext(){
+        System.out.println("CONNECING TO DB CAPS-LOCK-GOD");
         Connection result = null;
         try {
+            System.out.println("TRY HARD OR DIE POOR");
             InitialContext ic = new InitialContext();
             Context initialContext = (Context) ic.lookup("java:comp/env");
             DataSource datasource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
@@ -48,6 +50,7 @@ public class ConnectToDB {
                 System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + "<br />");
             }
         } catch (Exception ex) {
+            System.out.println("EXCEPTION NX ASDASDASDASDSADSADSA BAM");
             System.out.println("Exception: " + ex + ex.getMessage());
         }
     }
