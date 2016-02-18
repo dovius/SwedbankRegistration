@@ -12,10 +12,23 @@ public class RegistrationDataHolder {
     String email;           // El. pastas
     String bank;            // Banko skyrius
     String date;            // Data
+    String time;
     String subject;         // Tema
     String comment;         // Žinutė bankui
 
-    public RegistrationDataHolder(long id, String name, String surname, String number, String email, String bank, String date, String subject, String comment) {
+    public RegistrationDataHolder(String name, String surname, String number, String email, String bank, String date, String time, String subject, String comment) {
+        this.name = name;
+        this.surname = surname;
+        this.number = number;
+        this.email = email;
+        this.bank = bank;
+        this.date = date;
+        this.time = time;
+        this.subject = subject;
+        this.comment = comment;
+    }
+
+    public RegistrationDataHolder(long id, String name, String surname, String number, String email, String bank, String date, String time, String subject, String comment) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -23,6 +36,7 @@ public class RegistrationDataHolder {
         this.email = email;
         this.bank = bank;
         this.date = date;
+        this.time = time;
         this.subject = subject;
         this.comment = comment;
     }
@@ -81,6 +95,14 @@ public class RegistrationDataHolder {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getSubject() {

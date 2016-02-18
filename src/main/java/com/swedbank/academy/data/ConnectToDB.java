@@ -2,14 +2,12 @@ package com.swedbank.academy.data;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by vytautassugintas on 18/02/16.
@@ -17,16 +15,14 @@ import java.util.ArrayList;
 public class ConnectToDB {
 
     String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-    String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-    String dbUrl = System.getenv("OPENSHIFT_MYSQL_DB_URL");
-
-    String url = "jdbc:mysql://"+host+":"+port+"/betaregistration";
-    String urlWoJdbc = "mysql://"+host+":"+port;
-
     String username = "adminbC5E997";
     String password = "3jmBBK-uWdqM";
 
     Connection dbConnection;
+
+    public ConnectToDB(){
+        connect();
+    }
 
     public void connect() {
         System.out.println("CONNECTING");
@@ -39,7 +35,20 @@ public class ConnectToDB {
         }
     }
 
-    public ArrayList<String> returnNamesOfCustomers(){
+    private MysqlDataSource dataSourceConnection() {
+        MysqlDataSource dataSource = new MysqlDataSource();
+        dataSource.setUser(username);
+        dataSource.setPassword(password);
+        dataSource.setServerName(host);
+        dataSource.setDatabaseName("betaregistration");
+        return dataSource;
+    }
+
+    /**
+     * This method return all names from registrations
+     * TODO REMOVE LATER
+     */
+    public ArrayList<String> returnNamesOfCustomers() {
         ArrayList<String> names = new ArrayList<>();
         Statement stmt = null;
         try {
@@ -55,44 +64,64 @@ public class ConnectToDB {
         return names;
     }
 
-    private MysqlDataSource dataSourceConnection() {
-        MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUser(username);
-        dataSource.setPassword(password);
-        dataSource.setServerName(host);
-        dataSource.setDatabaseName("betaregistration");
-        return dataSource;
-    }
-
-    public void connectWithContext(){
-        System.out.println("CONNECING TO DB CAPS-LOCK-GOD");
-        Connection result = null;
+    /**
+     * This method adds new registration to DB
+     * @param registrationDataHolder
+     */
+    public void addNewRegistration(RegistrationDataHolder registrationDataHolder) {
         try {
-            System.out.println("TRY HARD OR DIE POOR");
-            InitialContext ic = new InitialContext();
-            Context initialContext = (Context) ic.lookup("java:comp/env");
-            DataSource datasource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
-            result = datasource.getConnection();
-            Statement stmt = result.createStatement() ;
-            String query = "select * from Registration;" ;
-            ResultSet rs = stmt.executeQuery(query) ;
-            while (rs.next()) {
-                System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + "<br />");
-            }
-        } catch (Exception ex) {
-            System.out.println("EXCEPTION NX ASDASDASDASDSADSADSA BAM");
-            System.out.println("Exception: " + ex + ex.getMessage());
+            Statement statement = dbConnection.createStatement();
+            statement.addBatch("INSERT INTO Registration VALUES ('" + registrationDataHolder.getName() + "','"
+                    + registrationDataHolder.getSurname() + "','"
+                    + registrationDataHolder.getNumber() + "','"
+                    + registrationDataHolder.getBank() + "','"
+                    + registrationDataHolder.getDate() + "','"
+                    + registrationDataHolder.getTime() + "','"
+                    + registrationDataHolder.getSubject() + "','"
+                    + registrationDataHolder.getComment() + "')");
+            statement.executeBatch();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
-    public void loadDriver(){
-        System.out.println("Loading driver...");
-
+    /**
+     * Method returns all registrations from DB
+     * @return List - all registrations
+     */
+    public List<RegistrationDataHolder> getAllRegistrations() {
+        List<RegistrationDataHolder> registrations = new ArrayList<>();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver loaded!");
-        } catch (ClassNotFoundException e) {
-            throw new IllegalStateException("Cannot find the driver in the classpath!", e);
+            Statement statement = dbConnection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Registration");
+            while (resultSet.next()) {
+                registrations.add(new RegistrationDataHolder(resultSet.getLong("ID"),
+                        resultSet.getString("Name"),
+                        resultSet.getString("Surname"),
+                        resultSet.getString("PhoneNumber"),
+                        resultSet.getString("Email"),
+                        resultSet.getString("BankDepartment"),
+                        resultSet.getString("Date"),
+                        resultSet.getString("Time"),
+                        resultSet.getString("Theme"),
+                        resultSet.getString("Comment")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return registrations;
+    }
+
+    /**
+     * This method removes registration from DB
+     * @param ID - registration that have this ID will be removed
+     */
+    public void removeRegistration(int ID){
+        try {
+            Statement statement = dbConnection.createStatement();
+            statement.executeQuery("DELETE FROM Registration WHERE ID = " + ID);
+        }catch (SQLException e){
+            e.printStackTrace();
         }
     }
 }

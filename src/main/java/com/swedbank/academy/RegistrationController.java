@@ -24,13 +24,14 @@ public class RegistrationController {
     RegistrationDataHolder testRegistrationDataHolder;
     RegistrationDataHolder testRegistrationDataHolder1;
     List<RegistrationDataHolder> registrationDataHolderList;
+    ConnectToDB MySQLconnection = new ConnectToDB();
 
     @PostConstruct
     public void init() {
         testRegistrationDataHolder = new RegistrationDataHolder(atomicLong.getAndIncrement(), "Vytautas",
-                "Sugintas", "860296103", "vytautas@sugintas.com", "Antakalnio g. 45", "2015-02-15", "Pensijos kaupimas", "");
+                "Sugintas", "860296103", "vytautas@sugintas.com", "Antakalnio g. 45", "2015-02-15", "15.25", "Pensijos kaupimas", "");
         testRegistrationDataHolder1 = new RegistrationDataHolder(atomicLong.getAndIncrement(), "Rytis",
-                "Dereškevičius", "866699959", "rdereskevicius@gmail.com", "Mokyklos g. 18", "2015-02-28", "Draudimas", "");
+                "Dereškevičius", "866699959", "rdereskevicius@gmail.com", "Mokyklos g. 18", "2015-02-28", "14:10", "Draudimas", "");
         registrationDataHolderList = new ArrayList<>();
         registrationDataHolderList.add(testRegistrationDataHolder);
         registrationDataHolderList.add(testRegistrationDataHolder1);
@@ -43,10 +44,10 @@ public class RegistrationController {
 
     @RequestMapping(value = "api/getRegistrationInformation", method = RequestMethod.GET)
     public List<RegistrationDataHolder> getAllRegistrations() {
-        return registrationDataHolderList;
+        return MySQLconnection.getAllRegistrations();
     }
 
-    // call api/register?name=Vytautas&surname=Sugintas&number=123&email=vyc@vyc.lt&bank=qq&date=2015&subject=paskola&comment=cool
+    // call api/register?name=Vytautas&surname=Sugintas&number=123&email=vyc@vyc.lt&bank=qq&date=2015&time=14.10&subject=paskola&comment=cool
     @RequestMapping(value = "api/register")
     public void Register(@RequestParam Map<String, String> requestParams) {
         RegistrationDataHolder registrationDataHolder = new RegistrationDataHolder(atomicLong.getAndIncrement(),
@@ -56,15 +57,15 @@ public class RegistrationController {
                 requestParams.get("email"),
                 requestParams.get("bank"),
                 requestParams.get("date"),
+                requestParams.get("time"),
                 requestParams.get("subject"),
                 requestParams.get("comment"));
         registrationDataHolderList.add(registrationDataHolder);
+        MySQLconnection.addNewRegistration(registrationDataHolder);
     }
 
     @RequestMapping(value = "api/dbNames")
     public List<String> returnNamesFromDb(){
-        ConnectToDB connectToDB = new ConnectToDB();
-        connectToDB.connect();
-        return connectToDB.returnNamesOfCustomers();
+        return MySQLconnection.returnNamesOfCustomers();
     }
 }
