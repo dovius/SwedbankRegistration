@@ -20,6 +20,7 @@ public class ConnectToDB {
     String dbUrl = System.getenv("OPENSHIFT_MYSQL_DB_URL");
 
     String url = "jdbc:mysql://"+host+":"+port+"/betaregistration";
+    String urlWoJdbc = "mysql://"+host+":"+port+"/betaregistration";
 
     String username = "adminbC5E997";
     String password = "3jmBBK-uWdqM";
@@ -27,9 +28,8 @@ public class ConnectToDB {
     public void connect() {
         System.out.println("CONNECTING");
         try {
-            Class.forName("com.mysql.jdbc.Driver");
             Connection connection = dataSourceConnection().getConnection();
-                System.out.println("Database connected!");
+            System.out.println("Database connected!");
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Registration");
 
@@ -39,8 +39,6 @@ public class ConnectToDB {
             }
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
     }
 
@@ -48,7 +46,7 @@ public class ConnectToDB {
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUser(username);
         dataSource.setPassword(password);
-        dataSource.setServerName(dbUrl);
+        dataSource.setServerName(urlWoJdbc);
         dataSource.setDatabaseName("betaregistration");
         return dataSource;
     }
