@@ -17,6 +17,10 @@ public class ConnectToDB {
 
     Connection dbConnection;
 
+    public ConnectToDB(){
+        connect();
+    }
+
     public void connect() {
         System.out.println("CONNECTING");
         try {
@@ -43,7 +47,6 @@ public class ConnectToDB {
      * TODO REMOVE LATER
      */
     public ArrayList<String> returnNamesOfCustomers() {
-        connect();
         ArrayList<String> names = new ArrayList<>();
         Statement stmt = null;
         try {
@@ -55,18 +58,11 @@ public class ConnectToDB {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            try {
-                dbConnection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         return names;
     }
 
     public void addOnlyName(){
-        connect();
         try {
             String query = " insert into Registration (name)"
                     + " values (?)";
@@ -78,12 +74,6 @@ public class ConnectToDB {
             preparedStmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            try {
-                dbConnection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
     }
 
