@@ -1,5 +1,8 @@
 package com.swedbank.academy.data;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.sql.*;
 
 /**
@@ -28,6 +31,24 @@ public class ConnectToDB {
             }
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
+        }
+    }
+
+    public void connectWithContext(){
+        Connection result = null;
+        try {
+            InitialContext ic = new InitialContext();
+            Context initialContext = (Context) ic.lookup("java:comp/env");
+            DataSource datasource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
+            result = datasource.getConnection();
+            Statement stmt = result.createStatement() ;
+            String query = "select * from Registration;" ;
+            ResultSet rs = stmt.executeQuery(query) ;
+            while (rs.next()) {
+                System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + "<br />");
+            }
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex + ex.getMessage());
         }
     }
 
