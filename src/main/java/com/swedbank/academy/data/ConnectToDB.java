@@ -2,10 +2,7 @@ package com.swedbank.academy.data;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +16,6 @@ public class ConnectToDB {
     String password = "3jmBBK-uWdqM";
 
     Connection dbConnection;
-
-    public ConnectToDB(){
-        connect();
-    }
 
     public void connect() {
         System.out.println("CONNECTING");
@@ -50,6 +43,7 @@ public class ConnectToDB {
      * TODO REMOVE LATER
      */
     public ArrayList<String> returnNamesOfCustomers() {
+        connect();
         ArrayList<String> names = new ArrayList<>();
         Statement stmt = null;
         try {
@@ -61,17 +55,35 @@ public class ConnectToDB {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                dbConnection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return names;
     }
 
     public void addOnlyName(){
-        Statement statement = null;
+        connect();
         try {
-            statement = dbConnection.createStatement();
-            statement.executeQuery("INSERT INTO `Registration`(`Name`) VALUES ('Kalnakasys')");
+            String query = " insert into Registration (name)"
+                    + " values (?)";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = dbConnection.prepareStatement(query);
+            preparedStmt.setString (1, "Barney");
+            // execute the preparedstatement
+            preparedStmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                dbConnection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
