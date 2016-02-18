@@ -35,6 +35,12 @@ public class RegistrationController {
         registrationDataHolderList = new ArrayList<>();
         registrationDataHolderList.add(testRegistrationDataHolder);
         registrationDataHolderList.add(testRegistrationDataHolder1);
+        MySQLconnection.addOnlyName();
+        MySQLconnection.addOnlyName();
+        MySQLconnection.addOnlyName();
+        MySQLconnection.addOnlyName();
+
+
     }
 
     @RequestMapping(value = "api/registration")
@@ -67,6 +73,7 @@ public class RegistrationController {
 
     @RequestMapping(value = "api/dbNames")
     public List<String> returnNamesFromDb(){
+        MySQLconnection.connect();
         MySQLconnection.addOnlyName();
         return MySQLconnection.returnNamesOfCustomers();
     }
