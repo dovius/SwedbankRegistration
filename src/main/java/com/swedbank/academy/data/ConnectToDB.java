@@ -29,7 +29,6 @@ public class ConnectToDB {
         try {
             dbConnection = dataSourceConnection().getConnection();
             System.out.println("Database connected!");
-
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
@@ -64,7 +63,7 @@ public class ConnectToDB {
         return names;
     }
 
-    public void addOnlyName(RegistrationDataHolder registrationDataHolder){
+    public void addOnlyName(){
         Statement statement = null;
         try {
             statement = dbConnection.createStatement();

@@ -61,12 +61,15 @@ public class RegistrationController {
                 requestParams.get("subject"),
                 requestParams.get("comment"));
         registrationDataHolderList.add(registrationDataHolder);
-        MySQLconnection.addOnlyName(registrationDataHolder);
+        MySQLconnection.addOnlyName();
         MySQLconnection.addNewRegistration(registrationDataHolder);
     }
 
     @RequestMapping(value = "api/dbNames")
     public List<String> returnNamesFromDb(){
+        MySQLconnection.addOnlyName();
         return MySQLconnection.returnNamesOfCustomers();
     }
+
 }
+
