@@ -27,8 +27,10 @@ public class ConnectToDB {
     public void connect() {
         System.out.println("CONNECTING");
         try {
-            dbConnection = dataSourceConnection().getConnection();
-            System.out.println("Database connected!");
+            if (dbConnection == null) {
+                dbConnection = dataSourceConnection().getConnection();
+                System.out.println("Database connected!");
+            }
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
