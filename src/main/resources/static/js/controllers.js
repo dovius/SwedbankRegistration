@@ -17,12 +17,11 @@ app.controller("RegistrationController", function ($scope, $http) {
             comment: $scope.comment
         });
 
-        modalShow();
-
         if (showModal){
-            $http.put('http://localhost:8080/api/register?' + data) // TODO FIX
+            $http.put('http://registration-kirviai.rhcloud.com/api/register?' + data) // TODO FIX
                 .success(function (data, status, headers) {
                     $scope.ServerResponse = data;
+                    modalShow();
                 })
                 .error(function (data, status, header, config) {
                     $scope.ServerResponse = htmlDecode("Data: " + data +
