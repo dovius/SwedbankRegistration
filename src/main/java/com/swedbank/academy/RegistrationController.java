@@ -28,8 +28,8 @@ public class RegistrationController {
 
     @PostConstruct
     public void init() {
-        testRegistrationDataHolder = new RegistrationDataHolder(atomicLong.getAndIncrement(), "Vytautas",
-                "Sugintas", "860296103", "vytautas@sugintas.com", "Antakalnio g. 45", "2015-02-15", "15.25", "Pensijos kaupimas", "");
+        MySQLconnection.addNewRegistration(new RegistrationDataHolder("Vytautas",
+                "Sugintas", "860296103", "vytautas@sugintas.com", "Antakalnio g. 45", "2015-02-15", "15.25", "Pensijos kaupimas", ""));
         testRegistrationDataHolder1 = new RegistrationDataHolder(atomicLong.getAndIncrement(), "Rytis",
                 "Dereškevičius", "866699959", "rdereskevicius@gmail.com", "Mokyklos g. 18", "2015-02-28", "14:10", "Draudimas", "");
         registrationDataHolderList = new ArrayList<>();

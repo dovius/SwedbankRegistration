@@ -72,7 +72,8 @@ public class ConnectToDB {
         Statement statement = null;
         try {
             statement = dbConnection.createStatement();
-            statement.addBatch("INSERT INTO Registration VALUES ('" + registrationDataHolder.getName() + "','"
+            statement.addBatch("INSERT INTO `Registration`(`Name`, `Surname`, `PhoneNumber`, `Email`," +
+                    " `BankDepartment`, `Date`, `Time`, `Theme`, `Comment`) VALUES ('" + registrationDataHolder.getName() + "','"
                     + registrationDataHolder.getSurname() + "','"
                     + registrationDataHolder.getNumber() + "','"
                     + registrationDataHolder.getBank() + "','"
