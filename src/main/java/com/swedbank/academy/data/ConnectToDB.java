@@ -46,7 +46,7 @@ public class ConnectToDB {
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUser(username);
         dataSource.setPassword(password);
-        dataSource.setServerName(urlWoJdbc);
+        dataSource.setServerName(host);
         dataSource.setDatabaseName("betaregistration");
         return dataSource;
     }
