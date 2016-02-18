@@ -20,7 +20,7 @@ public class ConnectToDB {
     String dbUrl = System.getenv("OPENSHIFT_MYSQL_DB_URL");
 
     String url = "jdbc:mysql://"+host+":"+port+"/betaregistration";
-    String urlWoJdbc = "mysql://"+host+":"+port+"/betaregistration";
+    String urlWoJdbc = "mysql://"+host+":"+port;
 
     String username = "adminbC5E997";
     String password = "3jmBBK-uWdqM";
