@@ -68,7 +68,7 @@ public class ConnectToDB {
         Statement statement = null;
         try {
             statement = dbConnection.createStatement();
-            statement.executeQuery("INSERT INTO Registration('Name') VALUES ('Kalnakasys')");
+            statement.executeQuery("INSERT INTO `Registration`(`Name`) VALUES ('Kalnakasys')");
         } catch (SQLException e) {
             e.printStackTrace();
         }
