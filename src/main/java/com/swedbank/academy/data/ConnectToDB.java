@@ -84,16 +84,21 @@ public class ConnectToDB {
     public void addNewRegistration(RegistrationDataHolder registrationDataHolder) {
         Statement statement = null;
         try {
-            statement = dbConnection.createStatement();
-            statement.executeQuery("INSERT INTO `Registration`(`Name`, `Surname`, `PhoneNumber`, `Email`," +
-                    " `BankDepartment`, `Date`, `Time`, `Theme`, `Comment`) VALUES ('" + registrationDataHolder.getName() + "','"
-                    + registrationDataHolder.getSurname() + "','"
-                    + registrationDataHolder.getNumber() + "','"
-                    + registrationDataHolder.getBank() + "','"
-                    + registrationDataHolder.getDate() + "','"
-                    + registrationDataHolder.getTime() + "','"
-                    + registrationDataHolder.getSubject() + "','"
-                    + registrationDataHolder.getComment() + "')");
+            String query = " insert into Registration (name, surname, phonenumber, email, bankdepartment, date, time, theme, comment)"
+                    + " values (?, ?, ?, ?, ? ,? ,? ,? ,?)";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = dbConnection.prepareStatement(query);
+            preparedStmt.setString (1, registrationDataHolder.getName());
+            preparedStmt.setString (2, registrationDataHolder.getSurname());
+            preparedStmt.setString (3, registrationDataHolder.getBank());
+            preparedStmt.setString (4, registrationDataHolder.getNumber());
+            preparedStmt.setString (5, registrationDataHolder.getBank());
+            preparedStmt.setString (6, registrationDataHolder.getDate());
+            preparedStmt.setString (7, registrationDataHolder.getTime());
+            preparedStmt.setString (8, registrationDataHolder.getSubject());
+            preparedStmt.setString (9, registrationDataHolder.getComment());
+            preparedStmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
