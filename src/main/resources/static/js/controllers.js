@@ -17,24 +17,17 @@ app.controller("RegistrationController", function ($scope, $http) {
             comment: $scope.comment
         });
 
-        modalShow();
-
-        if (showModal){
-            $http.put('http://localhost:8080/api/register?' + data) // TODO FIX
-                .success(function (data, status, headers) {
-                    $scope.ServerResponse = data;
-                })
-                .error(function (data, status, header, config) {
-                    $scope.ServerResponse = htmlDecode("Data: " + data +
-                        "\n\n\n\nstatus: " + status +
-                        "\n\n\n\nheaders: " + header +
-                        "\n\n\n\nconfig: " + config);
-                });
-        } else{
-            // TODO ADD TOAST OR SMTH
-        }
-
-
+        $http.put('http://registration-kirviai.rhcloud.com/api/register?' + data) // TODO FIX
+            .success(function (data, status, headers) {
+                $scope.ServerResponse = data;
+                modalShow();
+            })
+            .error(function (data, status, header, config) {
+                $scope.ServerResponse = htmlDecode("Data: " + data +
+                    "\n\n\n\nstatus: " + status +
+                    "\n\n\n\nheaders: " + header +
+                    "\n\n\n\nconfig: " + config);
+            });
     };
 });
 
@@ -79,12 +72,12 @@ app.controller("ContactUsController", function ($scope, $http) {
     };
 });
 
-function modalShow(){
-        showNewRegistrationConfirmModal();
-        $('#myModal').modal('show');
+function modalShow() {
+    showNewRegistrationConfirmModal();
+    $('#myModal').modal('show');
 }
 
-function showNewRegistrationConfirmModal(){
+function showNewRegistrationConfirmModal() {
     document.getElementById("modalInputName").innerHTML = document.getElementById("inputName").value;
     document.getElementById("modalInputSurname").innerHTML = document.getElementById("inputSurname").value;
     document.getElementById("modalInputPhone").innerHTML = document.getElementById("inputPhone").value;
