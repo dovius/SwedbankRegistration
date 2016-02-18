@@ -12,6 +12,12 @@ How to execute?
 ### - It's allready on cloud!
 Just press http://registration-kirviai.rhcloud.com/ - and you're using our BetaRegistration
 
+Frontend part:
+Install node.
+npm install.
+gulp run.
+Go to localhost:8000 and enjoy.
+
 - By the way, if something goes wrong- clean Cache :)
 
 ### List of commands that helped us to deploy our server

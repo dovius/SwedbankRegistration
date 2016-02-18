@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title>Registrations</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="bundle.js"></script>
+    <base href="/">
+</head>
+<body>
+
+      <!-- NAVBAR LANGUAGE SWITCH -->
+    <nav ng-controller="LangCtrl" class="nav">
+            <button class="btn" ng-class="lang == 'lt' ? 'active': ''" ng-click="changeLang('lt')">LT</button>
+            <button class="btn" ng-class="lang == 'en' ? 'active': ''" ng-click="changeLang('en')">EN</button>
+    </nav>
+
+    <div class="view-container">
+        <div ng-view class="view-frame"></div>
+    </div>
+
+</body>
+</html>

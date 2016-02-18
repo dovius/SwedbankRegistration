@@ -1,10 +1,22 @@
-/**
- * Created by vytautassugintas on 13/02/16.
- */
+var angular = require("angular");
 
-var app = angular.module('myApp', []);
+var appControllers = angular.module('appControllers', []);
 
-app.controller("RegistrationController", function ($scope, $http) {
+appControllers.controller('LangCtrl', ['$scope', '$translate',
+  function($scope, $translate) {
+    $scope.lang = $translate.use();
+    $scope.changeLang = function(lang) {
+        $translate.use(lang);
+        $scope.lang = lang;
+    }
+  }
+]);
+
+appControllers.controller('MenuCtrl', ['$scope',
+  function($scope) {}
+]);
+
+appControllers.controller("RegistrationCtrl", ['$scope', '$http', function ($scope, $http) {
     $scope.Registration = function () {
         var data = $.param({
             name: $scope.name,
@@ -31,9 +43,9 @@ app.controller("RegistrationController", function ($scope, $http) {
                     "\n\n\n\nconfig: " + config);
             });
     };
-});
+}]);
 
-app.controller('RegistrationListController', function ($scope, $http) {
+appControllers.controller('RegistrationListCtrl', ['$scope', '$http', function ($scope, $http) {
     $http({
         method: 'GET',
         url: 'http://registration-kirviai.rhcloud.com/api/getRegistrationInformation'
@@ -43,9 +55,9 @@ app.controller('RegistrationListController', function ($scope, $http) {
     }, function errorCallback(response) {
 
     });
-});
+}]);
 
-app.controller("ContactUsController", function ($scope, $http) {
+appControllers.controller("ContactCtrl", ['$scope', '$http', function ($scope, $http) {
     $scope.ContactUs = function () {
         var data = $.param({
             subject: $scope.subject,
@@ -71,4 +83,7 @@ app.controller("ContactUsController", function ($scope, $http) {
                     "\n\n\n\nconfig: " + config);
             });
     };
-});
+}]);
+
+
+module.exports = appControllers;

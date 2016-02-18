@@ -1,48 +1,20 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="myApp">
-<head>
-    <meta charset="UTF-8">
-    <title>Contact Us</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Contact us form">
-    <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
-    <script src="js/angular.min.js"></script>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/controllers.js"></script>
-</head>
-<body>
-
 <div class="container">
-    <!-- NAVBAR LANGUAGE SWITCH -->
-    <nav class="nav">
-        <ul class="nav navbar-nav">
-            <li id="navLT" class="activeNav"><a href="#" onclick="changeLanguageToLt()">LT</a></li>
-            <li id="navEN"><a href="#" onclick="changeLanguageToEng()">EN</a></li>
-        </ul>
-    </nav>
-
     <h2 id="header" class="title-header">Contact us</h2>
 
     <!-- BOOTSTRAP FORM -->
-    <div ng-controller="ContactUsController">
+    <div ng-controller="ContactCtrl">
         <form class="form-horizontal" ng-submit="ContactUs()">
             <div class="form-group">
                 <label for="inputSubject" id="subject" class="col-sm-2 control-label">Tema</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="inputSubject" ng-model="subject">
-                        <option id="selectChose" value=" ">Pasirinkite</option>
-                        <option id="selectSaveAndInvestment" value="Taupymas ir investavimas">Taupymas ir investavimas</option>
-                        <option id="selectPension" value="Pensijos ir kaupimas">Pensijos ir kaupimas</option>
-                        <option id="selectLife" value="Gyvybės draudimas">Gyvybės draudimas</option>
-                        <option id="selectInsurance" value="Ne gyvybės draudimas">Ne gyvybės draudimas</option>
-                        <option id="selectLizing" value="Paskolos, lizingas">Paskolos, lizingas</option>
-                        <option id="selectFinance" value="Kasdieninių finansų valdymas">Kasdieninių finansų valdymas</option>
+                        <option value=" ">Pasirinkite</option>
+                        <option value="{{ 'contact_savings' | translate }}">{{ 'contact_savings' | translate }}</option>
+                        <option value="Pensijos ir kaupimas">Pensijos ir kaupimas</option>
+                        <option value="Gyvybės draudimas">Gyvybės draudimas</option>
+                        <option value="Ne gyvybės draudimas">Ne gyvybės draudimas</option>
+                        <option value="Paskolos, lizingas">Paskolos, lizingas</option>
+                        <option value="Kasdieninių finansų valdymas">Kasdieninių finansų valdymas</option>
                     </select>
                 </div>
             </div>
@@ -94,7 +66,3 @@
     </div>
     <!-- BOOTSTRAP FORM -->
 </div>
-
-<script src="js/contactUsLanguageController.js"></script>
-</body>
-</html>

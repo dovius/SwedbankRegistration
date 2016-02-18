@@ -1,0 +1,40 @@
+{
+  "name": "swedbank-registration",
+  "version": "0.0.1",
+  "description": "swedbank registration system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dovius/SwedbankRegistration.git"
+  },
+  "keywords": [
+    "swedbank",
+    "registration"
+  ],
+  "devDependencies": {
+    "angular": "^1.5.0",
+    "browserify": "^12.0.0",
+    "gulp": "^3.9.0",
+    "gulp-uglify": "^1.4.2",
+    "gulp-util": "^3.0.1",
+    "gulp-webserver": "^0.9.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  },
+  "author": "Kirviai team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dovius/SwedbankRegistration/issues"
+  },
+  "homepage": "https://github.com/dovius/SwedbankRegistration#readme",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-route": "^1.5.0",
+    "angular-translate": "^2.9.1",
+    "ng-resource": "^1.3.2"
+  }
+}

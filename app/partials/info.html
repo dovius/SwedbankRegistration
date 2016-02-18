@@ -1,0 +1,25 @@
+<div class="container">
+
+    <div ng-controller="RegistrationListCtrl">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ 'info_id' | translate }}ID</th>
+                    <th>{{ 'info_name' | translate }}Vardas</th>
+                    <th>{{ 'info_surname' | translate }}Pavardė</th>
+                    <th>{{ 'info_bank' | translate }}Bankas</th>
+                    <th>{{ 'info_subject' | translate }}Tema</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="registration in registrations">
+                    <th>{{registration.id}}</th>
+                    <th>{{registration.name}}</th>
+                    <th>{{registration.surname}}</th>
+                    <th>{{registration.bank}}</th>
+                    <th>{{registration.subject}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
