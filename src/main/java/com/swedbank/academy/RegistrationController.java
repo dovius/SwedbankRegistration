@@ -1,8 +1,6 @@
 package com.swedbank.academy;
 
-import com.swedbank.academy.data.Customer;
 import com.swedbank.academy.data.RegistrationDataHolder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,9 +18,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class RegistrationController {
-
-    @Autowired
-    private CustomerRepository repository;
 
     AtomicLong atomicLong = new AtomicLong();
     RegistrationDataHolder testRegistrationDataHolder;
@@ -63,26 +58,5 @@ public class RegistrationController {
                 requestParams.get("subject"),
                 requestParams.get("comment"));
         registrationDataHolderList.add(registrationDataHolder);
-    }
-
-    @RequestMapping(value = "api/mongoTest")
-    public String getDataFromMongoDB(){
-
-        repository.deleteAll();
-
-        String customers = "";
-
-        // save a couple of customers
-        repository.save(new Customer("Alice", "Smith"));
-        repository.save(new Customer("Bob", "Smith"));
-
-        // fetch all customers
-        System.out.println("Customers found with findAll():");
-        System.out.println("-------------------------------");
-        for (Customer customer : repository.findAll()) {
-            customers += customer;
-        }
-
-        return customers;
     }
 }
