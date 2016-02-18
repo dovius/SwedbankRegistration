@@ -5,6 +5,7 @@ var angular = require("angular");
 var app = angular.module('app', [
   require('angular-route'),
   require('angular-translate'),
+  require('angular-ui-bootstrap'),
   'appControllers',
 ]);
 

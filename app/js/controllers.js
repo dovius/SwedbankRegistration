@@ -16,38 +16,57 @@ appControllers.controller('MenuCtrl', ['$scope',
   function($scope) {}
 ]);
 
-appControllers.controller("RegistrationCtrl", ['$scope', '$http', function ($scope, $http) {
+appControllers.controller("RegistrationCtrl", ['$scope', '$http', '$uibModal', function ($scope, $http, $uibModal) {
     $scope.Registration = function () {
-        var data = $.param({
+        var data = {
             name: $scope.name,
             surname: $scope.surname,
-            number: $scope.number,
+            number: $scope.phone,
             email: $scope.email,
             bank: $scope.bank,
             date: $scope.date,
             subject: $scope.subject,
             comment: $scope.comment
-        });
+        };
 
-        modalShow();
+        //$.param equivalent
+        var url = Object.keys(data).map(function(k) {
+            return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+        }).join('&');
 
-        if (showModal){
-            $http.put('http://localhost:8080/api/register?' + data) // TODO FIX
-                .success(function (data, status, headers) {
-                    $scope.ServerResponse = data;
-                })
-                .error(function (data, status, header, config) {
-                    $scope.ServerResponse = htmlDecode("Data: " + data +
-                        "\n\n\n\nstatus: " + status +
-                        "\n\n\n\nheaders: " + header +
-                        "\n\n\n\nconfig: " + config);
-                });
-        } else{
-            // TODO ADD TOAST OR SMTH
-        }
+        //TODO mov only when request is success
+          var modalInstance = $uibModal.open({
+                templateUrl: 'register-modal.html',
+                controller: 'RegistrationModalCtrl',
+                resolve: {
+                    data: function () {
+                        return data;
+                    }
+                }
+            });
 
-
+        $http.put('http://localhost:8080/api/register?' + url) // TODO FIX
+            .success(function (data, status, headers) {
+                $scope.ServerResponse = data;
+            })
+            .error(function (data, status, header, config) {
+                $scope.ServerResponse = htmlDecode("Data: " + data +
+                    "\n\n\n\nstatus: " + status +
+                    "\n\n\n\nheaders: " + header +
+                    "\n\n\n\nconfig: " + config);
+            });
     };
+
+}]);
+
+appControllers.controller("RegistrationModalCtrl", ['$scope', '$uibModalInstance', 'data',  function ($scope, $uibModalInstance, data) {
+      $scope.data = data;
+
+      $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+
+        //redirect to menu?
+      };
 }]);
 
 appControllers.controller('RegistrationListCtrl', ['$scope', '$http', function ($scope, $http) {
@@ -89,19 +108,3 @@ appControllers.controller("ContactCtrl", ['$scope', '$http', function ($scope, $
             });
     };
 }]);
-
-function modalShow(){
-        showNewRegistrationConfirmModal();
-        $('#myModal').modal('show');
-}
-
-function showNewRegistrationConfirmModal(){
-    document.getElementById("modalInputName").innerHTML = document.getElementById("inputName").value;
-    document.getElementById("modalInputSurname").innerHTML = document.getElementById("inputSurname").value;
-    document.getElementById("modalInputPhone").innerHTML = document.getElementById("inputPhone").value;
-    document.getElementById("modalInputEmail").innerHTML = document.getElementById("inputEmail").value;
-    document.getElementById("modalInputBank").innerHTML = document.getElementById("inputBank").value;
-    document.getElementById("modalInputDate").innerHTML = document.getElementById("inputDate").value;
-    document.getElementById("modalInputTheme").innerHTML = document.getElementById("inputSubject").value;
-    document.getElementById("modalInputComments").innerHTML = document.getElementById("inputComment").value;
-}
