@@ -12,15 +12,16 @@ public class ConnectToDB {
 
     String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
     String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+    String dbUrl = System.getenv("OPENSHIFT_MYSQL_DB_URL");
 
-    String url = "jdbc:mysql://"+"127.13.110.130"+":"+"3306"+"/betaregistration";
+    String url = "jdbc:mysql://"+host+":"+port+"/betaregistration";
 
     String username = "adminbC5E997";
     String password = "3jmBBK-uWdqM";
 
     public void connect() {
         System.out.println("CONNECTING");
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+        try (Connection connection = DriverManager.getConnection(dbUrl, username, password)) {
                 System.out.println("Database connected!");
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Registration");
