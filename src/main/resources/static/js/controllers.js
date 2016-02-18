@@ -17,7 +17,7 @@ app.controller("RegistrationController", function ($scope, $http) {
             comment: $scope.comment
         });
 
-        $http.put('http://registration-kirviai.rhcloud.com/api/register?' + data) // TODO FIX
+        $http.put('http://betaregistration-kirviai.rhcloud.com/api/register?' + data) // TODO FIX
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
                 modalShow();
@@ -34,7 +34,7 @@ app.controller("RegistrationController", function ($scope, $http) {
 app.controller('RegistrationListController', function ($scope, $http) {
     $http({
         method: 'GET',
-        url: 'http://registration-kirviai.rhcloud.com/api/getRegistrationInformation'
+        url: 'http://betaregistration-kirviai.rhcloud.com/api/getRegistrationInformation'
     }).then(function successCallback(response) {
         $scope.registrations = response.data;
         console.log(response);
@@ -57,7 +57,7 @@ app.controller("ContactUsController", function ($scope, $http) {
 
         console.log(data);
 
-        $http.put('http://registration-kirviai.rhcloud.com/api/ContactUsRegistration?' + data)
+        $http.put('http://betaregistration-kirviai.rhcloud.com/api/ContactUsRegistration?' + data)
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
 
