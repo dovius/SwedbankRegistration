@@ -13,7 +13,7 @@ public class ConnectToDB {
     String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
     String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 
-    String url = "jdbc:mysql://"+host+":"+port+"/betaregistration";
+    String url = "jdbc:mysql://"+"127.13.110.130"+":"+"3306"+"/betaregistration";
 
     String username = "adminbC5E997";
     String password = "3jmBBK-uWdqM";
