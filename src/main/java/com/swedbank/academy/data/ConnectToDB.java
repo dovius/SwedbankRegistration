@@ -69,8 +69,9 @@ public class ConnectToDB {
      * @param registrationDataHolder
      */
     public void addNewRegistration(RegistrationDataHolder registrationDataHolder) {
+        Statement statement = null;
         try {
-            Statement statement = dbConnection.createStatement();
+            statement = dbConnection.createStatement();
             statement.addBatch("INSERT INTO Registration VALUES ('" + registrationDataHolder.getName() + "','"
                     + registrationDataHolder.getSurname() + "','"
                     + registrationDataHolder.getNumber() + "','"
