@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Created by vytautassugintas on 18/02/16.
@@ -25,21 +26,33 @@ public class ConnectToDB {
     String username = "adminbC5E997";
     String password = "3jmBBK-uWdqM";
 
+    Connection dbConnection;
+
     public void connect() {
         System.out.println("CONNECTING");
         try {
-            Connection connection = dataSourceConnection().getConnection();
+            dbConnection = dataSourceConnection().getConnection();
             System.out.println("Database connected!");
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Registration");
 
-            while (rs.next()) {
-                String name = rs.getString("name");
-                System.out.println(name);
-            }
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
+    }
+
+    public ArrayList<String> returnNamesOfCustomers(){
+        ArrayList<String> names = new ArrayList<>();
+        Statement stmt = null;
+        try {
+            stmt = dbConnection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Registration");
+            while (rs.next()) {
+                String name = rs.getString("name");
+                names.add(name);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return names;
     }
 
     private MysqlDataSource dataSourceConnection() {

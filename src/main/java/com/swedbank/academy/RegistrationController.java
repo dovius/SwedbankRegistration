@@ -1,5 +1,6 @@
 package com.swedbank.academy;
 
+import com.swedbank.academy.data.ConnectToDB;
 import com.swedbank.academy.data.RegistrationDataHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,5 +59,12 @@ public class RegistrationController {
                 requestParams.get("subject"),
                 requestParams.get("comment"));
         registrationDataHolderList.add(registrationDataHolder);
+    }
+
+    @RequestMapping(value = "api/dbNames")
+    public List<String> returnNamesFromDb(){
+        ConnectToDB connectToDB = new ConnectToDB();
+        connectToDB.connect();
+        return connectToDB.returnNamesOfCustomers();
     }
 }
