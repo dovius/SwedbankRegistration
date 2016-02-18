@@ -17,11 +17,6 @@ public class ConnectToDB {
 
     public void connect() {
         System.out.println("CONNECTING");
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
                 System.out.println("Database connected!");
             Statement stmt = connection.createStatement();
