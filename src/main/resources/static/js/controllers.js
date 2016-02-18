@@ -94,3 +94,13 @@ function showNewRegistrationConfirmModal(){
     document.getElementById("modalInputTheme").innerHTML = document.getElementById("inputSubject").value;
     document.getElementById("modalInputComments").innerHTML = document.getElementById("inputComment").value;
 }
+
+function showContactUsConfirmModal(){
+    document.getElementById("modalInputTheme").innerHTML = document.getElementById("inputSubject").value;
+    document.getElementById("modalInputComments").innerHTML = document.getElementById("inputComment").value;
+    document.getElementById("modalInputName").innerHTML = document.getElementById("inputName").value;
+    document.getElementById("modalInputSurname").innerHTML = document.getElementById("inputSurname").value;
+    document.getElementById("modalInputPhone").innerHTML = document.getElementById("inputPhone").value;
+    document.getElementById("modalInputEmail").innerHTML = document.getElementById("inputEmail").value;
+    document.getElementById("modalInputRadio").innerHTML = document.getElementById("inputRadio").value;
+}
