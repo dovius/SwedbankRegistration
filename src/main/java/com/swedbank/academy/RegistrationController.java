@@ -28,19 +28,11 @@ public class RegistrationController {
 
     @PostConstruct
     public void init() {
-        MySQLconnection.addNewRegistration(new RegistrationDataHolder("Vytautas",
-                "Sugintas", "860296103", "vytautas@sugintas.com", "Antakalnio g. 45", "2015-02-15", "15.25", "Pensijos kaupimas", ""));
         testRegistrationDataHolder1 = new RegistrationDataHolder(atomicLong.getAndIncrement(), "Rytis",
                 "Dereškevičius", "866699959", "rdereskevicius@gmail.com", "Mokyklos g. 18", "2015-02-28", "14:10", "Draudimas", "");
         registrationDataHolderList = new ArrayList<>();
         registrationDataHolderList.add(testRegistrationDataHolder);
         registrationDataHolderList.add(testRegistrationDataHolder1);
-        MySQLconnection.addOnlyName();
-        MySQLconnection.addOnlyName();
-        MySQLconnection.addOnlyName();
-        MySQLconnection.addOnlyName();
-
-
     }
 
     @RequestMapping(value = "api/registration")
@@ -67,14 +59,11 @@ public class RegistrationController {
                 requestParams.get("subject"),
                 requestParams.get("comment"));
         registrationDataHolderList.add(registrationDataHolder);
-        MySQLconnection.addOnlyName();
         MySQLconnection.addNewRegistration(registrationDataHolder);
     }
 
     @RequestMapping(value = "api/dbNames")
     public List<String> returnNamesFromDb(){
-        MySQLconnection.connect();
-        MySQLconnection.addOnlyName();
         return MySQLconnection.returnNamesOfCustomers();
     }
 
