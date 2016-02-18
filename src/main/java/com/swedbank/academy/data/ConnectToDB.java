@@ -72,7 +72,7 @@ public class ConnectToDB {
         Statement statement = null;
         try {
             statement = dbConnection.createStatement();
-            statement.addBatch("INSERT INTO `Registration`(`Name`, `Surname`, `PhoneNumber`, `Email`," +
+            statement.executeQuery("INSERT INTO `Registration`(`Name`, `Surname`, `PhoneNumber`, `Email`," +
                     " `BankDepartment`, `Date`, `Time`, `Theme`, `Comment`) VALUES ('" + registrationDataHolder.getName() + "','"
                     + registrationDataHolder.getSurname() + "','"
                     + registrationDataHolder.getNumber() + "','"
@@ -81,7 +81,6 @@ public class ConnectToDB {
                     + registrationDataHolder.getTime() + "','"
                     + registrationDataHolder.getSubject() + "','"
                     + registrationDataHolder.getComment() + "')");
-            statement.executeBatch();
         } catch (SQLException e) {
             e.printStackTrace();
         }
