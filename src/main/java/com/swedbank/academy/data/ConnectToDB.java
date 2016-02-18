@@ -1,9 +1,14 @@
 package com.swedbank.academy.data;
 
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created by vytautassugintas on 18/02/16.
@@ -23,7 +28,7 @@ public class ConnectToDB {
         System.out.println("CONNECTING");
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url, username, password);
+            Connection connection = dataSourceConnection().getConnection();
                 System.out.println("Database connected!");
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Registration");
@@ -37,6 +42,15 @@ public class ConnectToDB {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private MysqlDataSource dataSourceConnection() {
+        MysqlDataSource dataSource = new MysqlDataSource();
+        dataSource.setUser(username);
+        dataSource.setPassword(password);
+        dataSource.setServerName(dbUrl);
+        dataSource.setDatabaseName("betaregistration");
+        return dataSource;
     }
 
     public void connectWithContext(){
