@@ -22,6 +22,44 @@
 <div class="container">
 
     <div ng-controller="RegistrationListController">
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="navbar-form navbar-left">
+                            <div class="col-sm-10">
+                                <select class="form-control" id="inputBank" ng-model="bank" required>
+                                    <option value="" disabled selected>Banko skyrius</option>
+                                    <option value="Antakalnio g. 45">Antakalnio g. 45</option>
+                                    <option value="Ateisties g. 91 (PC „Mandarinas“)">Ateisties g. 91 (PC „Mandarinas“)</option>
+                                    <option value="Gedimino pr. 56">Gedimino pr. 56</option>
+                                    <option value="Konstitucijos pr. 20A, dirba Būsto centras">Konstitucijos pr. 20A, dirba Būsto
+                                        centras
+                                    </option>
+                                    <option value="Ozo g. 25 (PPC „Akropolis“)">Ozo g. 25 (PPC „Akropolis“)</option>
+                                </select>
+                            </div>
+                        </li>
+
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Klientas">
+                            </div>
+                        </form>
+
+
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
         <table class="table">
             <thead>
                 <tr>
