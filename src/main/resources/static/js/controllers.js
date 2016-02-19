@@ -39,6 +39,8 @@ app.controller('RegistrationListController', function ($scope, $http) {
         $scope.registrations = response.data;
         console.log(response);
     }, function errorCallback(response) {
+        console.log(response);
+
 
     });
 });
