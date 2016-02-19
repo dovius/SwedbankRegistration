@@ -62,21 +62,6 @@ public class ConnectToDB {
         return names;
     }
 
-    public void addOnlyName(){
-        try {
-            String query = " insert into Registration (name)"
-                    + " values (?)";
-
-            // create the mysql insert preparedstatement
-            PreparedStatement preparedStmt = dbConnection.prepareStatement(query);
-            preparedStmt.setString (1, "Barney");
-            // execute the preparedstatement
-            preparedStmt.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     /**
      * This method adds new registration to DB
      * @param registrationDataHolder
@@ -114,21 +99,31 @@ public class ConnectToDB {
             Statement statement = dbConnection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM Registration");
             while (resultSet.next()) {
-                registrations.add(new RegistrationDataHolder(resultSet.getLong("ID"),
-                        resultSet.getString("Name"),
-                        resultSet.getString("Surname"),
-                        resultSet.getString("PhoneNumber"),
-                        resultSet.getString("Email"),
-                        resultSet.getString("BankDepartment"),
-                        resultSet.getString("Date"),
-                        resultSet.getString("Time"),
-                        resultSet.getString("Theme"),
-                        resultSet.getString("Comment")));
+                addRegistrationDataHolderToList(registrations, resultSet);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return registrations;
+    }
+
+    /**
+     * Method to get all values form DB by phone number
+     * @param phoneNumber
+     * @return
+     */
+    public List<RegistrationDataHolder> getRegistrationsByPhoneNumber(String phoneNumber){
+        List<RegistrationDataHolder> registrationsByPhoneNumber = new ArrayList<>();
+        try {
+            Statement statement = dbConnection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Registration WHERE PhoneNumber = " + phoneNumber);
+            while (resultSet.next()) {
+                addRegistrationDataHolderToList(registrationsByPhoneNumber, resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return registrationsByPhoneNumber;
     }
 
     /**
@@ -142,5 +137,18 @@ public class ConnectToDB {
         }catch (SQLException e){
             e.printStackTrace();
         }
+    }
+
+    private void addRegistrationDataHolderToList(List<RegistrationDataHolder> registrations, ResultSet resultSet) throws SQLException {
+        registrations.add(new RegistrationDataHolder(resultSet.getLong("ID"),
+                resultSet.getString("Name"),
+                resultSet.getString("Surname"),
+                resultSet.getString("PhoneNumber"),
+                resultSet.getString("Email"),
+                resultSet.getString("BankDepartment"),
+                resultSet.getString("Date"),
+                resultSet.getString("Time"),
+                resultSet.getString("Theme"),
+                resultSet.getString("Comment")));
     }
 }

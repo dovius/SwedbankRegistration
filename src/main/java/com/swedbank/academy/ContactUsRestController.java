@@ -4,6 +4,7 @@ import com.swedbank.academy.data.ContactFormDataHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,6 @@ public class ContactUsRestController {
     private final AtomicLong counter = new AtomicLong();
     ContactFormDataHolder contactFormDataHolder;
     List<ContactFormDataHolder> contactFormDataHolderList;
-
 
     @PostConstruct
     public void init(){
@@ -41,7 +41,6 @@ public class ContactUsRestController {
     @RequestMapping(value = "api/getContacsUsInformation")
     public List<ContactFormDataHolder> getAllContactUsInformation() {
         return contactFormDataHolderList;
-
     }
 
     //call api/ContactUsRegistration?message=VeikiaJeee&name=Vytautas&surname=Sugintas&number=123&email=pasukutinis@geras.lt

@@ -12,7 +12,7 @@ public class RegistrationDataHolder {
     String email;           // El. pastas
     String bank;            // Banko skyrius
     String date;            // Data
-    String time;
+    String time;            // Registracijos laikas
     String subject;         // Tema
     String comment;         // Žinutė bankui
 

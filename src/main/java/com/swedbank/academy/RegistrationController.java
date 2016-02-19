@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
@@ -21,23 +20,12 @@ import java.util.concurrent.atomic.AtomicLong;
 public class RegistrationController {
 
     AtomicLong atomicLong = new AtomicLong();
-    RegistrationDataHolder testRegistrationDataHolder;
-    RegistrationDataHolder testRegistrationDataHolder1;
     List<RegistrationDataHolder> registrationDataHolderList;
     ConnectToDB MySQLconnection = new ConnectToDB();
 
     @PostConstruct
     public void init() {
-        testRegistrationDataHolder1 = new RegistrationDataHolder(atomicLong.getAndIncrement(), "Rytis",
-                "Dereškevičius", "866699959", "rdereskevicius@gmail.com", "Mokyklos g. 18", "2015-02-28", "14:10", "Draudimas", "");
-        registrationDataHolderList = new ArrayList<>();
-        registrationDataHolderList.add(testRegistrationDataHolder);
-        registrationDataHolderList.add(testRegistrationDataHolder1);
-    }
 
-    @RequestMapping(value = "api/registration")
-    public RegistrationDataHolder getContanctFormJSON() {
-        return testRegistrationDataHolder;
     }
 
     @RequestMapping(value = "api/getRegistrationInformation", method = RequestMethod.GET)
@@ -45,11 +33,15 @@ public class RegistrationController {
         return MySQLconnection.getAllRegistrations();
     }
 
+    @RequestMapping(value = "api/searchRegistrationByPhoneNumber")
+    public List<RegistrationDataHolder> searchRegistrationByPhoneNumber(@RequestParam String phoneNumber){
+        return MySQLconnection.getRegistrationsByPhoneNumber(phoneNumber);// TODO METHOD FROM MYSQL
+    }
+
     // call api/register?name=Vytautas&surname=Sugintas&number=123&email=vyc@vyc.lt&bank=qq&date=2015&time=14.10&subject=paskola&comment=cool
     @RequestMapping(value = "api/register")
     public void Register(@RequestParam Map<String, String> requestParams) {
-        RegistrationDataHolder registrationDataHolder = new RegistrationDataHolder(atomicLong.getAndIncrement(),
-                requestParams.get("name"),
+        RegistrationDataHolder registrationDataHolder = new RegistrationDataHolder(requestParams.get("name"),
                 requestParams.get("surname"),
                 requestParams.get("number"),
                 requestParams.get("email"),
@@ -58,7 +50,6 @@ public class RegistrationController {
                 requestParams.get("time"),
                 requestParams.get("subject"),
                 requestParams.get("comment"));
-        registrationDataHolderList.add(registrationDataHolder);
         MySQLconnection.addNewRegistration(registrationDataHolder);
     }
 
