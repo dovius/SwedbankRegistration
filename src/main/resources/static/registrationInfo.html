@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
-    <head>
-        <meta charset="UTF-8">
-        <title>Registrations list</title>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="Registration form">
-        <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
-        <script src="js/angular.min.js"></script>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/controllers.js"></script>
-    </head>
+    <meta charset="UTF-8">
+    <title>Registration List</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Contact us form">
+    <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
 <body>
 
 <div class="container">
+
+    <nav class="nav">
+        <ul class="nav navbar-nav">
+            <li id="navLT" class="activeNav"><a href="#" onclick="changeLanguageToLt()">LT</a></li>
+            <li id="navEN"><a href="#" onclick="changeLanguageToEng()">EN</a></li>
+        </ul>
+    </nav>
 
     <div ng-controller="RegistrationListController">
         <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Vardas</th>
-                    <th>Pavardė</th>
-                    <th>Bankas</th>
-                    <th>Tema</th>
+                    <th id="textName" >Vardas</th>
+                    <th id="textSurname">Pavardė</th>
+                    <th id="textBank">Bankas</th>
+                    <th id="subject">Tema</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,6 +51,6 @@
     </div>
 
 </div>
-
+<script src="js/LanguageRegistrationOverview.js"></script>
 </body>
 </html>
