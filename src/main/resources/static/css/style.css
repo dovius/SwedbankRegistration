@@ -15,6 +15,11 @@
 
 }
 
+.formLastBtn {
+    display: inline-block;
+    width: 100%;
+}
+
 .form-horizontal .form-control{
     width: 50%;
 }
