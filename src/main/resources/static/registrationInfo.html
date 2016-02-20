@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
-    <head>
-        <meta charset="UTF-8">
-        <title>Registrations list</title>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="Registration form">
-        <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
-        <script src="js/angular.min.js"></script>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/controllers.js"></script>
-    </head>
+    <meta charset="UTF-8">
+    <title>Registration List</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Contact us form">
+    <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
 <body>
 
 <div class="container">
 
-    <!-- NAVBAR LANGUAGE SWITCH -->
     <nav class="nav">
         <ul class="nav navbar-nav">
-            <li id="Home"><a href="http://betaregistration-kirviai.rhcloud.com/" >Home</a></li>
+            <li id="Home"><a href="http://betaregistration-kirviai.rhcloud.com/">Home</a></li>
+            <li id="navLT" class="activeNav"><a href="#" onclick="changeLanguageToLt()">LT</a></li>
+            <li id="navEN" class="activeNav"><a href="#" onclick="changeLanguageToEng()">EN</a></li>
         </ul>
     </nav>
 
-    <div ng-controller="RegistrationListController">
 
+    <div ng-controller="RegistrationListController">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,9 +45,12 @@
                                 <select class="form-control" id="inputBank" ng-model="bank" required>
                                     <option value="" disabled selected>Banko skyrius</option>
                                     <option value="Antakalnio g. 45">Antakalnio g. 45</option>
-                                    <option value="Ateisties g. 91 (PC „Mandarinas“)">Ateisties g. 91 (PC „Mandarinas“)</option>
+                                    <option value="Ateisties g. 91 (PC „Mandarinas“)">Ateisties g. 91 (PC
+                                        „Mandarinas“)
+                                    </option>
                                     <option value="Gedimino pr. 56">Gedimino pr. 56</option>
-                                    <option value="Konstitucijos pr. 20A, dirba Būsto centras">Konstitucijos pr. 20A, dirba Būsto
+                                    <option value="Konstitucijos pr. 20A, dirba Būsto centras">Konstitucijos pr. 20A,
+                                        dirba Būsto
                                         centras
                                     </option>
                                     <option value="Ozo g. 25 (PPC „Akropolis“)">Ozo g. 25 (PPC „Akropolis“)</option>
@@ -69,27 +72,28 @@
 
         <table class="table">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Vardas</th>
-                    <th>Pavardė</th>
-                    <th>Bankas</th>
-                    <th>Tema</th>
-                </tr>
+            <tr>
+                <th>ID</th>
+                <th>Vardas</th>
+                <th>Pavardė</th>
+                <th>Bankas</th>
+                <th>Tema</th>
+            </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="registration in registrations">
-                    <th>{{registration.id}}</th>
-                    <th>{{registration.name}}</th>
-                    <th>{{registration.surname}}</th>
-                    <th>{{registration.bank}}</th>
-                    <th>{{registration.subject}}</th>
-                </tr>
+            <tr ng-repeat="registration in registrations">
+                <th>{{registration.id}}</th>
+                <th>{{registration.name}}</th>
+                <th>{{registration.surname}}</th>
+                <th>{{registration.bank}}</th>
+                <th>{{registration.subject}}</th>
+            </tr>
             </tbody>
         </table>
     </div>
 
 </div>
 
+<script src="js/LanguageRegistrationOverview.js"></script>
 </body>
 </html>
