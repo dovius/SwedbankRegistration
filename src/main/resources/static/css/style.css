@@ -14,3 +14,129 @@
     text-decoration: underline;
     background-color: #ecf0f1;
 }
+
+.brand-border-top .brand-border {
+    position: fixed;
+    z-index: 11;
+    width: 100%;
+    height: 4px;
+    top: 0px;
+}
+
+.brand-border {
+    height: 4px;
+    z-index: 10;
+    position: relative;
+    background: #FFCC00;
+    background: -moz-linear-gradient(left, #FF6100 0%, #FFCC00 100%);
+    background: -webkit-linear-gradient(left, #FF6100 0%, #FFCC00 100%);
+    background: -ms-linear-gradient(left, #FF6100 0%, #FFCC00 100%);
+    background: linear-gradient(to right, #FF6100 0%, #FFCC00 100%);
+}
+
+body{
+    background-color: #FFFFFF;
+    background-size: cover;
+    background-position: center center;
+    background-image: url("../img/treebg.png");
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.inner-big{
+    padding: 100px 0px 170px 0px;
+}
+.form-top {
+    overflow: hidden;
+    padding: 10px 20px 10px 20px;
+    background: #fff;
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    text-align: left;
+    border-bottom: solid #F4F4F4 1px;
+
+}
+
+#logo{
+    width: 65%;
+}
+
+#flag{
+    width: 30%;
+    float: right;
+
+}
+
+.form-top-left{
+    float: left;
+    width: 60%;
+    padding-top: 0px;
+    height: 100%;
+}
+
+.form-top-right {
+    float: right;
+    width: 40%;
+    padding-top: 5px;
+    padding-right: 5px;
+    color: #ddd;
+    right: 0px;
+}
+
+.form-bottom {
+    padding: 25px 25px 30px 25px;
+    background: #ffffff;
+    -moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
+    text-align: left;
+}
+
+.form-bottom h3{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 1.8rem;
+
+}
+
+.btn{
+    margin-top: 20px;
+    background-color: #eaeaea;
+    width: 100%;
+}
+.btn:hover {
+    background-color: #FFCC00;
+}
+
+.form-number{
+    margin-top: 10px;
+
+}
+
+.search{
+    display: none;
+    overflow: hidden;
+    padding: 10px 0px 10px 0px;
+
+}
+.searchLeft{
+    float: left;
+    width: 70%;
+    margin: 0px;
+    height: 100%;
+}
+#search{
+    width:70%;
+    padding-top: 10px;
+    right: 0px;
+
+}
+.searchRight{
+    float: right;
+    left: 0px;
+    width: 30%;
+    height: 44px;
+    padding-left: 30px;
+
+}
