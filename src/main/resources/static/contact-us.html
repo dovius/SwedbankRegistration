@@ -1,0 +1,116 @@
+<div class="row" ng-controller="ContactUsController">
+
+    <div class="col-sm-4 col-sm-offset-4 form-box">
+        <div class="form-top">
+            <div class="form-top-left">
+                <a href="#/"><img id="logo" src="../img/logo.png" alt="logo"></a>
+            </div>
+            <div class="form-top-right">
+                <img id="flag" src="../img/enFlag.png" alt="flag">
+            </div>
+        </div>
+        <div class="form-bottom">
+
+            <h3>Parašykite mums</h3>
+
+
+            <div class="form-group">
+                <label id="messageText" for="inputComment">Žinutės tekstas</label>
+                    <textarea class="form-control" name="comments" maxlength="160" cols="34" rows="4" id="inputComment" ng-model="message"></textarea>
+            </div>
+            <div class="form-group">
+                <label id="textName" for="inputName">Vardas</label>
+                    <input type="text" class="form-control" id="inputName" ng-model="name">
+            </div>
+            <div class="form-group">
+                <label id="textSurname" for="inputSurname" >Pavardė</label>
+                    <input type="text" class="form-control" id="inputSurname" ng-model="surname">
+            </div>
+            <div class="form-group">
+                <label id="textPhone" for="inputPhone">Telefonas susisiekti</label>
+                    <input type="number" class="form-control" id="inputPhone" ng-model="phone">
+            </div>
+            <div class="form-group">
+                <label id="textEmail" for="inputEmail">El paštas</label>
+                    <input type="email" class="form-control" id="inputEmail" ng-model="email">
+            </div>
+            <div class="form-group" >
+                <label id="textAnswer"  >Kaip pageidaujate gauti atsakymą</label>
+                <br/>
+                    <label id="radioPhone"><input type="radio" name="test" ng-model="radioValue" value="telefonu" /> telefonu</label><div/>
+                    <label id="radioEmail"><input type="radio" name="test" ng-model="radioValue" value="el. paštu"/> el. paštu</label><div/>
+                    <label id="radioBoth"><input type="radio" name="test" ng-model="radioValue" value="telefonu ir el.paštu"/> telefonu ir el.paštu</label>
+            </div>
+
+            <button type="submit"  class="btn" data-toggle="modal" data-target=".bs-example-modal-sm">Siųsti (Beta)</button>
+            <div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" ng-controller="ContactUsController" aria-labelledby="mySmallModalLabel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header formFormat">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="modal-title">Registracijos patvirtinimas</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-horizontal formFormat">
+
+                                <div class="form-group">
+                                    <label id="modalComments" class="col-sm-4">Žinutės tekstas</label>
+                                    <div class="col-sm-8">
+                                        <p id="modalInputComments">{{ message }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label id="modalName" class="col-sm-4">Vardas</label>
+                                    <div class="col-sm-8">
+                                        <p id="modalInputName">{{name}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label id="modalSurname" class="col-sm-4">Pavardė</label>
+                                    <div class="col-sm-8">
+                                        <p id="modalInputSurname">{{surname}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label id="modalPhone" class="col-sm-4">Telefono numeris</label>
+                                    <div class="col-sm-8">
+                                        <p id="modalInputPhone">{{phone}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label id="modalEmail" class="col-sm-4">Elektroninis paštas</label>
+                                    <div class="col-sm-8">
+                                        <p id="modalInputEmail">{{email}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label id="modalRadio" class="col-sm-4">Kaip pageidaujate gauti atsakymą</label>
+                                    <div class="col-sm-8">
+                                        <p id="modalInputRadio">{{radioValue}}</p>
+                                    </div>
+                                </div>
+                                <!--MODAL BODY END-->
+                            </div>
+                            <br>
+
+                            <div class="modal-footer">
+                                <p id="modalFooterThanks" class="text-left">Ačiū, kad domites banko paslaugomis.</p>
+                                <p id="modalFooterInfo" class="text-left">Jeigu Jums reikalinga skubi informacija, laukiame Jūsų skambučių telefonu 1884, darbo dienomis 8-20val., šeštadieniais 9-16 val.</p>
+                                <button type="button" class="btn"><a href="registrationInfo.html" id="modalButtonBack">Gerai</a></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

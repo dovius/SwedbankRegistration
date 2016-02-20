@@ -5,6 +5,15 @@
 .form-horizontal .control-label{
     text-align:left !important;
 }
+.form-horizontal{
+    padding-left: 20px !important;
+
+}
+
+.modal-header{
+    padding-left:30px !important;
+
+}
 
 .form-horizontal .form-control{
     width: 50%;
@@ -32,6 +41,11 @@
     background: -webkit-linear-gradient(left, #FF6100 0%, #FFCC00 100%);
     background: -ms-linear-gradient(left, #FF6100 0%, #FFCC00 100%);
     background: linear-gradient(to right, #FF6100 0%, #FFCC00 100%);
+}
+
+a.btn {
+    color: black;
+
 }
 
 body{
@@ -70,11 +84,18 @@ body{
 
 }
 
+
+
 .form-top-left{
     float: left;
     width: 60%;
     padding-top: 0px;
     height: 100%;
+}
+
+.form-group{
+    margin-bottom: 0px;
+    margin-top: 15px;
 }
 
 .form-top-right {

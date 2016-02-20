@@ -1,89 +1,67 @@
 <!DOCTYPE html>
+<html ng-app="myApp">
 <html lang="en">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Contact us form">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Contact us form">
 
-    <script src="js/jquery-2.2.0.min.js"></script>
-    <script src="js/angular.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/functions.js"></script>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <title>Pagrindinis puslapis</title>
+
+
+<script src="js/jquery-2.2.0.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/functions.js"></script>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<title>Pagrindinis puslapis</title>
 </head>
+
 <body>
 
-<div class="brand-border-top"><div class="brand-border"></div></div>
+<div class="brand-border-top">
+    <div class="brand-border"></div>
+</div>
 
 <div class="container">
-    <!-- NAVBAR LANGUAGE SWITCH -->
+
 
     <div class="inner-big">
-        <div class="row">
 
-            <div class="col-sm-4 col-sm-offset-4 form-box">
-                <div class="form-top">
-                    <div class="form-top-left">
-                        <img id="logo" src="../img/logo.png" alt="logo">
-                    </div>
-                    <div class="form-top-right">
-                        <img id="flag" src="../img/enFlag.png" alt="flag">
-                    </div>
-                </div>
-                <div class="form-bottom">
-
-                    <h3>Susisiekite su mumis</h3>
-
-                    <div class="search-form">
-
-                        <button type="submit" class="btn">Registruokitės konsultacijai internetu</button>
-                        <button type="submit" class="btn">Parašykite mums</button>
-                        <button type="submit" class="btn" onmouseover="showNumberForm()">Registracijų peržiūra</button>
-
-                        <div class="search" >
-                            <div class="searchLeft">
-                                <input type="number" class="form-control form-number" id="inputPhone" ng-model="phone">
-                            </div>
-                            <div class="searchRight">
-                                <img id="search" src="../img/search.png" alt="search" onmouseover="searchForNumber()">
-                            </div>
-                        </div>
+        <div ng-view> </div>
 
 
-
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
+
+    <!--
     <nav class="nav">
         <ul class="nav navbar-nav">
 
-            <li id="Home"><a href="http://betaregistration-kirviai.rhcloud.com/" >Home</a></li>
+            <li id="Home"><a href="http://betaregistration-kirviai.rhcloud.com/">Home</a></li>
             <li id="navLT" class="activeNav"><a href="#" onclick="changeToLt()">LT</a></li>
             <li id="navEN" class="activeNav"><a href="#" onclick="changeToEng()">EN</a></li>
 
         </ul>
     </nav>
 
-    <!-- TITLE LABEL AND LINKS -->
+
     <div class="col-md-6">
         <div class="text-left">
             <h2 id="headerContactUs">Susisiekite su mumis</h2>
             <h4><a id="txtRegistration" href="NewRegistration.html">Registruokitės konsultacijai internetu</a></h4>
-            <h4><a id="txtWriteUs" href="ContactUs.html">Parašykite mums</a></h4>
+            <h4><a id="txtWriteUs" href="contact-us.html">Parašykite mums</a></h4>
             <h4><a id="txtRegistrationInformation" href="registrationInfo.html">Registracijų peržiūra</a></h4>
         </div>
     </div>
-
+-->
 </div>
 
-<!-- SCRIPTS -->
+
+
 <script src="js/languageController.js"></script>
 
 </body>

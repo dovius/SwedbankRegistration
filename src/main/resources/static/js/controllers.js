@@ -2,7 +2,26 @@
  * Created by vytautassugintas on 13/02/16.
  */
 
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngRoute']);
+
+app.config(function($routeProvider, $locationProvider){
+    $routeProvider
+        .when('/',{
+            templateUrl: '../main.html',
+            controller: 'MainController'
+        })
+        .when('/contact-us',{
+            templateUrl: '../contact-us.html',
+            controller: 'ContactUsController'
+        });
+
+    //kazkodel neveikia
+    //$locationProvider.html5Mode(true);
+});
+
+app.controller("MainController", function($scope){
+
+});
 
 app.controller("RegistrationController", function ($scope, $http) {
     $scope.Registration = function () {
@@ -48,7 +67,10 @@ app.controller('RegistrationListController', function ($scope, $http) {
 });
 
 app.controller("ContactUsController", function ($scope, $http) {
+
     $scope.ContactUs = function () {
+
+
         var data = $.param({
             subject: $scope.subject,
             message: $scope.message,
