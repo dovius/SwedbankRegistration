@@ -1,0 +1,229 @@
+<div class="row" ng-controller="RegistrationListController">
+
+
+    <div class="col-md-10 col-md-offset-1 form-box">
+        <div class="form-top">
+            <div class="form-top-left">
+                <a href="#/"><img id="logo" src="../img/logo.png" alt="logo"></a>
+            </div>
+            <div class="form-top-right">
+                <img id="flag" src="../img/enFlag.png" alt="flag">
+            </div>
+        </div>
+
+        <div class="form-bottom">
+
+            <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="navbar-form navbar-left">
+                            <div class="col-sm-10">
+                                <select class="form-control" id="inputBank" ng-model="search.bank" required>
+                                    <option value="" disabled selected>Banko skyrius</option>
+                                    <option value="Antakalnio g. 45">Antakalnio g. 45</option>
+                                    <option value="Ateisties g. 91 (PC „Mandarinas“)">Ateisties g. 91 (PC
+                                        „Mandarinas“)
+                                    </option>
+                                    <option value="Gedimino pr. 56">Gedimino pr. 56</option>
+                                    <option value="Konstitucijos pr. 20A, dirba Būsto centras">Konstitucijos pr. 20A,
+                                        dirba Būsto
+                                        centras
+                                    </option>
+                                    <option value="Ozo g. 25 (PPC „Akropolis“)">Ozo g. 25 (PPC „Akropolis“)</option>
+                                </select>
+                            </div>
+                        </li>
+
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group no-margin">
+                                <input type="text" class="form-control" placeholder="Klientas" ng-model="search">
+                            </div>
+                        </form>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+
+
+            <div class="div-bottom">
+
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Data</th>
+                        <th>Banko skyrius</th>
+                        <th>Tema</th>
+                        <th>Veiksmai</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-init="nr=0">
+                    <tr ng-repeat="(key, registration) in registrations|filter:search track by $index">
+                        <th>{{registration.id}}</th>
+                        <th>0000-00-00</th>
+                        <th>{{registration.bank}}</th>
+                        <th>{{registration.subject}}</th>
+                        <th><a data-toggle="modal" data-target=".bs-example-modal-big"
+                               ng-click="nr = key">Peržiūrėti</a>
+                            <a data-toggle="modal" data-target="#confirm-delete" ng-click="nr = key">Ataskyti</a>
+                    </tr>
+                    </tbody>
+                </table>
+                
+                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="deleteModalLabel">Patvirtinimas</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Ar norite atšaukti susitikimą?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                                <a class="btn btn-danger btn-ok">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="myModal" class="modal fade bs-example-modal-big" tabindex="-1" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header formFormat">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h2 class="modal-title">Registracijos peržiūra</h2>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-horizontal formFormat">
+                                    <!--MODAL BODY-->
+                                    <div class="form-group">
+                                        <label id="modalName" class="col-sm-4">Vardas</label>
+                                        <div class="col-sm-8">
+                                            <p id="modalInputName">{{registrations[nr].name}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label id="modalSurname" class="col-sm-4">Pavardė</label>
+                                        <div class="col-sm-8">
+                                            <p id="modalInputSurname">{{ registrations[nr].surname}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label id="modalPhone" class="col-sm-4">Telefonas susisiekti</label>
+                                        <div class="col-sm-8">
+                                            <p id="modalInputPhone">{{ registrations[nr].number }}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label id="modalEmail" class="col-sm-4">El. paštas</label>
+                                        <div class="col-sm-8">
+                                            <p id="modalInputEmail">{{ registrations[nr].email }}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label id="modalBank" class="col-sm-4">Banko skyrius</label>
+                                        <div class="col-sm-8">
+                                            <p id="modalInputBank">{{ registrations[nr].bank }}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label id="modalDate" class="col-sm-4">Data</label>
+                                        <div class="col-sm-8">
+                                            <p id="modalInputDate">{{ registrations[nr].date}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label id="modalTheme" class="col-sm-4">Tema</label>
+                                        <div class="col-sm-8">
+                                            <p id="modalInputTheme">{{ registrations[nr].subject}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label id="modalComments" class="col-sm-4">Pastabos, Komentarai</label>
+                                        <div class="col-sm-8">
+                                            <p id="modalInputComments">{{ registrations[nr].comment}}</p>
+                                        </div>
+                                    </div>
+                                    <!--MODAL BODY END-->
+                                </div>
+
+                                <div class="modal-footer">
+                                    <p id="modalFooterThanks" class="text-left">Ačiū, kad domites banko paslaugomis.</p>
+                                    <p id="modalFooterInfo" class="text-left">Jeigu Jums reikalinga skubi informacija,
+                                        laukiame
+                                        Jūsų skambučių telefonu 1884, darbo dienomis 8-20val., šeštadieniais 9-16
+                                        val.</p>
+                                    <button type="button" class="btn"><a href="registrationInfo.html"
+                                                                         id="modalButtonBack">Gerai</a></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+<!--
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="navbar-form navbar-left">
+                            <div class="col-sm-10">
+                                <select class="form-control" id="inputBank" ng-model="bank" required>
+                                    <option value="" disabled selected>Banko skyrius</option>
+                                    <option value="Antakalnio g. 45">Antakalnio g. 45</option>
+                                    <option value="Ateisties g. 91 (PC „Mandarinas“)">Ateisties g. 91 (PC
+                                        „Mandarinas“)
+                                    </option>
+                                    <option value="Gedimino pr. 56">Gedimino pr. 56</option>
+                                    <option value="Konstitucijos pr. 20A, dirba Būsto centras">Konstitucijos pr. 20A,
+                                        dirba Būsto
+                                        centras
+                                    </option>
+                                    <option value="Ozo g. 25 (PPC „Akropolis“)">Ozo g. 25 (PPC „Akropolis“)</option>
+                                </select>
+                            </div>
+                        </li>
+
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Klientas">
+                            </div>
+                        </form>
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+
+</div>
+
+    --!>

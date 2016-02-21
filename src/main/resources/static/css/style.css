@@ -5,6 +5,20 @@
 .form-horizontal .control-label{
     text-align:left !important;
 }
+.form-horizontal{
+    padding-left: 20px !important;
+
+}
+
+.modal-header{
+    padding-left:30px !important;
+
+}
+
+.formLastBtn {
+    display: inline-block;
+    width: 100%;
+}
 
 .form-horizontal .form-control{
     width: 50%;
@@ -34,6 +48,11 @@
     background: linear-gradient(to right, #FF6100 0%, #FFCC00 100%);
 }
 
+a.btn {
+    color: black;
+
+}
+
 body{
     background-color: #FFFFFF;
     background-size: cover;
@@ -61,20 +80,33 @@ body{
 }
 
 #logo{
-    width: 65%;
+    max-width: 120px;
+/ / width: 65 %;
 }
 
 #flag{
-    width: 30%;
+    max-width: 40px;
+/ / width: 30 %;
     float: right;
 
 }
+
+.no-margin {
+
+    margin: 0px !important;
+}
+
 
 .form-top-left{
     float: left;
     width: 60%;
     padding-top: 0px;
     height: 100%;
+}
+
+.form-group{
+    margin-bottom: 0px;
+    margin-top: 15px;
 }
 
 .form-top-right {
@@ -115,7 +147,8 @@ body{
 }
 
 .search{
-    display: none;
+
+/ / display: none;
     overflow: hidden;
     padding: 10px 0px 10px 0px;
 

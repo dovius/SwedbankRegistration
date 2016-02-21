@@ -2,9 +2,37 @@
  * Created by vytautassugintas on 13/02/16.
  */
 
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngRoute']);
 
-app.controller("RegistrationController", function ($scope, $http) {
+app.config(function($routeProvider, $locationProvider){
+    $routeProvider
+        .when('/',{
+            templateUrl: '../main.html',
+            controller: 'MainController'
+        })
+        .when('/contact-us',{
+            templateUrl: '../contact-us.html',
+            controller: 'ContactUsController'
+        })
+        .when('/consultation-registration', {
+            templateUrl: '../consultation-registration.html',
+            controller: 'ConsultationRegistrationController'
+        })
+        .when('/registration-list', {
+            templateUrl: '../registration-list.html',
+            controller: 'RegistrationListController'
+        });
+
+
+    //kazkodel neveikia (kad is url panaikintu '#/'
+    //$locationProvider.html5Mode(true);
+});
+
+app.controller("MainController", function($scope){
+
+});
+
+app.controller("ConsultationRegistrationController", function ($scope, $http) {
     $scope.Registration = function () {
         var data = $.param({
             name: $scope.name,
@@ -48,7 +76,9 @@ app.controller('RegistrationListController', function ($scope, $http) {
 });
 
 app.controller("ContactUsController", function ($scope, $http) {
+
     $scope.ContactUs = function () {
+
         var data = $.param({
             subject: $scope.subject,
             message: $scope.message,
@@ -90,14 +120,4 @@ function showNewRegistrationConfirmModal() {
     document.getElementById("modalInputDate").innerHTML = document.getElementById("inputDate").value;
     document.getElementById("modalInputTheme").innerHTML = document.getElementById("inputSubject").value;
     document.getElementById("modalInputComments").innerHTML = document.getElementById("inputComment").value;
-}
-
-function showContactUsConfirmModal(){
-    document.getElementById("modalInputTheme").innerHTML = document.getElementById("inputSubject").value;
-    document.getElementById("modalInputComments").innerHTML = document.getElementById("inputComment").value;
-    document.getElementById("modalInputName").innerHTML = document.getElementById("inputName").value;
-    document.getElementById("modalInputSurname").innerHTML = document.getElementById("inputSurname").value;
-    document.getElementById("modalInputPhone").innerHTML = document.getElementById("inputPhone").value;
-    document.getElementById("modalInputEmail").innerHTML = document.getElementById("inputEmail").value;
-    document.getElementById("modalInputRadio").innerHTML = document.getElementById("inputRadio").value;
 }
