@@ -6,22 +6,23 @@
                 <a href="#/"><img id="logo" src="../img/logo.png" alt="logo"></a>
             </div>
             <div class="form-top-right">
-                <img id="flag" src="../img/enFlag.png" alt="flag">
+                <img ng-click="changeLanguage('en')" id="flag" src=" {{ 'img' | translate }} " alt="flag">
             </div>
         </div>
         <div class="form-bottom">
 
-            <h3>Susisiekite su mumis</h3>
+            <h3>{{ 'contact_header' | translate }}</h3>
 
             <div class="search-form">
 
-                <a href="#/consultation-registration" class="btn">Registruokitės konsultacijai internetu</a>
-                <a href="#/contact-us" class="btn">Parašykite mums</a>
-                <a href="#/registration-list" class="btn" onmouseover="showNumberForm()">Registracijų peržiūra</a>
+                <a href="#/consultation-registration" class="btn">{{ 'reg_header' | translate }}</a>
+                <a href="#/contact-us" class="btn">{{ 'contact' | translate }}</a>
+                <a href="#/registration-list" class="btn" onmouseover="showNumberForm()">{{ 'info' | translate }}</a>
 
                 <div class="search">
                     <div class="searchLeft">
-                        <input type="number" class="form-control form-number" id="inputPhone" ng-model="phoneSearch" placeholder="Telefono numeris">
+                        <input type="number" class="form-control form-number" id="inputPhone" ng-model="phoneSearch"
+                               placeholder="{{ 'reg_phone' | translate }}">
                     </div>
                     <div class="searchRight">
                         <img id="search" src="../img/search.png" alt="search" onmouseover="searchForNumber()">

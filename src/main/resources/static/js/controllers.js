@@ -2,7 +2,75 @@
  * Created by vytautassugintas on 13/02/16.
  */
 
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'pascalprecht.translate']);
+
+var enTranslations = {
+    register: 'Register for consultation',
+    contact_header: 'Contact us',
+    contact: 'Write us',
+    info: 'Registration overview',
+
+    img: '../img/ltFlag.png',
+    reg_header: 'Register for consultation online',
+    reg_name: 'Name',
+    reg_surname: 'Surname',
+    reg_phone: 'Phone number',
+    reg_email: 'Email',
+    reg_department: 'Bank department',
+    reg_date: 'Date',
+    reg_subject: 'Subject',
+    reg_comments: 'Comments',
+    reg_submit: 'Submit',
+    reg_select: 'Choose',
+    reg_send: 'Send',
+    info_id: 'id',
+
+
+    reg_howget: 'ENGLISHKaip pageidaujate gauti atsakymą',
+
+};
+
+var ltTranslations = {
+    register: 'Registruokitės konsultacijai internetu',
+    contact_header: 'Susisiekite su mumis',
+    contact: 'Parašykite mums',
+    info: 'Registracijų peržiūra',
+
+
+    reg_header: 'Registruokitės konsultacijai internetu',
+    reg_name: 'Vardas',
+    reg_surname: 'Pavardė',
+    reg_phone: 'Telefono numeris',
+    reg_email: 'El. paštas',
+    reg_department: 'Banko skyrius',
+    reg_date: 'Data',
+    reg_subject: 'Tema',
+    reg_comments: 'Komentarai, pastebėjimai',
+    reg_submit: 'Patvirtinti',
+    reg_select: 'Pasirinkite',
+    reg_send: 'Siųsti',
+
+    img: '../img/enFlag.png',
+    regconf: 'Registracijos patvirtinimas',
+    reg_howget: 'Kaip pageidaujate gauti atsakymą',
+    reg_howget1: 'telefonu',
+    reg_howget2: 'el. paštu',
+    reg_howget3: 'telefonu ir el. paštu',
+    reg_conf: 'Registracijos patvirtinimas',
+    reg_info: 'žinutės tekstas',
+    reg_thanks: 'Ačiū, kad domites banko paslaugomis.',
+    reg_thanks2: 'Jeigu Jums reikalinga skubi informacija, laukiame Jūsų skambučių telefonu 1884, darbo dienomis 8-20val., šeštadieniais 9-16 val.',
+
+};
+
+
+app.config(['$translateProvider', function ($translateProvider) {
+    // add translation table
+    $translateProvider
+        .translations('en', enTranslations)
+        .translations('lt', ltTranslations)
+        .preferredLanguage('lt');
+}]);
 
 app.config(function($routeProvider, $locationProvider){
     $routeProvider
@@ -22,17 +90,23 @@ app.config(function($routeProvider, $locationProvider){
             templateUrl: '../registration-list.html',
             controller: 'RegistrationListController'
         });
+    //.otherwise({
+    //    redirectTo: '/'
+    //});
 
 
     //kazkodel neveikia (kad is url panaikintu '#/'
     //$locationProvider.html5Mode(true);
 });
 
-app.controller("MainController", function($scope){
+app.controller("MainController", ['$translate', '$scope', function ($translate, $scope) {
+    $scope.changeLanguage = function (langKey) {
+        $translate.use(langKey);
+    };
+}]);
 
-});
+app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$http', function ($translate, $scope, $http) {
 
-app.controller("ConsultationRegistrationController", function ($scope, $http) {
     $scope.Registration = function () {
         var data = $.param({
             name: $scope.name,
@@ -57,7 +131,7 @@ app.controller("ConsultationRegistrationController", function ($scope, $http) {
                     "\n\n\n\nconfig: " + config);
             });
     };
-});
+}]);
 
 app.controller('RegistrationListController', function ($scope, $http) {
 

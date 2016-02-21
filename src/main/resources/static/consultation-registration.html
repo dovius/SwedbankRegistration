@@ -6,7 +6,7 @@
                 <a href="#/"><img id="logo" src="../img/logo.png" alt="logo"></a>
             </div>
             <div class="form-top-right">
-                <img id="flag" src="../img/enFlag.png" alt="flag">
+                <img id="flag" src="{{ 'img' | translate }}" alt="flag">
             </div>
         </div>
         <div class="form-bottom">
@@ -15,11 +15,13 @@
             <form class="RegistrationForm" ng-submit="Registration()">
 
                 <div class="form-group">
-                    <label for="inputName" id="registrationName" class="control-label">Vardas</label>
+                    <label for="inputName" id="registrationName" class="control-label">{{ 'reg_name' | translate
+                        }}</label>
                     <input type="text" class="form-control" id="inputName" ng-model="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="inputSurname" id="surname" class="control-label">Pavardė</label>
+                    <label for="inputSurname" id="surname" class="control-label">{{ 'reg_surname' | translate
+                        }} </label>
                     <input type="text" class="form-control" id="inputSurname" ng-model="surname" required>
                 </div>
                 <div class="form-group">
