@@ -67,85 +67,90 @@
                 </div>
                 <div class="form-group formLastBtn">
                     <div class="col-sm-offset-3 col-sm-6">
-                        <button type="submit" id="submit" class="btn " data-toggle="modal">Siųsti</button>
+                        <button type="submit" class="btn" data-toggle="modal" data-target=".bs-example-modal-sm">
+                            Siųsti
+                        </button>
                     </div>
                 </div>
             </form>
 
 
             <!-- Modal -->
-            <div id="myModal" class="modal fade" role="dialog">
+            <div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header formFormat">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h2 class="modal-title">Registracijos patvirtinimas</h2>
                         </div>
                         <div class="modal-body">
-                            <div class="form-horizontal">
+                            <div class="form-horizontal formFormat">
                                 <!--MODAL BODY-->
                                 <div class="form-group">
-                                    <label id="modalName">Vardas</label>
-                                    <p id="modalInputName"></p>
+                                    <label id="modalName" class="col-sm-4">Vardas</label>
+                                    <div class="col-sm-8">
+                                        <p id="modalInputName">{{name}}</p>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label id="modalSurname" class="col-sm-4">Pavardė</label>
                                     <div class="col-sm-8">
-                                        <p id="modalInputSurname"></p>
+                                        <p id="modalInputSurname">{{surname}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label id="modalPhone" class="col-sm-4">Telefonas susisiekti</label>
                                     <div class="col-sm-8">
-                                        <p id="modalInputPhone"></p>
+                                        <p id="modalInputPhone">{{phone}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label id="modalEmail" class="col-sm-4">El. paštas</label>
                                     <div class="col-sm-8">
-                                        <p id="modalInputEmail"></p>
+                                        <p id="modalInputEmail">{{email}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label id="modalBank" class="col-sm-4">Banko skyrius</label>
                                     <div class="col-sm-8">
-                                        <p id="modalInputBank"></p>
+                                        <p id="modalInputBank">{{bank}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label id="modalDate" class="col-sm-4">Data</label>
                                     <div class="col-sm-8">
-                                        <p id="modalInputDate"></p>
+                                        <p id="modalInputDate">{{date}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label id="modalTheme" class="col-sm-4">Tema</label>
                                     <div class="col-sm-8">
-                                        <p id="modalInputTheme"></p>
+                                        <p id="modalInputTheme">{{subject}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label id="modalComments" class="col-sm-4">Pastabos, Komentarai</label>
                                     <div class="col-sm-8">
-                                        <p id="modalInputComments"></p>
+                                        <p id="modalInputComments">{{comment}}</p>
                                     </div>
                                 </div>
                                 <!--MODAL BODY END-->
                             </div>
-                        </div>
+
                         <div class="modal-footer">
                             <p id="modalFooterThanks" class="text-left">Ačiū, kad domites banko paslaugomis.</p>
                             <p id="modalFooterInfo" class="text-left">Jeigu Jums reikalinga skubi informacija, laukiame
                                 Jūsų skambučių telefonu 1884, darbo dienomis 8-20val., šeštadieniais 9-16 val.</p>
-                            <button type="button" class="btn btn-default"><a href="registrationInfo.html"
-                                                                             id="modalButtonBack">Gerai</a></button>
+                            <button type="button" class="btn"><a href="registrationInfo.html"
+                                                                 id="modalButtonBack">Gerai</a></button>
+                        </div>
                         </div>
                     </div>
 

@@ -17,9 +17,14 @@ app.config(function($routeProvider, $locationProvider){
         .when('/consultation-registration', {
             templateUrl: '../consultation-registration.html',
             controller: 'ConsultationRegistrationController'
+        })
+        .when('/registration-list', {
+            templateUrl: '../registration-list.html',
+            controller: 'RegistrationListController'
         });
 
-    //kazkodel neveikia
+
+    //kazkodel neveikia (kad is url panaikintu '#/'
     //$locationProvider.html5Mode(true);
 });
 

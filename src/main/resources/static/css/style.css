@@ -80,15 +80,21 @@ body{
 }
 
 #logo{
-    width: 65%;
+    max-width: 120px;
+/ / width: 65 %;
 }
 
 #flag{
-    width: 30%;
+    max-width: 40px;
+/ / width: 30 %;
     float: right;
 
 }
 
+.no-margin {
+
+    margin: 0px !important;
+}
 
 
 .form-top-left{
@@ -141,7 +147,8 @@ body{
 }
 
 .search{
-    display: none;
+
+/ / display: none;
     overflow: hidden;
     padding: 10px 0px 10px 0px;
 
