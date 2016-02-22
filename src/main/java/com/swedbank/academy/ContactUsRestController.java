@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 public class ContactUsRestController {
 
-    private final AtomicLong counter = new AtomicLong();
+  /*  private final AtomicLong counter = new AtomicLong();
     ContactFormDataHolder contactFormDataHolder;
     List<ContactFormDataHolder> contactFormDataHolderList;
 
@@ -57,6 +57,6 @@ public class ContactUsRestController {
                 requestParams.get("radioValue"));
 
         contactFormDataHolderList.add(registrationDataHolder);
-    }
+    }*/
 
     }
