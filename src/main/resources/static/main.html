@@ -1,4 +1,4 @@
-<div class="row" ng-controller="MainController">
+<div class="row">
 
     <div class="col-sm-4 col-sm-offset-4 form-box">
         <div class="form-top">
@@ -17,7 +17,7 @@
 
                 <a href="#/consultation-registration" class="btn">{{ 'reg_header' | translate }}</a>
                 <a href="#/contact-us" class="btn">{{ 'contact' | translate }}</a>
-                <a href="#/registration-list" class="btn" onmouseover="showNumberForm()">{{ 'info' | translate }}</a>
+                 <a href="" class="btn"  id="btnHousing" onclick="setColor('btnHousing','#eaeaea');">{{ 'info' | translate }}</a>
 
                 <div class="search">
                     <div class="searchLeft">
@@ -25,7 +25,7 @@
                                placeholder="{{ 'reg_phone' | translate }}">
                     </div>
                     <div class="searchRight">
-                        <img id="search" src="../img/search.png" alt="search" onmouseover="searchForNumber()" ng-click="getPhoneNumber(phoneSearch)">
+                        <img id="search" src="../img/search.png" alt="search" ng-click="getPhoneNumber(phoneSearch)">
                     </div>
                 </div>
 
