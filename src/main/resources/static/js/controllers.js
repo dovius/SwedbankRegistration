@@ -152,6 +152,7 @@ app.controller("MainController", ['translateService', '$scope', '$http', functio
             console.log("nera");
             document.getElementById("inputPhone").style.borderColor = "red";
             $('#search').addClass('animated  shake');
+
         }
         else {
             console.log("yra");
