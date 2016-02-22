@@ -105,13 +105,13 @@ app.config(['$translateProvider', function ($translateProvider) {
         .preferredLanguage('lt');
 }]);
 
-app.config(function($routeProvider, $locationProvider){
+app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
-        .when('/',{
+        .when('/', {
             templateUrl: '../main.html',
             controller: 'MainController'
         })
-        .when('/contact-us',{
+        .when('/contact-us', {
             templateUrl: '../contact-us.html',
             controller: 'ContactUsController'
         })
@@ -156,7 +156,6 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
     $scope.translate = function () {
         translateService.translateFunction();
     };
-app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$http', function ($translate, $scope, $http, $filter) {
 
     $scope.Registration = function () {
         var data = $.param({
@@ -170,7 +169,7 @@ app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$
             comment: $scope.comment
         });
 
-        $http.put('http://betaregistration-kirviai.rhcloud.com/api/register?' + data) // TODO FIX
+        $http.put('http://localhost:8080/api/register?' + data) // TODO FIX
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
                 modalShow();
@@ -184,42 +183,12 @@ app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$
     };
 }]);
 
-
-        var data = $.param({
-            name: $scope.name,
-            surname: $scope.surname,
-            phone: $scope.phone,
-            email: $scope.email,
-            bank: $scope.bank,
-            date: ($scope.date.getDate() + "-" + $scope.date.getMonth() + 1) + "-" + $scope.date.getFullYear(),
-            time: ($scope.time.getHours() + ":" + $scope.time.getMinutes()),
-            subject: $scope.subject,
-            comment: $scope.comment
-        });
-
-        modalShow();
-
-        $http.put('http://localhost:8080/api/register?' + data) // TODO FIX
-            .success(function (data, status, headers) {
-                $scope.ServerResponse = data;
-            //    modalShow();
-            })
-            .error(function (data, status, header, config) {
-                $scope.ServerResponse = htmlDecode("Data: " + data +
-                    "\n\n\n\nstatus: " + status +
-                    "\n\n\n\nheaders: " + header +
-                    "\n\n\n\nconfig: " + config);
-            });
-    };
-}]);
-
 //http://localhost:8080/api/searchRegistrationByPhoneNumber?phoneNumber=86924312
-
 app.controller('RegistrationListByPhoneNumberController', function ($scope, $http) {
 
     var number;
 
-    $scope.GetNumber = function (){
+    $scope.GetNumber = function () {
         number = $scope.number;
     };
 
@@ -234,73 +203,7 @@ app.controller('RegistrationListByPhoneNumberController', function ($scope, $htt
     });
 });
 
-app.controller('RegistrationListController', ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
-
-
-    $scope.translate = function () {
-        translateService.translateFunction();
-    };
-    $scope.registrations = [{
-        "id": 1,
-        "name": "Vytautas",
-        "surname": "Sugintas",
-        "number": "Antakalnio g. 45",
-        "email": "",
-        "bank": "Antakalnio g. 45",
-        "date": "Fri Feb 26 2016 00:00:00 GMT+0200 (EET)",
-        "time": null,
-        "subject": "Paskolos, lizingas",
-        "comment": "Galiu v?luoti apie 15 minu?i?"
-    }, {
-        "id": 2,
-        "name": "Vygintas",
-        "surname": "Starkus",
-        "number": "Gedimino pr. 56",
-        "email": "",
-        "bank": "Gedimino pr. 56",
-        "date": "Sat Feb 20 2016 00:00:00 GMT+0200 (EET)",
-        "time": null,
-        "subject": "Ne gyvyb?s draudimas",
-        "comment": "Aruodas"
-    }, {
-        "id": 3,
-        "name": "Martynas",
-        "surname": "Labinskas",
-        "number": "Ateisties g. 91 (PC „Mandarinas“)",
-        "email": "",
-        "bank": "Ateisties g. 91 (PC „Mandarinas“)",
-        "date": "Thu Feb 18 2016 00:00:00 GMT+0200 (EET)",
-        "time": null,
-        "subject": "Gyvyb?s draudimas",
-        "comment": "Pameciau raktus"
-    }, {
-        "id": 4,
-        "name": "Vytautas",
-        "surname": "Sugintas",
-        "number": "qq",
-        "email": "123",
-        "bank": "qq",
-        "date": "2015",
-        "time": "14.10",
-        "subject": "paskola",
-        "comment": "cool"
-    }, {
-        "id": 5,
-        "name": "aa",
-        "surname": "aa",
-        "number": "Ateisties g. 91 (PC „Mandarinas“)",
-        "email": "",
-        "bank": "Ateisties g. 91 (PC „Mandarinas“)",
-        "date": "",
-        "time": null,
-        "subject": "Pensijos ir kaupimas",
-        "comment": "22"
-    }];
-    /*$http({
-app.controller('')
-
 app.controller('RegistrationListController', function ($scope, $http) {
-
     $http({
         method: 'GET',
         url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
@@ -312,18 +215,26 @@ app.controller('RegistrationListController', function ($scope, $http) {
     });
 
     var regId;
+    var index;
 
-    $scope.info = function (id) {
-        regId = id;
-        console.log("labas");
+    $scope.info = function (item) {
+        regId = item.id;
+        index = $scope.registrations.indexOf(item);
         console.log(regId);
-    }
+    };
 
-    $scope.showRegId = function(){
-        console.log(regId);
+    $scope.deleteFromDb = function (item) {
+
+        $scope.registrations.splice(index, 1);
+
+        console.log(index);
+
         var data = $.param({
-            ID : regId
+            ID: regId
         });
+
+        hideRegDeleteModal();
+
 
         $http.delete('http://localhost:8080/api/delete?' + data) // TODO FIX
             .success(function (data, status, headers) {
@@ -333,6 +244,7 @@ app.controller('RegistrationListController', function ($scope, $http) {
             .error(function (data, status, header, config) {
                 $scope.ServerResponse = htmlDecode("SOMETHING WENT WRONG");
             });
+
     }
 
 });
@@ -373,7 +285,13 @@ function modalShow() {
 }
 
 function modalHide() {
-    $('#myModal').modal('show');
+    $('#myModal').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+}
+
+function hideRegDeleteModal() {
+    $('#confirm-delete').modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
 }
