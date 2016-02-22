@@ -151,29 +151,27 @@ app.controller("MainController", ['translateService', '$scope', function (transl
 
 }]);
 
-app.controller("ConsultationRegistrationController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
+app.controller("ContactUsController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
 
     $scope.translate = function () {
         translateService.translateFunction();
     };
-app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$http', function ($translate, $scope, $http, $filter) {
 
-    $scope.Registration = function () {
+    $scope.ContactUs = function () {
+
         var data = $.param({
+            subject: $scope.subject,
+            message: $scope.message,
             name: $scope.name,
             surname: $scope.surname,
-            number: $scope.number,
+            number: $scope.phone,
             email: $scope.email,
-            bank: $scope.bank,
-            date: $scope.date,
-            subject: $scope.subject,
-            comment: $scope.comment
+            radioValue: $scope.radioValue
         });
 
-        $http.put('http://betaregistration-kirviai.rhcloud.com/api/register?' + data) // TODO FIX
+        $http.put('http://betaregistration-kirviai.rhcloud.com/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
-                modalShow();
             })
             .error(function (data, status, header, config) {
                 $scope.ServerResponse = htmlDecode("Data: " + data +
@@ -184,6 +182,13 @@ app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$
     };
 }]);
 
+app.controller("ConsultationRegistrationController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
+
+    $scope.translate = function () {
+        translateService.translateFunction();
+    };
+
+    $scope.Registration = function () {
 
         var data = $.param({
             name: $scope.name,
@@ -202,7 +207,7 @@ app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$
         $http.put('http://localhost:8080/api/register?' + data) // TODO FIX
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
-            //    modalShow();
+                //    modalShow();
             })
             .error(function (data, status, header, config) {
                 $scope.ServerResponse = htmlDecode("Data: " + data +
@@ -240,6 +245,7 @@ app.controller('RegistrationListController', ['translateService', '$scope', '$ht
     $scope.translate = function () {
         translateService.translateFunction();
     };
+
     $scope.registrations = [{
         "id": 1,
         "name": "Vytautas",
@@ -295,96 +301,5 @@ app.controller('RegistrationListController', ['translateService', '$scope', '$ht
         "time": null,
         "subject": "Pensijos ir kaupimas",
         "comment": "22"
-    }];
-    /*$http({
-app.controller('')
-
-app.controller('RegistrationListController', function ($scope, $http) {
-
-    $http({
-        method: 'GET',
-        url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
-    }).then(function successCallback(response) {
-        $scope.registrations = response.data;
-        console.log(response);
-    }, function errorCallback(response) {
-        console.log(response);
-    });
-
-    var regId;
-
-    $scope.info = function (id) {
-        regId = id;
-        console.log("labas");
-        console.log(regId);
-    }
-
-    $scope.showRegId = function(){
-        console.log(regId);
-        var data = $.param({
-            ID : regId
-        });
-
-        $http.delete('http://localhost:8080/api/delete?' + data) // TODO FIX
-            .success(function (data, status, headers) {
-                $scope.ServerResponse = "DELETED";
-                //    modalShow();
-            })
-            .error(function (data, status, header, config) {
-                $scope.ServerResponse = htmlDecode("SOMETHING WENT WRONG");
-            });
-    }
-
-});
-
-app.controller("ContactUsController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
-
-    $scope.translate = function () {
-        translateService.translateFunction();
-    };
-
-    $scope.ContactUs = function () {
-
-        var data = $.param({
-            subject: $scope.subject,
-            message: $scope.message,
-            name: $scope.name,
-            surname: $scope.surname,
-            number: $scope.phone,
-            email: $scope.email,
-            radioValue: $scope.radioValue
-        });
-
-        $http.put('http://localhost:8080/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
-            .success(function (data, status, headers) {
-                $scope.ServerResponse = data;
-            })
-            .error(function (data, status, header, config) {
-                $scope.ServerResponse = htmlDecode("Data: " + data +
-                    "\n\n\n\nstatus: " + status +
-                    "\n\n\n\nheaders: " + header +
-                    "\n\n\n\nconfig: " + config);
-            });
-    };
+    }]
 }]);
-
-function modalShow() {
-    $('#myModal').modal('show');
-}
-
-function modalHide() {
-    $('#myModal').modal('show');
-    $('body').removeClass('modal-open');
-    $('.modal-backdrop').remove();
-}
-
-function showNewRegistrationConfirmModal() {
-    document.getElementById("modalInputName").innerHTML = document.getElementById("inputName").value;
-    document.getElementById("modalInputSurname").innerHTML = document.getElementById("inputSurname").value;
-    document.getElementById("modalInputPhone").innerHTML = document.getElementById("inputPhone").value;
-    document.getElementById("modalInputEmail").innerHTML = document.getElementById("inputEmail").value;
-    document.getElementById("modalInputBank").innerHTML = document.getElementById("inputBank").value;
-    document.getElementById("modalInputDate").innerHTML = document.getElementById("inputDate").value;
-    document.getElementById("modalInputTheme").innerHTML = document.getElementById("inputSubject").value;
-    document.getElementById("modalInputComments").innerHTML = document.getElementById("inputComment").value;
-}
