@@ -15,7 +15,7 @@
 
 
             <div class="form-group">
-                <label id="messageText" for="inputComment">Žinutės tekstas</label>
+                <label id="messageText" for="inputComment">{{ 'reg_info' | translate }}</label>
                     <textarea class="form-control" name="comments" maxlength="160" cols="34" rows="4" id="inputComment" ng-model="message"></textarea>
             </div>
             <div class="form-group">
@@ -37,14 +37,16 @@
             <div class="form-group" >
                 <label id="textAnswer">{{ 'reg_howget' | translate }}</label>
                 <br/>
-                <label id="radioPhone"><input type="radio" name="test" ng-model="radioValue" value="telefonu"/> {{
+                <label id="radioPhone"><input type="radio" name="test" ng-model="radioValue" value="{{
+                    'reg_howget1' | translate }}"/> {{
                     'reg_howget1' | translate }}</label>
                 <div/>
-                <label id="radioEmail"><input type="radio" name="test" ng-model="radioValue" value="el. paštu"/> {{
+                <label id="radioEmail"><input type="radio" name="test" ng-model="radioValue" value="{{
+                    'reg_howget2' | translate }}"/> {{
                     'reg_howget2' | translate }}</label>
                 <div/>
                 <label id="radioBoth"><input type="radio" name="test" ng-model="radioValue"
-                                             value="telefonu ir el.paštu"/> {{ 'reg_howget3' | translate }}</label>
+                                             value="{{ 'reg_howget3' | translate }}"/> {{ 'reg_howget3' | translate }}</label>
             </div>
 
             <button type="submit" class="btn" data-toggle="modal" data-target=".bs-example-modal-sm">{{ 'reg_send' |

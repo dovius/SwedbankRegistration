@@ -25,8 +25,29 @@ var enTranslations = {
     reg_send: 'Send',
     info_id: 'id',
 
+    reg_view: 'View',
+    reg_del: 'Delete',
+    reg_customer: 'Customer',
+    reg_action: 'Actions',
+    reg_howget: 'How do you like to receive reply?',
+    reg_howget1: 'By phone',
+    reg_howget2: 'By email',
+    reg_howget3: 'By phone and email',
+    reg_info: 'Text of message',
+    reg_conf: 'Registration confirm',
+    reg_thanks: 'Thank you for your interest in our bank services.',
+    reg_thanks2: 'If you need instant information, we will be waiting for your calls at 1884, on business days from 8.00 till 20.00 and on Saturdays from 9.00 till 16.00.',
+    reg_cancel: 'Cancel',
+    reg_question: 'Are you sure you want to delete?',
+    reg_delConf: "Confirm",
+    reg_viewReg: 'Registration review',
+    reg_selectSubject1: 'Saving & Investing',
+    reg_selectSubject2: 'Pension & accumulation',
+    reg_selectSubject3: 'Life insurance',
+    reg_selectSubject4: 'Non life insurance',
+    reg_selectSubject5: 'Loans',
+    reg_selectSubject6: 'Daily services',
 
-    reg_howget: 'ENGLISHKaip pageidaujate gauti atsakymą',
 
 };
 
@@ -49,7 +70,7 @@ var ltTranslations = {
     reg_submit: 'Patvirtinti',
     reg_select: 'Pasirinkite',
     reg_send: 'Siųsti',
-
+    reg_action: 'Veiksmai',
     img: '../img/enFlag.png',
     regconf: 'Registracijos patvirtinimas',
     reg_howget: 'Kaip pageidaujate gauti atsakymą',
@@ -58,9 +79,21 @@ var ltTranslations = {
     reg_howget3: 'telefonu ir el. paštu',
     reg_conf: 'Registracijos patvirtinimas',
     reg_info: 'žinutės tekstas',
-    reg_thanks: 'Ačiū, kad domites banko paslaugomis.',
+    reg_thanks: 'Ačiū, kad domitės banko paslaugomis.',
     reg_thanks2: 'Jeigu Jums reikalinga skubi informacija, laukiame Jūsų skambučių telefonu 1884, darbo dienomis 8-20val., šeštadieniais 9-16 val.',
-
+    reg_customer: 'Klientas',
+    reg_view: 'Peržiūrėti',
+    reg_del: 'Trinti',
+    reg_cancel: 'Atšaukti',
+    reg_question: 'Ar tikrai norite ištrinti?',
+    reg_delConf: "Patvirtinimas",
+    reg_viewReg: 'Registracijos peržiūra',
+    reg_selectSubject1: 'Taupymas ir investavimas',
+    reg_selectSubject2: 'Pensijos ir kaupimas',
+    reg_selectSubject3: 'Gyvybės draudimas',
+    reg_selectSubject4: 'Ne gyvybės draudimas',
+    reg_selectSubject5: 'Paskolos, lizingas',
+    reg_selectSubject6: 'Kasdieninių finansų valdymas',
 };
 
 
