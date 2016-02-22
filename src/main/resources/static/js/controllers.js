@@ -223,7 +223,11 @@ app.controller('RegistrationListByPhoneNumberController', function ($scope, $htt
     });
 });
 
-app.controller('RegistrationListController', function ($scope, $http) {
+app.controller('RegistrationListController', ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
+
+    $scope.translate = function () {
+        translateService.translateFunction();
+    };
     $http({
         method: 'GET',
         url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
@@ -267,7 +271,7 @@ app.controller('RegistrationListController', function ($scope, $http) {
 
     }
 
-});
+}]);
 
 app.controller("ContactUsController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
 
