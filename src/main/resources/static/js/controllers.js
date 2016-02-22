@@ -154,7 +154,7 @@ app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$
 
         modalShow();
 
-        $http.put('http://betaregistration-kirviai.rhcloud.com//api/register?' + data) // TODO FIX
+        $http.put('http://localhost:8080/api/register?' + data) // TODO FIX
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
             //    modalShow();
@@ -180,7 +180,7 @@ app.controller('RegistrationListByPhoneNumberController', function ($scope, $htt
 
     $http({
         method: 'GET',
-        url: 'http://betaregistration-kirviai.rhcloud.com//api/searchRegistrationByPhoneNumber?phoneNumber=' + number// TODO CHANGE URL BEFORE DEPLOYING
+        url: 'http://localhost:8080/api/searchRegistrationByPhoneNumber?phoneNumber=' + number// TODO CHANGE URL BEFORE DEPLOYING
     }).then(function successCallback(response) {
         $scope.registrations = response.data;
         console.log(response);
@@ -194,7 +194,7 @@ app.controller('')
 app.controller('RegistrationListController', function ($scope, $http) {
     $http({
         method: 'GET',
-        url: 'http://betaregistration-kirviai.rhcloud.com//api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
+        url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
     }).then(function successCallback(response) {
         $scope.registrations = response.data;
         console.log(response);
@@ -217,7 +217,7 @@ app.controller("ContactUsController", function ($scope, $http) {
             radioValue: $scope.radioValue
         });
 
-        $http.put('http://betaregistration-kirviai.rhcloud.com//api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
+        $http.put('http://localhost:8080/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
             })
@@ -232,6 +232,12 @@ app.controller("ContactUsController", function ($scope, $http) {
 
 function modalShow() {
     $('#myModal').modal('show');
+}
+
+function modalHide() {
+    $('#myModal').modal('show');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
 }
 
 function showNewRegistrationConfirmModal() {
