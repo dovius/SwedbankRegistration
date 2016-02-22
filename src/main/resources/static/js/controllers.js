@@ -143,7 +143,7 @@ app.factory('translateService', ['$translate', function ($translate) {
     };
 }]);
 
-app.controller("MainController", ['translateService', '$scope', function (translateService, $scope) {
+app.controller("MainController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
 
     $scope.translate = function () {
         translateService.translateFunction();
@@ -154,22 +154,52 @@ app.controller("MainController", ['translateService', '$scope', function (transl
         console.log(phone);
         $('#search').addClass('animated bounceIn');
 
-            var data = $.param({
-                number: phone
+        var data = $.param({
+            phoneNumber: phone
+        });
+
+        $http.get('http://localhost:8080/api/searchRegistrationByPhoneNumber?' + data) // TODO FIX
+            .success(function (data, status, headers) {
+                $scope.registrations = data.data;
+                console.log(data);
+            })
+
+            .error(function (data, status, header, config) {
+                $scope.ServerResponse = htmlDecode("error");
             });
-
-            $http.put('http://localhost:8080/api/searchRegistrationByPhoneNumber?' + data) // TODO FIX
-                .success(function (data, status, headers) {
-                    $scope.ServerResponse = data;
-                })
-
-                .error(function (data, status, header, config) {
-                    $scope.ServerResponse = htmlDecode("error");
-                });
-        };
+    };
 }]);
 
+app.controller("ContactUsController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
 
+    $scope.translate = function () {
+        translateService.translateFunction();
+    };
+
+    $scope.ContactUs = function () {
+
+        var data = $.param({
+            subject: $scope.subject,
+            message: $scope.message,
+            name: $scope.name,
+            surname: $scope.surname,
+            number: $scope.phone,
+            email: $scope.email,
+            radioValue: $scope.radioValue
+        });
+
+        $http.put('http://betaregistration-kirviai.rhcloud.com/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
+            .success(function (data, status, headers) {
+                $scope.ServerResponse = data;
+            })
+            .error(function (data, status, header, config) {
+                $scope.ServerResponse = htmlDecode("Data: " + data +
+                    "\n\n\n\nstatus: " + status +
+                    "\n\n\n\nheaders: " + header +
+                    "\n\n\n\nconfig: " + config);
+            });
+    };
+}]);
 
 app.controller("ConsultationRegistrationController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
 
@@ -178,16 +208,20 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
     };
 
     $scope.Registration = function () {
+
         var data = $.param({
             name: $scope.name,
             surname: $scope.surname,
-            number: $scope.number,
+            phone: $scope.phone,
             email: $scope.email,
             bank: $scope.bank,
-            date: $scope.date,
+            date: ($scope.date.getDate() + "-" + $scope.date.getMonth() + 1) + "-" + $scope.date.getFullYear(),
+            time: ($scope.time.getHours() + ":" + $scope.time.getMinutes()),
             subject: $scope.subject,
             comment: $scope.comment
         });
+
+        modalShow();
 
         $http.put('http://localhost:8080/api/register?' + data) // TODO FIX
             .success(function (data, status, headers) {
@@ -202,26 +236,6 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
             });
     };
 }]);
-
-//http://localhost:8080/api/searchRegistrationByPhoneNumber?phoneNumber=86924312
-app.controller('RegistrationListByPhoneNumberController', function ($scope, $http) {
-
-    var number;
-
-    $scope.GetNumber = function () {
-        number = $scope.number;
-    };
-
-    $http({
-        method: 'GET',
-        url: 'http://localhost:8080/api/searchRegistrationByPhoneNumber?phoneNumber=' + number// TODO CHANGE URL BEFORE DEPLOYING
-    }).then(function successCallback(response) {
-        $scope.registrations = response.data;
-        console.log(response);
-    }, function errorCallback(response) {
-        console.log(response);
-    });
-});
 
 app.controller('RegistrationListController', function ($scope, $http) {
     $http({
