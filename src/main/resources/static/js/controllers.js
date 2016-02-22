@@ -158,7 +158,8 @@ app.controller("MainController", ['translateService', '$scope', '$http', functio
             phoneNumber: phone
         });
 
-        $http.get('http://localhost:8080/api/searchRegistrationByPhoneNumber?' + data) // TODO FIX
+
+        $http.get('http://betaregistration-kirviai.rhcloud.com/api/searchRegistrationByPhoneNumber?' + data) // TODO FIX
             .success(function (data, status, headers) {
                 $scope.registrations = data.data;
                 console.log(data);
@@ -223,7 +224,7 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
 
         modalShow();
 
-        $http.put('http://localhost:8080/api/register?' + data) // TODO FIX
+        $http.put('http://betaregistration-kirviai.rhcloud.com/api/register?' + data) // TODO FIX
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
                 modalShow();
@@ -240,7 +241,7 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
 app.controller('RegistrationListController', function ($scope, $http) {
     $http({
         method: 'GET',
-        url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
+        url: 'http://betaregistration-kirviai.rhcloud.com/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
     }).then(function successCallback(response) {
         $scope.registrations = response.data;
         console.log(response);
@@ -270,7 +271,7 @@ app.controller('RegistrationListController', function ($scope, $http) {
         hideRegDeleteModal();
 
 
-        $http.delete('http://localhost:8080/api/delete?' + data) // TODO FIX
+        $http.delete('http://betaregistration-kirviai.rhcloud.com/api/delete?' + data) // TODO FIX
             .success(function (data, status, headers) {
                 $scope.ServerResponse = "DELETED";
                 //    modalShow();
@@ -301,7 +302,7 @@ app.controller("ContactUsController", ['translateService', '$scope', '$http', fu
             radioValue: $scope.radioValue
         });
 
-        $http.put('http://localhost:8080/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
+        $http.put('http://betaregistration-kirviai.rhcloud.com/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
             })

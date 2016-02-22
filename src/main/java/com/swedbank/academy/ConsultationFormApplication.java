@@ -9,7 +9,7 @@ public class ConsultationFormApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ConsultationFormApplication.class, args);
-        //ConnectToDB connectToDB = new ConnectToDB();
+        ConnectToDB connectToDB = new ConnectToDB();
     }
 }
 
