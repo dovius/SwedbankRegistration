@@ -156,6 +156,7 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
     $scope.translate = function () {
         translateService.translateFunction();
     };
+app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$http', function ($translate, $scope, $http, $filter) {
 
     $scope.Registration = function () {
         var data = $.param({
@@ -183,6 +184,34 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
     };
 }]);
 
+
+        var data = $.param({
+            name: $scope.name,
+            surname: $scope.surname,
+            phone: $scope.phone,
+            email: $scope.email,
+            bank: $scope.bank,
+            date: ($scope.date.getDate() + "-" + $scope.date.getMonth() + 1) + "-" + $scope.date.getFullYear(),
+            time: ($scope.time.getHours() + ":" + $scope.time.getMinutes()),
+            subject: $scope.subject,
+            comment: $scope.comment
+        });
+
+        modalShow();
+
+        $http.put('http://localhost:8080/api/register?' + data) // TODO FIX
+            .success(function (data, status, headers) {
+                $scope.ServerResponse = data;
+            //    modalShow();
+            })
+            .error(function (data, status, header, config) {
+                $scope.ServerResponse = htmlDecode("Data: " + data +
+                    "\n\n\n\nstatus: " + status +
+                    "\n\n\n\nheaders: " + header +
+                    "\n\n\n\nconfig: " + config);
+            });
+    };
+}]);
 
 //http://localhost:8080/api/searchRegistrationByPhoneNumber?phoneNumber=86924312
 
@@ -268,6 +297,11 @@ app.controller('RegistrationListController', ['translateService', '$scope', '$ht
         "comment": "22"
     }];
     /*$http({
+app.controller('')
+
+app.controller('RegistrationListController', function ($scope, $http) {
+
+    $http({
         method: 'GET',
         url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
     }).then(function successCallback(response) {
@@ -275,8 +309,33 @@ app.controller('RegistrationListController', ['translateService', '$scope', '$ht
         console.log(response);
     }, function errorCallback(response) {
         console.log(response);
-     });*/
-}]);
+    });
+
+    var regId;
+
+    $scope.info = function (id) {
+        regId = id;
+        console.log("labas");
+        console.log(regId);
+    }
+
+    $scope.showRegId = function(){
+        console.log(regId);
+        var data = $.param({
+            ID : regId
+        });
+
+        $http.delete('http://localhost:8080/api/delete?' + data) // TODO FIX
+            .success(function (data, status, headers) {
+                $scope.ServerResponse = "DELETED";
+                //    modalShow();
+            })
+            .error(function (data, status, header, config) {
+                $scope.ServerResponse = htmlDecode("SOMETHING WENT WRONG");
+            });
+    }
+
+});
 
 app.controller("ContactUsController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
 
@@ -296,7 +355,7 @@ app.controller("ContactUsController", ['translateService', '$scope', '$http', fu
             radioValue: $scope.radioValue
         });
 
-        $http.put('http://betaregistration-kirviai.rhcloud.com/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
+        $http.put('http://localhost:8080/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
             })
@@ -310,8 +369,13 @@ app.controller("ContactUsController", ['translateService', '$scope', '$http', fu
 }]);
 
 function modalShow() {
-    showNewRegistrationConfirmModal();
     $('#myModal').modal('show');
+}
+
+function modalHide() {
+    $('#myModal').modal('show');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
 }
 
 function showNewRegistrationConfirmModal() {

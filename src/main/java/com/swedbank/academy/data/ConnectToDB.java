@@ -139,7 +139,8 @@ public class ConnectToDB {
     public void removeRegistration(int ID){
         try {
             Statement statement = dbConnection.createStatement();
-            statement.executeQuery("DELETE FROM Registration WHERE ID = " + ID);
+
+            statement.executeUpdate("DELETE FROM `Registration` WHERE `ID` = " + ID);
         }catch (SQLException e){
             e.printStackTrace();
         }
