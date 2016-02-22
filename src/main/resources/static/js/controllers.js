@@ -96,7 +96,6 @@ var ltTranslations = {
     reg_selectSubject6: 'Kasdieninių finansų valdymas',
 };
 
-
 app.config(['$translateProvider', function ($translateProvider) {
     // add translation table
     $translateProvider
@@ -126,7 +125,6 @@ app.config(function ($routeProvider, $locationProvider) {
     //.otherwise({
     //    redirectTo: '/'
     //});
-
 
     //kazkodel neveikia (kad is url panaikintu '#/'
     //$locationProvider.html5Mode(true);
@@ -238,14 +236,14 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
 }]);
 
 app.controller('RegistrationListController', function ($scope, $http) {
+
     $http({
         method: 'GET',
         url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
     }).then(function successCallback(response) {
         $scope.registrations = response.data;
-        console.log(response);
     }, function errorCallback(response) {
-        console.log(response);
+        console.log("Error: " + response);
     });
 
     var regId;
