@@ -194,6 +194,7 @@ app.controller('RegistrationListByPhoneNumberController', function ($scope, $htt
 app.controller('')
 
 app.controller('RegistrationListController', function ($scope, $http) {
+
     $http({
         method: 'GET',
         url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
@@ -203,6 +204,12 @@ app.controller('RegistrationListController', function ($scope, $http) {
     }, function errorCallback(response) {
         console.log(response);
     });
+
+    $scope.info(id)
+    {
+        console.log("labas");
+        console.log(id);
+    }
 });
 
 app.controller("ContactUsController", function ($scope, $http) {

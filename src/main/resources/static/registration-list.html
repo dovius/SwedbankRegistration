@@ -67,7 +67,7 @@
                         <th>{{registration.subject}}</th>
                         <th><a data-toggle="modal" data-target=".bs-example-modal-big"
                                ng-click="nr = key">{{ 'reg_view' | translate }}</a>
-                            <a data-toggle="modal" data-target="#confirm-delete" ng-click="nr = key">{{ 'reg_del' | translate }}</a>
+                            <a data-toggle="modal" data-target="#confirm-delete" ng-click="nr = key; info(registration.id)">{{ 'reg_del' | translate }}</a>
                     </tr>
                     </tbody>
                 </table>
