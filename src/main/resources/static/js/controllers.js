@@ -145,29 +145,44 @@ app.factory('translateService', ['$translate', function ($translate) {
 
 app.controller("MainController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
 
+    $scope.testInput = function (phone) {
+        document.getElementById("inputPhone").style.borderColor = "black";
+        console.log(phone);
+        if (typeof  phone == "undefined") {
+            console.log("nera");
+            document.getElementById("inputPhone").style.borderColor = "red";
+            $('#search').addClass('animated  shake');
+        }
+        else {
+            console.log("yra");
+            document.getElementById("inputPhone").style.borderColor = "black ";
+        }
+    }
+
     $scope.translate = function () {
         translateService.translateFunction();
     };
 
-    $scope.getPhoneNumber = function(phone)
-    {
-        console.log(phone);
-        $('#search').addClass('animated bounceIn');
+    if (typeof phone !== "undefined") {
+        $scope.getPhoneNumber = function (phone) {
+            console.log(phone);
+            $('#search').addClass('animated bounceIn');
 
-        var data = $.param({
-            phoneNumber: phone
-        });
-
-        $http.get('http://localhost:8080/api/searchRegistrationByPhoneNumber?' + data) // TODO FIX
-            .success(function (data, status, headers) {
-                $scope.registrations = data.data;
-                console.log(data);
-            })
-
-            .error(function (data, status, header, config) {
-                $scope.ServerResponse = htmlDecode("error");
+            var data = $.param({
+                phoneNumber: phone
             });
-    };
+
+            $http.get('http://localhost:8080/api/searchRegistrationByPhoneNumber?' + data) // TODO FIX
+                .success(function (data, status, headers) {
+                    $scope.registrations = data.data;
+                    console.log(data);
+                })
+
+                .error(function (data, status, header, config) {
+                    $scope.ServerResponse = htmlDecode("error");
+                });
+        };
+    }
 }]);
 
 app.controller("ContactUsController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
