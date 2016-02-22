@@ -162,6 +162,7 @@ app.controller("MainController", ['translateService', '$scope', function (transl
                 .success(function (data, status, headers) {
                     $scope.ServerResponse = data;
                 })
+
                 .error(function (data, status, header, config) {
                     $scope.ServerResponse = htmlDecode("error");
                 });
