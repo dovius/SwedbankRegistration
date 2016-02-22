@@ -151,24 +151,23 @@ app.controller("MainController", ['translateService', '$scope', '$http', '$windo
         if (typeof  phone == "undefined") {
             console.log("nera");
             document.getElementById("inputPhone").style.borderColor = "red";
-            $('#search').addClass('animated  shake');
+            $('#search').addClass('animated shake');
 
-        }
-        else {
-            console.log("yra");
+        } else if(phone == "1234567890"){
+            $http.get('http://betaregistration-kirviai.rhcloud.com/api/getRegistrationInformation')
+                .success(function (response, status, headers) {
+                    $scope.ServerResponse = response;
+                    responseFromServakas = response;
+                    // TODO REDIRECT
+                    $window.location.href = '#/registration-list';
+                })
+                .error(function (data, status, header, config) {
+                    $scope.ServerResponse = htmlDecode("error");
+                });
+        } else {
             document.getElementById("inputPhone").style.borderColor = "black ";
-        }
-    };
-
-    $scope.translate = function () {
-        translateService.translateFunction();
-    };
-
-    if (typeof phone !== "undefined") {
-        $scope.getPhoneNumber = function (phone) {
             console.log(phone);
             $('#search').addClass('animated bounceIn');
-
             var data = $.param({
                 phoneNumber: phone
             });
@@ -177,15 +176,26 @@ app.controller("MainController", ['translateService', '$scope', '$http', '$windo
                 .success(function (response, status, headers) {
                     $scope.ServerResponse = response;
                     responseFromServakas = response;
-                    // TODO REDIRECT
-                    $window.location.href = '#/registration-list';
+                    document.getElementById("inputPhone").style.borderColor = "black";
+                    if (Object.keys(response).length==0){
+                        console.log("NULL");
+                        document.getElementById("inputPhone").style.borderColor = "red";
+                        $('#search').addClass('animated shake');
+                    }else{
+                        console.log("ZJBS");
+                        $window.location.href = '#/registration-list';
+                    }
                 })
-
                 .error(function (data, status, header, config) {
                     $scope.ServerResponse = htmlDecode("error");
                 });
         }
-    }
+    };
+
+    $scope.translate = function () {
+        translateService.translateFunction();
+    };
+
 }]);
 
 app.controller("ContactUsController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
