@@ -205,11 +205,30 @@ app.controller('RegistrationListController', function ($scope, $http) {
         console.log(response);
     });
 
-    $scope.info(id)
-    {
+    var regId;
+
+    $scope.info = function (id) {
+        regId = id;
         console.log("labas");
-        console.log(id);
+        console.log(regId);
     }
+
+    $scope.showRegId = function(){
+        console.log(regId);
+        var data = $.param({
+            ID : regId
+        });
+
+        $http.delete('http://localhost:8080/api/delete?' + data) // TODO FIX
+            .success(function (data, status, headers) {
+                $scope.ServerResponse = "DELETED";
+                //    modalShow();
+            })
+            .error(function (data, status, header, config) {
+                $scope.ServerResponse = htmlDecode("SOMETHING WENT WRONG");
+            });
+    }
+
 });
 
 app.controller("ContactUsController", function ($scope, $http) {

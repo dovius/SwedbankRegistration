@@ -25,7 +25,7 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "api/searchRegistrationByPhoneNumber")
-    public List<RegistrationDataHolder> searchRegistrationByPhoneNumber(@RequestParam String phoneNumber){
+    public List<RegistrationDataHolder> searchRegistrationByPhoneNumber(@RequestParam String phoneNumber) {
         return MySQLconnection.getRegistrationsByPhoneNumber(phoneNumber);// TODO METHOD FROM MYSQL
     }
 
@@ -41,18 +41,18 @@ public class RegistrationController {
                 requestParams.get("time"),
                 requestParams.get("subject"),
                 requestParams.get("comment"));
-            MySQLconnection.addNewRegistration(registrationDataHolder);
+        MySQLconnection.addNewRegistration(registrationDataHolder);
 
         return registrationDataHolder;
     }
 
     @RequestMapping(value = "api/dbNames")
-    public List<String> returnNamesFromDb(){
+    public List<String> returnNamesFromDb() {
         return MySQLconnection.returnNamesOfCustomers();
     }
 
-    @RequestMapping(value = "api/delete")
-    public void deleteFromDb(@RequestParam String ID){
+    @RequestMapping(value = "api/delete", method = RequestMethod.DELETE)
+    public void deleteFromDb(@RequestParam String ID) {
         MySQLconnection.removeRegistration(new Integer(ID));
     }
 
