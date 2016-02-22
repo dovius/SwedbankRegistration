@@ -13,8 +13,8 @@ public class ConnectToDB {
 
 
     /* OPEN SHIFT DB INFO */
-    //String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-    String host = "127.0.0.1"; // <-- this is local for openshift
+    String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+    //String host = "127.0.0.1"; // <-- this is local for openshift
     String username = "adminbC5E997";
     String password = "3jmBBK-uWdqM";
     String dbName = "betaregistration";

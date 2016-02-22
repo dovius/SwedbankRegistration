@@ -152,10 +152,12 @@ app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$
             comment: $scope.comment
         });
 
-        $http.put('http://betaregistration-kirviai.rhcloud.com/api/register?' + data) // TODO FIX
+        modalShow();
+
+        $http.put('http://betaregistration-kirviai.rhcloud.com//api/register?' + data) // TODO FIX
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
-                modalShow();
+            //    modalShow();
             })
             .error(function (data, status, header, config) {
                 $scope.ServerResponse = htmlDecode("Data: " + data +
@@ -165,35 +167,6 @@ app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$
             });
     };
 }]);
-
-app.controller("ConsultationRegistrationController", function ($scope, $http) {
-
-    $scope.Registration = function () {
-        var data = $.param({
-            name: $scope.name,
-            surname: $scope.surname,
-            phone: $scope.phone,
-            email: $scope.email,
-            bank: $scope.bank,
-            date: $scope.date,
-            time: $scope.time,      // TODO FIX
-            subject: $scope.subject,
-            comment: $scope.comment
-        });
-
-        $http.put('http://localhost:8080/api/register?' + data) // TODO CHANGE URL BEFORE DEPLOYING
-            .success(function (data, status, headers) {
-                $scope.ServerResponse = data;
-            })
-            .error(function (data, status, header, config) {
-                $scope.ServerResponse = htmlDecode("Data: " + data +
-                    "\n\n\n\nstatus: " + status +
-                    "\n\n\n\nheaders: " + header +
-                    "\n\n\n\nconfig: " + config);
-            });
-        modalClose();
-    };
-});
 
 //http://localhost:8080/api/searchRegistrationByPhoneNumber?phoneNumber=86924312
 
@@ -207,7 +180,7 @@ app.controller('RegistrationListByPhoneNumberController', function ($scope, $htt
 
     $http({
         method: 'GET',
-        url: 'http://localhost:8080/api/searchRegistrationByPhoneNumber?phoneNumber=' + number// TODO CHANGE URL BEFORE DEPLOYING
+        url: 'http://betaregistration-kirviai.rhcloud.com//api/searchRegistrationByPhoneNumber?phoneNumber=' + number// TODO CHANGE URL BEFORE DEPLOYING
     }).then(function successCallback(response) {
         $scope.registrations = response.data;
         console.log(response);
@@ -216,10 +189,12 @@ app.controller('RegistrationListByPhoneNumberController', function ($scope, $htt
     });
 });
 
+app.controller('')
+
 app.controller('RegistrationListController', function ($scope, $http) {
     $http({
         method: 'GET',
-        url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
+        url: 'http://betaregistration-kirviai.rhcloud.com//api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
     }).then(function successCallback(response) {
         $scope.registrations = response.data;
         console.log(response);
@@ -242,7 +217,7 @@ app.controller("ContactUsController", function ($scope, $http) {
             radioValue: $scope.radioValue
         });
 
-        $http.put('http://betaregistration-kirviai.rhcloud.com/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
+        $http.put('http://betaregistration-kirviai.rhcloud.com//api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
             })
@@ -256,7 +231,6 @@ app.controller("ContactUsController", function ($scope, $http) {
 });
 
 function modalShow() {
-    showNewRegistrationConfirmModal();
     $('#myModal').modal('show');
 }
 
