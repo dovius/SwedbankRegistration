@@ -8,7 +8,7 @@ var enTranslations = {
     register: 'Register for consultation',
     contact_header: 'Contact us',
     contact: 'Write us',
-    info: 'Registration overview',
+    info: 'Registration overview', 
 
     img: '../img/ltFlag.png',
     reg_header: 'Register for consultation online',
