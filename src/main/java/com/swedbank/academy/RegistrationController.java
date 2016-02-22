@@ -24,7 +24,7 @@ public class RegistrationController {
         return MySQLconnection.getAllRegistrations();
     }
 
-    @RequestMapping(value = "api/searchRegistrationByPhoneNumber")
+    @RequestMapping(value = "api/searchRegistrationByPhoneNumber", method = RequestMethod.GET)
     public List<RegistrationDataHolder> searchRegistrationByPhoneNumber(@RequestParam String phoneNumber) {
         return MySQLconnection.getRegistrationsByPhoneNumber(phoneNumber);// TODO METHOD FROM MYSQL
     }
@@ -55,5 +55,6 @@ public class RegistrationController {
     public void deleteFromDb(@RequestParam String ID) {
         MySQLconnection.removeRegistration(new Integer(ID));
     }
+
 }
 

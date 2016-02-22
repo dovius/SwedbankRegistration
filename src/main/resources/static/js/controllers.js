@@ -96,7 +96,6 @@ var ltTranslations = {
     reg_selectSubject6: 'Kasdieninių finansų valdymas',
 };
 
-
 app.config(['$translateProvider', function ($translateProvider) {
     // add translation table
     $translateProvider
@@ -127,7 +126,6 @@ app.config(function ($routeProvider, $locationProvider) {
     //    redirectTo: '/'
     //});
 
-
     //kazkodel neveikia (kad is url panaikintu '#/'
     //$locationProvider.html5Mode(true);
 });
@@ -143,7 +141,9 @@ app.factory('translateService', ['$translate', function ($translate) {
     };
 }]);
 
-app.controller("MainController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
+var responseFromServakas; // TODO DELETE LATER
+
+app.controller("MainController", ['translateService', '$scope', '$http', '$window', function (translateService, $scope, $http, $window) {
 
     $scope.testInput = function (phone) {
         document.getElementById("inputPhone").style.borderColor = "black";
@@ -158,7 +158,7 @@ app.controller("MainController", ['translateService', '$scope', '$http', functio
             console.log("yra");
             document.getElementById("inputPhone").style.borderColor = "black ";
         }
-    }
+    };
 
     $scope.translate = function () {
         translateService.translateFunction();
@@ -174,15 +174,17 @@ app.controller("MainController", ['translateService', '$scope', '$http', functio
             });
 
             $http.get('http://betaregistration-kirviai.rhcloud.com/api/searchRegistrationByPhoneNumber?' + data) // TODO FIX
-                .success(function (data, status, headers) {
-                    $scope.registrations = data.data;
-                    console.log(data);
+                .success(function (response, status, headers) {
+                    $scope.ServerResponse = response;
+                    responseFromServakas = response;
+                    // TODO REDIRECT
+                    $window.location.href = '#/registration-list';
                 })
 
                 .error(function (data, status, header, config) {
                     $scope.ServerResponse = htmlDecode("error");
                 });
-        };
+        }
     }
 }]);
 
@@ -253,16 +255,22 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
     };
 }]);
 
-app.controller('RegistrationListController', function ($scope, $http) {
-    $http({
-        method: 'GET',
-        url: 'http://betaregistration-kirviai.rhcloud.com/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
-    }).then(function successCallback(response) {
-        $scope.registrations = response.data;
-        console.log(response);
-    }, function errorCallback(response) {
-        console.log(response);
-    });
+app.controller("RegistrationListController", ['translateService', '$scope', '$http', '$rootScope', function (translateService, $scope, $http, $rootScope) {
+
+
+    $scope.registrations = responseFromServakas;
+
+    console.log(responseFromServakas);
+    /*    $http({
+     method: 'GET',
+     url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
+     }).then(function successCallback(response) {
+
+
+     }, function errorCallback(response) {
+     console.log("Error: " + response);
+     });*/
+
 
     var regId;
     var index;
@@ -286,7 +294,7 @@ app.controller('RegistrationListController', function ($scope, $http) {
         hideRegDeleteModal();
 
 
-        $http.delete('http://localhost:8080/api/delete?' + data) // TODO FIX
+        $http.delete('http://betaregistration-kirviai.rhcloud.com/api/delete?' + data) // TODO FIX
             .success(function (data, status, headers) {
                 $scope.ServerResponse = "DELETED";
                 //    modalShow();
@@ -297,7 +305,7 @@ app.controller('RegistrationListController', function ($scope, $http) {
 
     }
 
-});
+}]);
 
 app.controller("ContactUsController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
 
@@ -320,7 +328,6 @@ app.controller("ContactUsController", ['translateService', '$scope', '$http', fu
         $http.put('http://betaregistration-kirviai.rhcloud.com/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
-
             })
             .error(function (data, status, header, config) {
                 $scope.ServerResponse = htmlDecode("Data: " + data +

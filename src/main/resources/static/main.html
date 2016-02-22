@@ -1,4 +1,4 @@
-<div class="row" ng-controller="MainController">
+<div class="row">
 
     <div class="col-sm-4 col-sm-offset-4 form-box">
         <div class="form-top">
@@ -21,13 +21,11 @@
 
                 <div class="search">
                     <div class="searchLeft">
-                        <input type="number" required="required " class="form-control form-number" id="inputPhone"
-                               ng-model="phoneSearch"
+                        <input type="number" class="form-control form-number" id="inputPhone" ng-model="phoneSearch"
                                placeholder="{{ 'reg_phone' | translate }}">
                     </div>
                     <div class="searchRight">
-                        <img id="search" src="../img/search.png" alt="search"
-                             ng-click="getPhoneNumber(phoneSearch); testInput(phoneSearch) ">
+                        <img id="search" src="../img/search.png" alt="search"  ng-click="getPhoneNumber(phoneSearch); testInput(phoneSearch)">
                     </div>
                 </div>
 

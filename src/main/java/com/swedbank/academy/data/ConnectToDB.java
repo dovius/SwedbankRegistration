@@ -11,8 +11,10 @@ import java.util.List;
  */
 public class ConnectToDB {
 
-    //* OPEN SHIFT DB INFO *//
+
+    /* OPEN SHIFT DB INFO */
     String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+    //String host = "127.0.0.1"; // <-- this is local for openshift
     String username = "adminbC5E997";
     String password = "3jmBBK-uWdqM";
     String dbName = "betaregistration";
@@ -46,7 +48,10 @@ public class ConnectToDB {
         return dataSource;
     }
 
-
+    /**
+     * This method return all names from registrations
+     * TODO REMOVE LATER
+     */
     public ArrayList<String> returnNamesOfCustomers() {
         ArrayList<String> names = new ArrayList<>();
         Statement stmt = null;
@@ -63,7 +68,10 @@ public class ConnectToDB {
         return names;
     }
 
-
+    /**
+     * This method adds new registration to DB
+     * @param registrationDataHolder
+     */
     public void addNewRegistration(RegistrationDataHolder registrationDataHolder) {
         Statement statement = null;
         try {
@@ -87,7 +95,10 @@ public class ConnectToDB {
         }
     }
 
-
+    /**
+     * Method returns all registrations from DB
+     * @return List - all registrations
+     */
     public List<RegistrationDataHolder> getAllRegistrations() {
         List<RegistrationDataHolder> registrations = new ArrayList<>();
         try {
@@ -102,7 +113,11 @@ public class ConnectToDB {
         return registrations;
     }
 
-
+    /**
+     * Method to get all values form DB by phone number
+     * @param phoneNumber
+     * @return
+     */
     public List<RegistrationDataHolder> getRegistrationsByPhoneNumber(String phoneNumber){
         List<RegistrationDataHolder> registrationsByPhoneNumber = new ArrayList<>();
         try {
@@ -117,7 +132,10 @@ public class ConnectToDB {
         return registrationsByPhoneNumber;
     }
 
-
+    /**
+     * This method removes registration from DB
+     * @param ID - registration that have this ID will be removed
+     */
     public void removeRegistration(int ID){
         try {
             Statement statement = dbConnection.createStatement();
