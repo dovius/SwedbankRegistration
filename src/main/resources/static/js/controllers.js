@@ -144,10 +144,11 @@ app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$
         var data = $.param({
             name: $scope.name,
             surname: $scope.surname,
-            number: $scope.number,
+            phone: $scope.phone,
             email: $scope.email,
             bank: $scope.bank,
             date: $scope.date,
+            time: $scope.time,
             subject: $scope.subject,
             comment: $scope.comment
         });

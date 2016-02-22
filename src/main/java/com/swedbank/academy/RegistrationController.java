@@ -51,5 +51,10 @@ public class RegistrationController {
         return MySQLconnection.returnNamesOfCustomers();
     }
 
+    @RequestMapping(value = "api/delete")
+    public void deleteFromDb(@RequestParam String ID){
+        MySQLconnection.removeRegistration(new Integer(ID));
+    }
+
 }
 

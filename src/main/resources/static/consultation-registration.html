@@ -54,7 +54,14 @@
                 <div class="form-group">
                     <label for="inputDate" id="date" class="control-label">{{ 'reg_date' | translate
                         }} </label>
-                    <input type="date" class="form-control" id="inputDate" ng-model="date" required>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="date" class="form-control" id="inputDate" ng-model="date" required>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="time" class="form-control" id="inputTime" ng-model="time" required>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="inputSubject" id="subject" class="control-label">{{ 'reg_subject' | translate
