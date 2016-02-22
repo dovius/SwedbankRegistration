@@ -138,17 +138,18 @@ app.controller("MainController", ['$translate', '$scope', function ($translate, 
     };
 }]);
 
-app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$http', function ($translate, $scope, $http) {
+app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$http', function ($translate, $scope, $http, $filter) {
 
     $scope.Registration = function () {
+
         var data = $.param({
             name: $scope.name,
             surname: $scope.surname,
             phone: $scope.phone,
             email: $scope.email,
             bank: $scope.bank,
-            date: $scope.date,
-            time: $scope.time,
+            date: ($scope.date.getDate() + "-" + $scope.date.getMonth() + 1) + "-" + $scope.date.getFullYear(),
+            time: ($scope.time.getHours() + ":" + $scope.time.getMinutes()),
             subject: $scope.subject,
             comment: $scope.comment
         });
