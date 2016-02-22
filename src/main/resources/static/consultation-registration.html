@@ -6,34 +6,40 @@
                 <a href="#/"><img id="logo" src="../img/logo.png" alt="logo"></a>
             </div>
             <div class="form-top-right">
-                <img id="flag" src="../img/enFlag.png" alt="flag">
+                <img id="flag" src="{{ 'img' | translate }}" alt="flag">
             </div>
         </div>
         <div class="form-bottom">
 
-            <h3>Registruokitės konsultacijai internetu</h3>
+            <h3>{{ 'reg_header' | translate }}</h3>
             <form class="RegistrationForm" ng-submit="Registration()">
 
                 <div class="form-group">
-                    <label for="inputName" id="registrationName" class="control-label">Vardas</label>
+                    <label for="inputName" id="registrationName" class="control-label">{{ 'reg_name' | translate
+                        }}</label>
                     <input type="text" class="form-control" id="inputName" ng-model="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="inputSurname" id="surname" class="control-label">Pavardė</label>
+                    <label for="inputSurname" id="surname" class="control-label">{{ 'reg_surname' | translate
+                        }} </label>
                     <input type="text" class="form-control" id="inputSurname" ng-model="surname" required>
                 </div>
                 <div class="form-group">
-                    <label for="inputPhone" id="phone" class="control-label">Telefonas susisiekti</label>
-                    <input type="number" class="form-control" id="inputPhone" ng-model="phone" required>
+                    <label for="inputPhone" id="phone" class="control-label">{{ 'reg_phone' | translate
+                        }} </label>
+                    <input type="number"  class="form-control" id="inputPhone" ng-model="phone" required>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail" id="email" class="control-label">El paštas</label>
+                    <label for="inputEmail" id="email" class="control-label">{{ 'reg_email' | translate
+                        }} </label>
                     <input type="email" class="form-control" id="inputEmail" ng-model="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="inputBank" class="control-label" id="department">Banko skyrius</label>
+                    <label for="inputBank" class="control-label" id="department">{{ 'reg_department' | translate
+                        }} </label>
                     <select class="form-control" id="inputBank" ng-model="bank" required>
-                        <option value="" disabled selected>Pasirinkite</option>
+                        <option value="" disabled selected>{{ 'reg_select' | translate
+                            }}</option>
                         <option value="Antakalnio g. 45">Antakalnio g. 45</option>
                         <option value="Ateisties g. 91 (PC „Mandarinas“)">Ateisties g. 91 (PC „Mandarinas“)</option>
                         <option value="Gedimino pr. 56">Gedimino pr. 56</option>
@@ -45,35 +51,37 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="inputDate" id="date" class="control-label">Data</label>
+                    <label for="inputDate" id="date" class="control-label">{{ 'reg_date' | translate
+                        }} </label>
                     <input type="date" class="form-control" id="inputDate" ng-model="date" required>
                 </div>
                 <div class="form-group">
-                    <label for="inputSubject" id="subject" class="control-label">Tema</label>
+                    <label for="inputSubject" id="subject" class="control-label">{{ 'reg_subject' | translate
+                        }} </label>
                     <select class="form-control" id="inputSubject" ng-model="subject" required>
-                        <option value="" disabled selected>Pasirinkite</option>
-                        <option value="Taupymas ir investavimas">Taupymas ir investavimas</option>
-                        <option value="Pensijos ir kaupimas">Pensijos ir kaupimas</option>
-                        <option value="Gyvybės draudimas">Gyvybės draudimas</option>
-                        <option value="Ne gyvybės draudimas">Ne gyvybės draudimas</option>
-                        <option value="Paskolos, lizingas">Paskolos, lizingas</option>
-                        <option value="Kasdieninių finansų valdymas">Kasdieninių finansų valdymas</option>
+                        <option value="" disabled selected>{{ 'reg_select' | translate}}</option>
+                        <option value="Taupymas ir investavimas">{{ 'reg_selectSubject1' | translate }}</option>
+                        <option value="Pensijos ir kaupimas">{{ 'reg_selectSubject2' | translate }}</option>
+                        <option value="Gyvybės draudimas">{{ 'reg_selectSubject3' | translate }}</option>
+                        <option value="Ne gyvybės draudimas">{{ 'reg_selectSubject4' | translate }}</option>
+                        <option value="Paskolos, lizingas">{{ 'reg_selectSubject5' | translate }}</option>
+                        <option value="Kasdieninių finansų valdymas">{{ 'reg_selectSubject6' | translate }}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="inputComment" id="comments" class="control-label">Pastabos, Komentarai</label>
+                    <label for="inputComment" id="comments" class="control-label">{{ 'reg_comments' | translate
+                        }} </label>
                     <textarea class="form-control" name="comments" maxlength="160" cols="34" rows="6" id="inputComment"
                               ng-model="comment"></textarea>
                 </div>
                 <div class="form-group formLastBtn">
                     <div class="col-sm-offset-3 col-sm-6">
                         <button type="submit" class="btn" data-toggle="modal" data-target=".bs-example-modal-sm">
-                            Siųsti
+                            {{ 'reg_submit' | translate }}
                         </button>
                     </div>
                 </div>
             </form>
-
 
             <!-- Modal -->
             <div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
@@ -81,62 +89,70 @@
                     <div class="modal-content">
                         <div class="modal-header formFormat">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h2 class="modal-title">Registracijos patvirtinimas</h2>
+                            <h2 class="modal-title"> {{ 'reg_conf' | translate }}</h2>
                         </div>
                         <div class="modal-body">
                             <div class="form-horizontal formFormat">
                                 <!--MODAL BODY-->
                                 <div class="form-group">
-                                    <label id="modalName" class="col-sm-4">Vardas</label>
+                                    <label id="modalName" class="col-sm-4">{{ 'reg_name' | translate
+                                        }}</label>
                                     <div class="col-sm-8">
                                         <p id="modalInputName">{{name}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label id="modalSurname" class="col-sm-4">Pavardė</label>
+                                    <label id="modalSurname" class="col-sm-4">{{ 'reg_surname' | translate
+                                        }}</label>
                                     <div class="col-sm-8">
                                         <p id="modalInputSurname">{{surname}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label id="modalPhone" class="col-sm-4">Telefonas susisiekti</label>
+                                    <label id="modalPhone" class="col-sm-4">{{ 'reg_phone' | translate
+                                        }}</label>
                                     <div class="col-sm-8">
                                         <p id="modalInputPhone">{{phone}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label id="modalEmail" class="col-sm-4">El. paštas</label>
+                                    <label id="modalEmail" class="col-sm-4">{{ 'reg_email' | translate
+                                        }}</label>
                                     <div class="col-sm-8">
                                         <p id="modalInputEmail">{{email}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label id="modalBank" class="col-sm-4">Banko skyrius</label>
+                                    <label id="modalBank" class="col-sm-4">{{ 'reg_department' | translate
+                                        }}</label>
                                     <div class="col-sm-8">
                                         <p id="modalInputBank">{{bank}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label id="modalDate" class="col-sm-4">Data</label>
+                                    <label id="modalDate" class="col-sm-4">{{ 'reg_date' | translate
+                                        }}</label>
                                     <div class="col-sm-8">
                                         <p id="modalInputDate">{{date}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label id="modalTheme" class="col-sm-4">Tema</label>
+                                    <label id="modalTheme" class="col-sm-4">{{ 'reg_subject' | translate
+                                        }}</label>
                                     <div class="col-sm-8">
                                         <p id="modalInputTheme">{{subject}}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label id="modalComments" class="col-sm-4">Pastabos, Komentarai</label>
+                                    <label id="modalComments" class="col-sm-4">{{ 'reg_comments' | translate
+                                        }}</label>
                                     <div class="col-sm-8">
                                         <p id="modalInputComments">{{comment}}</p>
                                     </div>
@@ -145,11 +161,11 @@
                             </div>
 
                         <div class="modal-footer">
-                            <p id="modalFooterThanks" class="text-left">Ačiū, kad domites banko paslaugomis.</p>
-                            <p id="modalFooterInfo" class="text-left">Jeigu Jums reikalinga skubi informacija, laukiame
-                                Jūsų skambučių telefonu 1884, darbo dienomis 8-20val., šeštadieniais 9-16 val.</p>
+                            <p id="modalFooterThanks" class="text-left">{{ 'reg_thanks' | translate}}</p>
+                            <p id="modalFooterInfo" class="text-left">{{ 'reg_thanks2' | translate}}</p>
                             <button type="button" class="btn"><a href="registrationInfo.html"
-                                                                 id="modalButtonBack">Gerai</a></button>
+                                                                 id="modalButtonBack">{{ 'reg_submit' | translate
+                                }}</a></button>
                         </div>
                         </div>
                     </div>
@@ -157,7 +173,6 @@
                 </div>
             </div>
             <!--Dialog button-->
-
 
             <!-- BOOTSTRAP FORM -->
         </div>

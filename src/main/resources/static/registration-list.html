@@ -21,7 +21,7 @@
                         <li class="navbar-form navbar-left">
                             <div class="col-sm-10">
                                 <select class="form-control" id="inputBank" ng-model="search.bank" required>
-                                    <option value="" disabled selected>Banko skyrius</option>
+                                    <option value="" disabled selected>{{ 'reg_department' | translate }}</option>
                                     <option value="Antakalnio g. 45">Antakalnio g. 45</option>
                                     <option value="Ateisties g. 91 (PC „Mandarinas“)">Ateisties g. 91 (PC
                                         „Mandarinas“)
@@ -38,7 +38,7 @@
 
                         <form class="navbar-form navbar-left" role="search">
                             <div class="form-group no-margin">
-                                <input type="text" class="form-control" placeholder="Klientas" ng-model="search">
+                                <input type="text" class="form-control" placeholder="{{ 'reg_customer' | translate }}" ng-model="search">
                             </div>
                         </form>
                     </ul>
@@ -53,10 +53,10 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Data</th>
-                        <th>Banko skyrius</th>
-                        <th>Tema</th>
-                        <th>Veiksmai</th>
+                        <th>{{ 'reg_date' | translate }}</th>
+                        <th>{{ 'reg_department' | translate }}</th>
+                        <th>{{ 'reg_subject' | translate }}</th>
+                        <th>{{ 'reg_action' | translate }}</th>
                     </tr>
                     </thead>
                     <tbody ng-init="nr=0">
@@ -66,25 +66,25 @@
                         <th>{{registration.bank}}</th>
                         <th>{{registration.subject}}</th>
                         <th><a data-toggle="modal" data-target=".bs-example-modal-big"
-                               ng-click="nr = key">Peržiūrėti</a>
-                            <a data-toggle="modal" data-target="#confirm-delete" ng-click="nr = key">Ataskyti</a>
+                               ng-click="nr = key">{{ 'reg_view' | translate }}</a>
+                            <a data-toggle="modal" data-target="#confirm-delete" ng-click="nr = key">{{ 'reg_del' | translate }}</a>
                     </tr>
                     </tbody>
                 </table>
-                
+
                 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="deleteModalLabel">Patvirtinimas</h4>
+                                <h4 class="modal-title" id="deleteModalLabel">{{ 'reg_delConf' | translate }}</h4>
                             </div>
                             <div class="modal-body">
-                                <p>Ar norite atšaukti susitikimą?</p>
+                                <p>{{ 'reg_question' | translate }}</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn" data-dismiss="modal">Cancel</button>
-                                <a class="btn btn-danger btn-ok">Delete</a>
+                                <button type="button" class="btn" data-dismiss="modal">{{ 'reg_cancel' | translate }}</button>
+                                <a class="btn btn-danger btn-ok">{{ 'reg_del' | translate }}</a>
                             </div>
                         </div>
                     </div>
@@ -95,62 +95,62 @@
                         <div class="modal-content">
                             <div class="modal-header formFormat">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h2 class="modal-title">Registracijos peržiūra</h2>
+                                <h2 class="modal-title">{{ 'reg_viewReg' | translate }}</h2>
                             </div>
                             <div class="modal-body">
                                 <div class="form-horizontal formFormat">
                                     <!--MODAL BODY-->
                                     <div class="form-group">
-                                        <label id="modalName" class="col-sm-4">Vardas</label>
+                                        <label id="modalName" class="col-sm-4">{{ 'reg_name' | translate }}</label>
                                         <div class="col-sm-8">
                                             <p id="modalInputName">{{registrations[nr].name}}</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label id="modalSurname" class="col-sm-4">Pavardė</label>
+                                        <label id="modalSurname" class="col-sm-4">{{ 'reg_surname' | translate }}</label>
                                         <div class="col-sm-8">
                                             <p id="modalInputSurname">{{ registrations[nr].surname}}</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label id="modalPhone" class="col-sm-4">Telefonas susisiekti</label>
+                                        <label id="modalPhone" class="col-sm-4">{{ 'reg_phone' | translate }}</label>
                                         <div class="col-sm-8">
                                             <p id="modalInputPhone">{{ registrations[nr].number }}</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label id="modalEmail" class="col-sm-4">El. paštas</label>
+                                        <label id="modalEmail" class="col-sm-4">{{ 'reg_email' | translate }}</label>
                                         <div class="col-sm-8">
                                             <p id="modalInputEmail">{{ registrations[nr].email }}</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label id="modalBank" class="col-sm-4">Banko skyrius</label>
+                                        <label id="modalBank" class="col-sm-4">{{ 'reg_department' | translate }}</label>
                                         <div class="col-sm-8">
                                             <p id="modalInputBank">{{ registrations[nr].bank }}</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label id="modalDate" class="col-sm-4">Data</label>
+                                        <label id="modalDate" class="col-sm-4">{{ 'reg_date' | translate }}</label>
                                         <div class="col-sm-8">
                                             <p id="modalInputDate">{{ registrations[nr].date}}</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label id="modalTheme" class="col-sm-4">Tema</label>
+                                        <label id="modalTheme" class="col-sm-4">{{ 'reg_subject' | translate }}</label>
                                         <div class="col-sm-8">
                                             <p id="modalInputTheme">{{ registrations[nr].subject}}</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label id="modalComments" class="col-sm-4">Pastabos, Komentarai</label>
+                                        <label id="modalComments" class="col-sm-4">{{ 'reg_comments' | translate }}</label>
                                         <div class="col-sm-8">
                                             <p id="modalInputComments">{{ registrations[nr].comment}}</p>
                                         </div>
@@ -159,13 +159,10 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <p id="modalFooterThanks" class="text-left">Ačiū, kad domites banko paslaugomis.</p>
-                                    <p id="modalFooterInfo" class="text-left">Jeigu Jums reikalinga skubi informacija,
-                                        laukiame
-                                        Jūsų skambučių telefonu 1884, darbo dienomis 8-20val., šeštadieniais 9-16
-                                        val.</p>
-                                    <button type="button" class="btn"><a href="registrationInfo.html"
-                                                                         id="modalButtonBack">Gerai</a></button>
+                                    <p id="modalFooterThanks" class="text-left">{{ 'reg_thanks' | translate }}</p>
+                                    <p id="modalFooterInfo" class="text-left">{{ 'reg_thanks2' | translate }}</p>
+                                    <button type="button" class="btn"><a href="registration-list.html"
+                                                                         id="modalButtonBack">{{ 'reg_submit' | translate }}</a></button>
                                 </div>
                             </div>
                         </div>
