@@ -13,8 +13,8 @@ public class ConnectToDB {
 
 
     /* OPEN SHIFT DB INFO */
-    String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-    //String host = "127.0.0.1"; // <-- this is local for openshift
+    //String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+    String host = "127.0.0.1"; // <-- this is local for openshift
     String username = "adminbC5E997";
     String password = "3jmBBK-uWdqM";
     String dbName = "betaregistration";
@@ -139,7 +139,8 @@ public class ConnectToDB {
     public void removeRegistration(int ID){
         try {
             Statement statement = dbConnection.createStatement();
-            statement.executeQuery("DELETE FROM Registration WHERE ID = " + ID);
+
+            statement.executeUpdate("DELETE FROM `Registration` WHERE `ID` = " + ID);
         }catch (SQLException e){
             e.printStackTrace();
         }
