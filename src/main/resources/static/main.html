@@ -11,13 +11,11 @@
         </div>
         <div class="form-bottom">
 
-            <h3>{{ 'contact_header' | translate }}</h3>
-
             <div class="search-form">
 
                 <a href="#/consultation-registration" class="btn">{{ 'reg_header' | translate }}</a>
                 <a href="#/contact-us" class="btn">{{ 'contact' | translate }}</a>
-                <a href="#/registration-list" class="btn" onmouseover="showNumberForm()">{{ 'info' | translate }}</a>
+                <a href="" class="btn"  id="btnHousing" onclick="setColor('btnHousing','#eaeaea');">{{ 'info' | translate }}</a>
 
                 <div class="search">
                     <div class="searchLeft">
@@ -26,7 +24,9 @@
                     </div>
                     <div class="searchRight">
                         <img id="search" src="../img/search.png" alt="search" onmouseover="searchForNumber()">
-                    </div>
+
+
+         </div>
                 </div>
 
 

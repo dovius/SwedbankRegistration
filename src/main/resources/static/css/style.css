@@ -148,7 +148,7 @@ body{
 
 .search{
 
-/ / display: none;
+    display: none;
     overflow: hidden;
     padding: 10px 0px 10px 0px;
 
