@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 public class RegistrationController {
-
+/*
     ConnectToDB MySQLconnection = new ConnectToDB();
 
     @RequestMapping(value = "api/getRegistrationInformation", method = RequestMethod.GET)
@@ -55,6 +55,6 @@ public class RegistrationController {
     public void deleteFromDb(@RequestParam String ID) {
         MySQLconnection.removeRegistration(new Integer(ID));
     }
-
+*/
 }
 

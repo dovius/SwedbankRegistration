@@ -149,7 +149,26 @@ app.controller("MainController", ['translateService', '$scope', function (transl
         translateService.translateFunction();
     };
 
+    $scope.getPhoneNumber = function(phone)
+    {
+        console.log(phone);
+        $('#search').addClass('animated bounceIn');
+
+            var data = $.param({
+                number: phone
+            });
+
+            $http.put('http://localhost:8080/api/searchRegistrationByPhoneNumber?' + data) // TODO FIX
+                .success(function (data, status, headers) {
+                    $scope.ServerResponse = data;
+                })
+                .error(function (data, status, header, config) {
+                    $scope.ServerResponse = htmlDecode("error");
+                });
+        };
 }]);
+
+
 
 app.controller("ConsultationRegistrationController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
 
