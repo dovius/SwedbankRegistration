@@ -224,7 +224,7 @@ app.controller('RegistrationListByPhoneNumberController', function ($scope, $htt
 
     var number;
 
-    $scope.GetNumber = function (){
+    $scope.GetNumber = function () {
         number = $scope.number;
     };
 
