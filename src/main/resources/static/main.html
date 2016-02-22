@@ -6,10 +6,12 @@
                 <a href="#/"><img id="logo" src="../img/logo.png" alt="logo"></a>
             </div>
             <div class="form-top-right">
-                <img ng-click="changeLanguage('en')" id="flag" src=" {{ 'img' | translate }} " alt="flag">
+                <img ng-click="translate()" id="flag" src=" {{ 'img' | translate }} " alt="flag">
             </div>
         </div>
         <div class="form-bottom">
+
+            <h3>{{ 'contact_header' | translate }}</h3>
 
             <div class="search-form">
 
@@ -23,10 +25,8 @@
                                placeholder="{{ 'reg_phone' | translate }}">
                     </div>
                     <div class="searchRight">
-                        <img id="search" src="../img/search.png" alt="search" onmouseover="searchForNumber()">
-
-
-         </div>
+                        <img id="search" src="../img/search.png" alt="search" ng-click="getPhoneNumber(phoneSearch)">
+                    </div>
                 </div>
 
 

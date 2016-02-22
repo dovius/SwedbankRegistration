@@ -1,18 +1,18 @@
-<div class="row" ng-controller="RegistrationListController">
+<div class="row" ng-controller="MainController">
 
 
     <div class="col-md-10 col-md-offset-1 form-box">
         <div class="form-top">
             <div class="form-top-left">
-                <a href="#/"><img id="logo" src="../img/logo.png" alt="logo"></a>
+                <a href="#/"><img id="logo" src="../img/logo.png" alt="logo" ng-></a>
             </div>
             <div class="form-top-right">
-                <img id="flag" src="../img/enFlag.png" alt="flag">
+                <img id="flag" ng-click="translate()" src="{{ 'img' | translate }}" alt="flag">
             </div>
         </div>
 
-        <div class="form-bottom">
 
+        <div class="form-bottom">
             <div class="container-fluid">
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,7 +48,6 @@
 
             <div class="div-bottom">
 
-
                 <table class="table">
                     <thead>
                     <tr>
@@ -67,7 +66,7 @@
                         <th>{{registration.subject}}</th>
                         <th><a data-toggle="modal" data-target=".bs-example-modal-big"
                                ng-click="nr = key">{{ 'reg_view' | translate }}</a>
-                            <a data-toggle="modal" data-target="#confirm-delete" ng-click="nr = key">{{ 'reg_del' | translate }}</a>
+                            <a data-toggle="modal" data-target="#confirm-delete" ng-click="nr = key; info(registration)">{{ 'reg_del' | translate }}</a>
                     </tr>
                     </tbody>
                 </table>
@@ -77,14 +76,14 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="deleteModalLabel">{{ 'reg_delConf' | translate }}</h4>
+                                <h4 class="modal-title" data-dismiss="modal" id="deleteModalLabel">{{ 'reg_delConf' | translate }}</h4>
                             </div>
                             <div class="modal-body">
                                 <p>{{ 'reg_question' | translate }}</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn" data-dismiss="modal">{{ 'reg_cancel' | translate }}</button>
-                                <a class="btn btn-danger btn-ok">{{ 'reg_del' | translate }}</a>
+                                <a class="btn btn-danger btn-ok" ng-click="deleteFromDb(registration.id)">{{ 'reg_del' | translate }}</a>
                             </div>
                         </div>
                     </div>

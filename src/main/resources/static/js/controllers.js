@@ -8,7 +8,7 @@ var enTranslations = {
     register: 'Register for consultation',
     contact_header: 'Contact us',
     contact: 'Write us',
-    info: 'Registration overview', 
+    info: 'Registration overview',
 
     img: '../img/ltFlag.png',
     reg_header: 'Register for consultation online',
@@ -105,13 +105,13 @@ app.config(['$translateProvider', function ($translateProvider) {
         .preferredLanguage('lt');
 }]);
 
-app.config(function($routeProvider, $locationProvider){
+app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
-        .when('/',{
+        .when('/', {
             templateUrl: '../main.html',
             controller: 'MainController'
         })
-        .when('/contact-us',{
+        .when('/contact-us', {
             templateUrl: '../contact-us.html',
             controller: 'ContactUsController'
         })
@@ -132,103 +132,49 @@ app.config(function($routeProvider, $locationProvider){
     //$locationProvider.html5Mode(true);
 });
 
-app.controller("MainController", ['$translate', '$scope', function ($translate, $scope) {
-    $scope.changeLanguage = function (langKey) {
-        $translate.use(langKey);
+app.factory('translateService', ['$translate', function ($translate) {
+    return {
+        translateFunction: function () {
+            if ($translate.use() == "en")
+                $translate.use("lt");
+            else
+                $translate.use("en");
+        }
     };
 }]);
 
-app.controller("ConsultationRegistrationController", ['$translate', '$scope', '$http', function ($translate, $scope, $http) {
+app.controller("MainController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
 
-    $scope.Registration = function () {
+    $scope.translate = function () {
+        translateService.translateFunction();
+    };
+
+    $scope.getPhoneNumber = function(phone)
+    {
+        console.log(phone);
+        $('#search').addClass('animated bounceIn');
+
         var data = $.param({
-            name: $scope.name,
-            surname: $scope.surname,
-            number: $scope.number,
-            email: $scope.email,
-            bank: $scope.bank,
-            date: $scope.date,
-            subject: $scope.subject,
-            comment: $scope.comment
+            phoneNumber: phone
         });
 
-        $http.put('http://betaregistration-kirviai.rhcloud.com/api/register?' + data) // TODO FIX
+        $http.get('http://localhost:8080/api/searchRegistrationByPhoneNumber?' + data) // TODO FIX
             .success(function (data, status, headers) {
-                $scope.ServerResponse = data;
-                modalShow();
+                $scope.registrations = data.data;
+                console.log(data);
             })
+
             .error(function (data, status, header, config) {
-                $scope.ServerResponse = htmlDecode("Data: " + data +
-                    "\n\n\n\nstatus: " + status +
-                    "\n\n\n\nheaders: " + header +
-                    "\n\n\n\nconfig: " + config);
+                $scope.ServerResponse = htmlDecode("error");
             });
     };
 }]);
 
-app.controller("ConsultationRegistrationController", function ($scope, $http) {
+app.controller("ContactUsController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
 
-    $scope.Registration = function () {
-        var data = $.param({
-            name: $scope.name,
-            surname: $scope.surname,
-            phone: $scope.phone,
-            email: $scope.email,
-            bank: $scope.bank,
-            date: $scope.date,
-            time: $scope.time,      // TODO FIX
-            subject: $scope.subject,
-            comment: $scope.comment
-        });
-
-        $http.put('http://localhost:8080/api/register?' + data) // TODO CHANGE URL BEFORE DEPLOYING
-            .success(function (data, status, headers) {
-                $scope.ServerResponse = data;
-            })
-            .error(function (data, status, header, config) {
-                $scope.ServerResponse = htmlDecode("Data: " + data +
-                    "\n\n\n\nstatus: " + status +
-                    "\n\n\n\nheaders: " + header +
-                    "\n\n\n\nconfig: " + config);
-            });
-        modalClose();
+    $scope.translate = function () {
+        translateService.translateFunction();
     };
-});
-
-//http://localhost:8080/api/searchRegistrationByPhoneNumber?phoneNumber=86924312
-
-app.controller('RegistrationListByPhoneNumberController', function ($scope, $http) {
-
-    var number;
-
-    $scope.GetNumber = function (){
-        number = $scope.number;
-    };
-
-    $http({
-        method: 'GET',
-        url: 'http://localhost:8080/api/searchRegistrationByPhoneNumber?phoneNumber=' + number// TODO CHANGE URL BEFORE DEPLOYING
-    }).then(function successCallback(response) {
-        $scope.registrations = response.data;
-        console.log(response);
-    }, function errorCallback(response) {
-        console.log(response);
-    });
-});
-
-app.controller('RegistrationListController', function ($scope, $http) {
-    $http({
-        method: 'GET',
-        url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
-    }).then(function successCallback(response) {
-        $scope.registrations = response.data;
-        console.log(response);
-    }, function errorCallback(response) {
-        console.log(response);
-    });
-});
-
-app.controller("ContactUsController", function ($scope, $http) {
 
     $scope.ContactUs = function () {
 
@@ -253,11 +199,135 @@ app.controller("ContactUsController", function ($scope, $http) {
                     "\n\n\n\nconfig: " + config);
             });
     };
+}]);
+
+app.controller("ConsultationRegistrationController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
+
+    $scope.translate = function () {
+        translateService.translateFunction();
+    };
+
+    $scope.Registration = function () {
+
+        var data = $.param({
+            name: $scope.name,
+            surname: $scope.surname,
+            phone: $scope.phone,
+            email: $scope.email,
+            bank: $scope.bank,
+            date: ($scope.date.getDate() + "-" + $scope.date.getMonth() + 1) + "-" + $scope.date.getFullYear(),
+            time: ($scope.time.getHours() + ":" + $scope.time.getMinutes()),
+            subject: $scope.subject,
+            comment: $scope.comment
+        });
+
+        modalShow();
+
+        $http.put('http://localhost:8080/api/register?' + data) // TODO FIX
+            .success(function (data, status, headers) {
+                $scope.ServerResponse = data;
+                modalShow();
+            })
+            .error(function (data, status, header, config) {
+                $scope.ServerResponse = htmlDecode("Data: " + data +
+                    "\n\n\n\nstatus: " + status +
+                    "\n\n\n\nheaders: " + header +
+                    "\n\n\n\nconfig: " + config);
+            });
+    };
+}]);
+
+app.controller('RegistrationListController', function ($scope, $http) {
+    $http({
+        method: 'GET',
+        url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
+    }).then(function successCallback(response) {
+        $scope.registrations = response.data;
+        console.log(response);
+    }, function errorCallback(response) {
+        console.log(response);
+    });
+
+    var regId;
+    var index;
+
+    $scope.info = function (item) {
+        regId = item.id;
+        index = $scope.registrations.indexOf(item);
+        console.log(regId);
+    };
+
+    $scope.deleteFromDb = function (item) {
+
+        $scope.registrations.splice(index, 1);
+
+        console.log(index);
+
+        var data = $.param({
+            ID: regId
+        });
+
+        hideRegDeleteModal();
+
+
+        $http.delete('http://localhost:8080/api/delete?' + data) // TODO FIX
+            .success(function (data, status, headers) {
+                $scope.ServerResponse = "DELETED";
+                //    modalShow();
+            })
+            .error(function (data, status, header, config) {
+                $scope.ServerResponse = htmlDecode("SOMETHING WENT WRONG");
+            });
+
+    }
+
 });
 
+app.controller("ContactUsController", ['translateService', '$scope', '$http', function (translateService, $scope, $http) {
+
+    $scope.translate = function () {
+        translateService.translateFunction();
+    };
+
+    $scope.ContactUs = function () {
+
+        var data = $.param({
+            subject: $scope.subject,
+            message: $scope.message,
+            name: $scope.name,
+            surname: $scope.surname,
+            number: $scope.phone,
+            email: $scope.email,
+            radioValue: $scope.radioValue
+        });
+
+        $http.put('http://localhost:8080/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
+            .success(function (data, status, headers) {
+                $scope.ServerResponse = data;
+            })
+            .error(function (data, status, header, config) {
+                $scope.ServerResponse = htmlDecode("Data: " + data +
+                    "\n\n\n\nstatus: " + status +
+                    "\n\n\n\nheaders: " + header +
+                    "\n\n\n\nconfig: " + config);
+            });
+    };
+}]);
+
 function modalShow() {
-    showNewRegistrationConfirmModal();
     $('#myModal').modal('show');
+}
+
+function modalHide() {
+    $('#myModal').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+}
+
+function hideRegDeleteModal() {
+    $('#confirm-delete').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
 }
 
 function showNewRegistrationConfirmModal() {

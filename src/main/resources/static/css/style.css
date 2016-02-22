@@ -85,9 +85,15 @@ body{
 }
 
 #flag{
+    cursor: pointer;
     max-width: 40px;
 / / width: 30 %;
     float: right;
+
+}
+
+#search {
+    cursor: pointer;
 
 }
 
@@ -147,7 +153,6 @@ body{
 }
 
 .search{
-
     display: none;
     overflow: hidden;
     padding: 10px 0px 10px 0px;

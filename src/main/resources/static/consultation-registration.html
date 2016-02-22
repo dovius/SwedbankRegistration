@@ -6,7 +6,7 @@
                 <a href="#/"><img id="logo" src="../img/logo.png" alt="logo"></a>
             </div>
             <div class="form-top-right">
-                <img id="flag" src="{{ 'img' | translate }}" alt="flag">
+                <img ng-click="translate()" id="flag" src="{{ 'img' | translate }}" alt="flag">
             </div>
         </div>
         <div class="form-bottom">
@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="inputPhone" id="phone" class="control-label">{{ 'reg_phone' | translate
                         }} </label>
-                    <input type="number"  class="form-control" id="inputPhone" ng-model="phone" required>
+                    <input type="number" class="form-control" id="inputPhone" ng-model="phone" required>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail" id="email" class="control-label">{{ 'reg_email' | translate
@@ -39,7 +39,8 @@
                         }} </label>
                     <select class="form-control" id="inputBank" ng-model="bank" required>
                         <option value="" disabled selected>{{ 'reg_select' | translate
-                            }}</option>
+                            }}
+                        </option>
                         <option value="Antakalnio g. 45">Antakalnio g. 45</option>
                         <option value="Ateisties g. 91 (PC „Mandarinas“)">Ateisties g. 91 (PC „Mandarinas“)</option>
                         <option value="Gedimino pr. 56">Gedimino pr. 56</option>
@@ -53,7 +54,14 @@
                 <div class="form-group">
                     <label for="inputDate" id="date" class="control-label">{{ 'reg_date' | translate
                         }} </label>
-                    <input type="date" class="form-control" id="inputDate" ng-model="date" required>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="date" class="form-control" id="inputDate" ng-model="date" required>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="time" class="form-control" id="inputTime" ng-model="time" required>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="inputSubject" id="subject" class="control-label">{{ 'reg_subject' | translate
@@ -76,7 +84,7 @@
                 </div>
                 <div class="form-group formLastBtn">
                     <div class="col-sm-offset-3 col-sm-6">
-                        <button type="submit" class="btn" data-toggle="modal" data-target=".bs-example-modal-sm">
+                        <button type="submit" class="btn" data-toggle="modal">
                             {{ 'reg_submit' | translate }}
                         </button>
                     </div>
@@ -160,13 +168,13 @@
                                 <!--MODAL BODY END-->
                             </div>
 
-                        <div class="modal-footer">
-                            <p id="modalFooterThanks" class="text-left">{{ 'reg_thanks' | translate}}</p>
-                            <p id="modalFooterInfo" class="text-left">{{ 'reg_thanks2' | translate}}</p>
-                            <button type="button" class="btn"><a href="registration-list.html"
-                                                                 id="modalButtonBack">{{ 'reg_submit' | translate
-                                }}</a></button>
-                        </div>
+                            <div class="modal-footer">
+                                <p id="modalFooterThanks" class="text-left">{{ 'reg_thanks' | translate}}</p>
+                                <p id="modalFooterInfo" class="text-left">{{ 'reg_thanks2' | translate}}</p>
+                                <a href="#/registration-list" id="modalButtonBack" onclick="modalHide()">
+                                    <button type="button" class="btn">{{ 'reg_submit' | translate}}</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
