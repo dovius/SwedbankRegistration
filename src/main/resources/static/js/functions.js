@@ -17,4 +17,4 @@ function setColor(btn,color){
       property.style.backgroundColor = "#ffcc01";
         $(".search").show(300);
     }
-  }
+ }
