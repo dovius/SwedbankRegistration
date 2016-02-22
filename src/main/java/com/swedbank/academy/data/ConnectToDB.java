@@ -11,9 +11,13 @@ import java.util.List;
  */
 public class ConnectToDB {
 
-    String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+
+    /* OPEN SHIFT DB INFO */
+    //String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+    String host = "127.0.0.1"; // <-- this is local for openshift
     String username = "adminbC5E997";
     String password = "3jmBBK-uWdqM";
+    String dbName = "betaregistration";
 
     Connection dbConnection;
 
@@ -38,7 +42,9 @@ public class ConnectToDB {
         dataSource.setUser(username);
         dataSource.setPassword(password);
         dataSource.setServerName(host);
-        dataSource.setDatabaseName("betaregistration");
+        dataSource.setDatabaseName(dbName);
+        dataSource.setUseUnicode(true);
+        dataSource.setCharacterEncoding("utf-8");
         return dataSource;
     }
 
@@ -76,8 +82,8 @@ public class ConnectToDB {
             PreparedStatement preparedStmt = dbConnection.prepareStatement(query);
             preparedStmt.setString (1, registrationDataHolder.getName());
             preparedStmt.setString (2, registrationDataHolder.getSurname());
-            preparedStmt.setString (3, registrationDataHolder.getBank());
-            preparedStmt.setString (4, registrationDataHolder.getNumber());
+            preparedStmt.setString (3, registrationDataHolder.getNumber());
+            preparedStmt.setString (4, registrationDataHolder.getEmail());
             preparedStmt.setString (5, registrationDataHolder.getBank());
             preparedStmt.setString (6, registrationDataHolder.getDate());
             preparedStmt.setString (7, registrationDataHolder.getTime());
@@ -152,3 +158,13 @@ public class ConnectToDB {
                 resultSet.getString("Comment")));
     }
 }
+
+/*
+    --- REGISTRATIONS TABLE SQL ---
+    CREATE TABLE Persons(
+        ID int NOT NULL AUTO_INCREMENT, Name varchar(255) NOT NULL, Surname varchar(255),
+        Number varchar(255), Email varchar(255), Bank varchar(255), Date varchar(255),
+        Time varchar(255), Subject varchar(255), Comment varchar(255), PRIMARY KEY (ID))
+
+    --- CONTACT US TABLE SQL ---
+ */

@@ -62,7 +62,7 @@
                     <tbody ng-init="nr=0">
                     <tr ng-repeat="(key, registration) in registrations|filter:search track by $index">
                         <th>{{registration.id}}</th>
-                        <th>0000-00-00</th>
+                        <th>{{registration.date}}</th>
                         <th>{{registration.bank}}</th>
                         <th>{{registration.subject}}</th>
                         <th><a data-toggle="modal" data-target=".bs-example-modal-big"
