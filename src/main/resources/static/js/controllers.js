@@ -249,8 +249,6 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
             comment: $scope.comment
         });
 
-        console.log("1");
-        console.log(data);
 
         modalShow();
 
@@ -266,9 +264,6 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
                     "\n\n\n\nconfig: " + config);
             });
 
-        console.log("2");
-        console.log(data);
-
 
     };
 }]);
@@ -277,9 +272,6 @@ app.controller("RegistrationListController", ['translateService', '$scope', '$ht
 
 
     $scope.registrations = responseFromServakas;
-
-    console.log("3");
-    console.log(data);
 
     console.log(responseFromServakas);
     $http({
