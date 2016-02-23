@@ -271,15 +271,15 @@ app.controller("RegistrationListController", ['translateService', '$scope', '$ht
     $scope.registrations = responseFromServakas;
 
     console.log(responseFromServakas);
-    /*    $http({
+    $http({
      method: 'GET',
-     url: 'http://localhost:8080/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
+     url: 'http://betaregistration-kirviai.rhcloud.com/api/getRegistrationInformation' // TODO CHANGE URL BEFORE DEPLOYING
      }).then(function successCallback(response) {
 
 
      }, function errorCallback(response) {
      console.log("Error: " + response);
-     });*/
+     });
 
 
     var regId;
