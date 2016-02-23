@@ -249,6 +249,9 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
             comment: $scope.comment
         });
 
+        console.log("1");
+        console.log(data);
+
         modalShow();
 
         $http.put('http://betaregistration-kirviai.rhcloud.com/api/register?' + data) // TODO FIX
@@ -262,6 +265,11 @@ app.controller("ConsultationRegistrationController", ['translateService', '$scop
                     "\n\n\n\nheaders: " + header +
                     "\n\n\n\nconfig: " + config);
             });
+
+        console.log("2");
+        console.log(data);
+
+
     };
 }]);
 
@@ -269,6 +277,9 @@ app.controller("RegistrationListController", ['translateService', '$scope', '$ht
 
 
     $scope.registrations = responseFromServakas;
+
+    console.log("3");
+    console.log(data);
 
     console.log(responseFromServakas);
     $http({

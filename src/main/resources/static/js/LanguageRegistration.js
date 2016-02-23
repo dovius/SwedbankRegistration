@@ -6,7 +6,10 @@ var language = localStorage.getItem("LANG");
 if(language === "ENG"){
     changeToEngRegistrationForm();
 } else{
- //   changeToLt();
+ /*changeToLt();
+
+
+ */
 }
 
 function changeToEngRegistrationForm()
