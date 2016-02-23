@@ -335,7 +335,7 @@ app.controller("ContactUsController", ['translateService', '$scope', '$http', fu
             radioValue: $scope.radioValue
         });
 
-        $http.put('http://betaregistration-kirviai.rhcloud.com/api/ContactUsRegistration?' + data)  // TODO CHANGE URL BEFORE DEPLOYING
+        $http.put('http://betaregistration-kirviai.rhcloud.com/api/ContactUsRegistration?' + data)
             .success(function (data, status, headers) {
                 $scope.ServerResponse = data;
             })
@@ -344,6 +344,7 @@ app.controller("ContactUsController", ['translateService', '$scope', '$http', fu
                     "\n\n\n\nstatus: " + status +
                     "\n\n\n\nheaders: " + header +
                     "\n\n\n\nconfig: " + config);
+
             });
     };
 }]);
